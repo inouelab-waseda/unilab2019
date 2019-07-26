@@ -24,6 +24,8 @@
     "DesiredPedometer": 0
   },
   "Enemies": [],
+  "Coins":[],
+  "1ups":[],
   "Swamps": [],
   "Teleporters": [],
   "Walls": [
@@ -5642,7 +5644,7 @@
       "HP": 0,
       "MaxHP": 0,
       "DesiredPedometer": 0
-    },
+    }
   ],
   "Width": 24,
   "Height": 18,
