@@ -10,7 +10,8 @@ namespace Unilab2019.Objects
 {
     class GameObject
     {
-        /*
+        /* GameObjectの説明
+         * 
          * GameObject全てに共通する性質を並べて親クラスとする
          * つまり各オブジェクトは各々これを継承する
          * 以下のメンバ変数を有する
@@ -64,17 +65,20 @@ namespace Unilab2019.Objects
         [JsonIgnore]
         public Bitmap[] Bitmaps { get; private set; } = new Bitmap[Enum.GetNames(typeof(Types.Direction)).Length];
         /*Enum.GetNames(typeof(hogehoge))  ->  Enum型のhogehogeを列挙した配列
-        それぞれの向きに対応した画像を格納している
-        Bitmap[0]:向きがないときの画像
-        Bitmap[1]:下を向いている時の画像
-        ...
-        */
+         *それぞれの向きに対応した画像を格納している
+         *Bitmap[0]:向きがないときの画像
+         *Bitmap[1]:下を向いている時の画像
+         *...
+         */
 
         [JsonIgnore]
-        public virtual bool IsAlive { get; set; } = true;
-        //それぞれでoverrideする
+        public bool IsAlive { get; set; } = true;
+        public void Die() => IsAlive = false;
+
         [JsonIgnore]
         public virtual bool CanMove { get; } = true;
+        //初期値はtrue。壁とゴールはfalseにそれぞれでoverride
+
         public Brush Color { get; set; } = Brushes.Red;
 
         public virtual void Draw(Graphics graphics, float width, float height)

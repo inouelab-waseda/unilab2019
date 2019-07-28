@@ -9,6 +9,8 @@ namespace Unilab2019.Objects.Enemies
 {
     class Enemy : GameObject
     {
+        //未完成
         public Enemy(int x, int y) : base(x, y) => Color = Brushes.Blue;
+        
     }
 }
