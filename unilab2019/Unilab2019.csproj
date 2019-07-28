@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\CodeFile1.cs" />
     <Compile Include="Forms\GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,6 +57,7 @@
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Types.cs" />
+    <Compile Include="Images\CodeFile1.cs" />
     <Compile Include="Objects\Enemies\Enemy.cs" />
     <Compile Include="Objects\FieldObjects\Wall.cs" />
     <Compile Include="Objects\GameObject.cs" />
@@ -90,9 +92,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CustomControls\" />
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

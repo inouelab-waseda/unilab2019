@@ -26,7 +26,7 @@ namespace Unilab2019.Objects
         */
         private int x, y;
         //向き
-        public Types.Direction Direction { get; set; }
+        public Types.Direction Direction { get; set; } = Types.Direction.None;
 
         public int X
         {
@@ -59,7 +59,6 @@ namespace Unilab2019.Objects
         {
             X = x;
             Y = y;
-            Direction = Types.Direction.None;
         }
 
         [JsonIgnore]
@@ -110,7 +109,7 @@ namespace Unilab2019.Objects
             対象画像を読み込む
             */
             Assembly assembly = Assembly.GetExecutingAssembly();
-            Stream stream = assembly.GetManifestResourceStream("Unilab2018.Images." + name);
+            Stream stream = assembly.GetManifestResourceStream("Unilab2019.Images." + name);
             Bitmap bmp = new Bitmap(stream);
             return bmp;
         }
