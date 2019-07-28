@@ -55,6 +55,12 @@
     <Compile Include="Forms\GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Types.cs" />
+    <Compile Include="Objects\Enemies\Enemy.cs" />
+    <Compile Include="Objects\FieldObjects\Wall.cs" />
+    <Compile Include="Objects\GameObject.cs" />
+    <Compile Include="Objects\Goal\Goal.cs" />
+    <Compile Include="Objects\Players\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -83,12 +89,7 @@
   <ItemGroup>
     <Folder Include="CustomControls\" />
     <Folder Include="Fields\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Images\" />
-    <Folder Include="Objects\Enemies\" />
-    <Folder Include="Objects\FieldObjects\" />
-    <Folder Include="Objects\Goal\" />
-    <Folder Include="Objects\Players\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
