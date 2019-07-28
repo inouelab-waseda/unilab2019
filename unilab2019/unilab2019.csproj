@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControl\CodeFile1.cs" />
+    <Compile Include="Fields\Fields.cs" />
     <Compile Include="Forms\GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,6 +58,7 @@
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Types.cs" />
+    <Compile Include="images\CodeFile1.cs" />
     <Compile Include="Objects\Enemies\Enemy.cs" />
     <Compile Include="Objects\FieldObjects\Wall.cs" />
     <Compile Include="Objects\GameObject.cs" />
@@ -72,6 +75,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Fields\stage0.json" />
+    <None Include="Fields\stage1.json" />
+    <None Include="Fields\stage2.json" />
+    <None Include="Fields\stage3.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,10 +93,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CustomControls\" />
-    <Folder Include="Fields\" />
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
