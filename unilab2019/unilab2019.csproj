@@ -72,6 +72,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Fields\stage0.json" />
+    <None Include="Fields\stage1.json" />
+    <None Include="Fields\stage2.json" />
+    <None Include="Fields\stage3.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -82,13 +86,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="stage\stage0.json" />
+    <None Include="stage\stage1.json" />
+    <None Include="stage\stage2.json" />
+    <None Include="stage\stage3.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />
-    <Folder Include="Fields\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
