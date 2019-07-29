@@ -103,6 +103,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Enemy.jpg" />
+    <Content Include="Images\Enemy_left.jpg" />
+    <Content Include="Images\Enemy_right.jpg" />
+    <Content Include="Images\Enemy_up.jpg" />
     <Content Include="Images\Goal.jpg" />
     <Content Include="Images\Player_Down.jpg" />
     <Content Include="Images\Player_Left.jpg" />
