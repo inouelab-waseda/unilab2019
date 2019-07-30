@@ -71,6 +71,9 @@
     <Compile Include="Objects\Players\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\GameForm.resx">
+      <DependentUpon>GameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\selectstage.resx">
       <DependentUpon>Selectstage.cs</DependentUpon>
     </EmbeddedResource>
