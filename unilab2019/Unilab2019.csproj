@@ -90,6 +90,8 @@
     <None Include="Fields\stage1.json" />
     <None Include="Fields\stage2.json" />
     <None Include="Fields\stage3.json" />
+    <None Include="Fields\stage4.json" />
+    <None Include="Fields\stage5.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
