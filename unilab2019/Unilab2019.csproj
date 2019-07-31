@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>unilab2019</RootNamespace>
     <AssemblyName>unilab2019</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -86,10 +87,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Fields\stage0.json" />
     <None Include="Fields\stage1.json" />
+    <None Include="Fields\stage10.json" />
     <None Include="Fields\stage2.json" />
     <None Include="Fields\stage3.json" />
+    <None Include="Fields\stage4.json" />
+    <None Include="Fields\stage5.json" />
+    <None Include="Fields\stage6.json" />
+    <None Include="Fields\stage7.json" />
+    <None Include="Fields\stage8.json" />
+    <None Include="Fields\stage9.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
