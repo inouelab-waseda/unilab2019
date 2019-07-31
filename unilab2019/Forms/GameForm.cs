@@ -26,13 +26,5 @@ namespace unilab2019.Forms
         {
 
         }
-        private void Button12_Click_1(object sender, EventArgs e)
-        {
-            Selectstage selectstage = new Selectstage();
-            //ステージ選択画面を押すたびに新しく生成しているのは無駄すぎる
-            selectstage.Show();
-            this.Hide();
-            //メソッド呼び出しも毎回は無駄
-        }
     }
 }
