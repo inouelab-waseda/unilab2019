@@ -10,25 +10,35 @@
     "Direction": 0
   },
   "Enemies": [
-      {
-        "X": 10,
-        "Y": 6,
-        "Direction": 2
-      }
+    {
+      "X": 13,
+      "Y": 11,
+      "Direction": 4
+    },
+    {
+      "X": 8,
+      "Y": 6,
+      "Direction": 3
+    }
   ],
   "Coins":[
-      {
-        "X": 13,
-        "Y": 6,
-        "Direction": 0 
-      }
+    {
+      "X": 16,
+      "Y": 9,
+      "Direction": 0
+    },
+    {
+      "X": 7,
+      "Y": 9,
+      "Direction": 0
+    }
   ],
   "1ups":[
-      {
-        "X": 13,
-        "Y": 11,
-        "Direction": 0
-      }
+    {
+      "X": 10,
+      "Y": 11,
+      "Direction": 0
+    }
   ],
   "Swamps": [],
   "Teleporters": [],
@@ -828,6 +838,12 @@
     {
       "ImageType": 1,
       "X": 7,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 7,
       "Y": 12,
       "Direction": 0
     },
@@ -900,6 +916,24 @@
     {
       "ImageType": 1,
       "X": 8,
+      "Y": 7,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 8,
+      "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 8,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 8,
       "Y": 12,
       "Direction": 0
     },
@@ -972,6 +1006,24 @@
     {
       "ImageType": 1,
       "X": 9,
+      "Y": 7,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 9,
+      "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 9,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 9,
       "Y": 12,
       "Direction": 0
     },
@@ -1044,6 +1096,24 @@
     {
       "ImageType": 1,
       "X": 10,
+      "Y": 7,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 10,
+      "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 10,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 10,
       "Y": 12,
       "Direction": 0
     },
@@ -1116,6 +1186,24 @@
     {
       "ImageType": 1,
       "X": 11,
+      "Y": 7,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 11,
+      "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 11,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 11,
       "Y": 12,
       "Direction": 0
     },
@@ -1188,6 +1276,24 @@
     {
       "ImageType": 1,
       "X": 12,
+      "Y": 7,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 12,
+      "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 12,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 12,
       "Y": 12,
       "Direction": 0
     },
@@ -1260,6 +1366,24 @@
     {
       "ImageType": 1,
       "X": 13,
+      "Y": 7,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 13,
+      "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 13,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 13,
       "Y": 12,
       "Direction": 0
     },
@@ -1332,6 +1456,24 @@
     {
       "ImageType": 1,
       "X": 14,
+      "Y": 7,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
+      "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
       "Y": 12,
       "Direction": 0
     },
@@ -1399,6 +1541,24 @@
       "ImageType": 1,
       "X": 15,
       "Y": 5,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 15,
+      "Y": 7,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 15,
+      "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 15,
+      "Y": 10,
       "Direction": 0
     },
     {
