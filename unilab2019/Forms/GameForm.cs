@@ -17,14 +17,30 @@ namespace unilab2019.Forms
             InitializeComponent();
         }
 
-        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void currentStage_caret_control(object sender, EventArgs e)
         {
-
+            if (Cursor.Current != Cursors.Default)
+            {
+                Cursor.Current = Cursors.Default;
+            }
+            TextBox textbox = (TextBox)sender;
+            textbox.Enabled = false;
+            textbox.Enabled = true;
         }
 
-        private void NumOfLines_TextChanged(object sender, EventArgs e)
+        private void textboxCursorControl(object sender, EventArgs e)
         {
-
+            if (Cursor.Current != Cursors.Default)
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+        private void textboxCursorControl(object sender, MouseEventArgs e)
+        {
+            if (Cursor.Current != Cursors.Default)
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
     }
 }
