@@ -42,5 +42,15 @@ namespace unilab2019.Forms
                 Cursor.Current = Cursors.Default;
             }
         }
+
+        private void currentStage_caret_control(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void ForBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
