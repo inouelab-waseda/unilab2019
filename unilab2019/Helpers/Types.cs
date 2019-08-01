@@ -17,13 +17,18 @@ namespace Unilab2019.Helpers
         /// </summary>
         public Types.Instruction Instruction { get; set; }
 
+        /// <summary>
+        /// forの場合の繰りかえし回数
+        /// </summary>
+        public int Repeat_num { get; set; }
+
         public Types.Direction Diriection { get; set; }
         /// <summary>
         /// Wall,Enemy,Road
         /// </summary>
         public Types.Obj Obj { get; set; }
 
-        public int Indent;
+        public int Indent { get; set; }
 
     }
 }
