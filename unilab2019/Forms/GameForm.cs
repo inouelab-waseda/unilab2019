@@ -23,6 +23,17 @@ namespace unilab2019.Forms
 {
     public partial class GameForm : Form
     {
+        #region field
+        private readonly int _fps;
+        private Graphics _graphicsBack, _graphicsFore;
+        private readonly HashSet<Keys> _pressedKeys;
+        private Field _field;
+        private Random _rand;
+
+        public float CellWidth => (float)pictureBox1.Width / _field.Width;
+        public float CellHeight => (float)pictureBox1.Height / _field.Height;
+        #endregion
+
         #region code
 
         /// <summary>
