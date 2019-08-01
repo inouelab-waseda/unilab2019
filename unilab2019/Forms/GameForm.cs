@@ -7,6 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unilab2019.Helpers;
+using Unilab2019.Objects;
+using Unilab2019.Fields;
+using System.IO;
+using Newtonsoft.Json;
+using System.Collections;
+
 
 namespace unilab2019.Forms
 {
@@ -27,10 +34,10 @@ namespace unilab2019.Forms
 
         }
 
+        #region 毎フレーム処理
         /// <summary>
         /// フレームごとに実行する処理(ロジック部分)を書く。
         /// </summary>
-         #region 毎フレーム処理
         private void globalTimer_Tick(object sender, EventArgs e)
         {
             _update();
@@ -123,6 +130,40 @@ namespace unilab2019.Forms
                 endlessFlag = false;
                 _initializePlayer();
             }
+        }
+        #endregion
+
+        #region JSON の読み出し
+        //2018のものをそのまま流用している状態
+        
+        //ここの処理は謎
+        private void SaveFieldJson(Field field, string fileName)
+        {
+            var filePath = Environment.CurrentDirectory + @"\" + fileName + ".json";
+            var enc = Encoding.GetEncoding("utf-8");
+
+            var output = JsonConvert.SerializeObject(field, Formatting.Indented, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
+
+            File.WriteAllText(filePath, output, enc);
+        }
+
+        //jsonの読み出し
+        private Field ReadFieldJson(string name)
+        {
+            //現在のコードを実行しているAssemblyを取得
+            var myAssembly = Assembly.GetExecutingAssembly();
+            var sr = new StreamReader(
+                myAssembly.GetManifestResourceStream("Unilab2019.Fields." + name + ".json"),
+                    Encoding.GetEncoding("utf-8"));
+            var input = sr.ReadToEnd();
+            sr.Close();
+
+            var deserialized = JsonConvert.DeserializeObject<Field>(
+                input, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+            return deserialized;
         }
         #endregion
     }
