@@ -10,8 +10,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Unilab2019.Objects;
 using Unilab2019.Objects.Enemies;
-using Unilab2019.Objects.FieldObjects;
-using Unilab2019.Objects.Players;
+using Unilab2019.Objects.Player;
 using Unilab2019.Objects.Goal;
 using Unilab2019.Fields;
 using System.IO;
@@ -66,18 +65,18 @@ namespace unilab2019.Forms
         #region JSONファイルの読み出し
 
         //何をやってるか不明？？　
-        private void SaveFieldJson(Field field, string fileName)
-        {
-            var filePath = Environment.CurrentDirectory + @"\" + fileName + ".json";
-            var enc = Encoding.GetEncoding("utf-8");
+        //private void SaveFieldJson(Field field, string fileName)
+        //{
+        //    var filePath = Environment.CurrentDirectory + @"\" + fileName + ".json";
+        //    var enc = Encoding.GetEncoding("utf-8");
 
-            var output = JsonConvert.SerializeObject(field, Formatting.Indented, new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.Auto
-            });
+        //    var output = JsonConvert.SerializeObject(field, Formatting.Indented, new JsonSerializerSettings
+        //    {
+        //        TypeNameHandling = TypeNameHandling.Auto
+        //    });
 
-            File.WriteAllText(filePath, output, enc);
-        }
+        //    File.WriteAllText(filePath, output, enc);
+        //}
 
         //jsonファイルの読み出し
         private Field ReadFieldJson(string name)
