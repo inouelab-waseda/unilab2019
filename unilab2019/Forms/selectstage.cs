@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
 using System.Collections;
-using Unilab2019.Helpers;
+using Unilab2019.Fields;
 
 
 
@@ -21,7 +21,15 @@ namespace unilab2019.Forms
     public partial class Selectstage : Form
     {
         private Field _field;
+        private Graphics _graphicsBack;
+
+
+        public float CellWidth => (float)pictureBox2.Width / _field.Width;
+        public float CellHeight => (float)pictureBox2.Height / _field.Height;
         GameForm gameform;
+
+        PictureBox2.BackgroundImage = new Bitmap(backPictureBox.Width, backPictureBox.Height);
+        _graphicsBack = Graphics.FromImage(backPictureBox.BackgroundImage);
 
         public Selectstage(GameForm gf)
         {
@@ -49,7 +57,7 @@ namespace unilab2019.Forms
             _field = ReadFieldJson($"{fieldName}");
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null && !obj.CanMove) obj.Draw();
+                if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
             }
 
         }
