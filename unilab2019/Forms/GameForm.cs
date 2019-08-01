@@ -52,7 +52,7 @@ namespace unilab2019.Forms
 
             globalTimer.Interval = (int)(1000 / (double)_fps);
             codeTimer.Interval = 333;
-            _initialize("stage2");
+            _initialize("stage1");
         }
    
         private void _initialize(string fieldName)
@@ -60,17 +60,17 @@ namespace unilab2019.Forms
             // Read field from "{fieldName}.json"
             _field = ReadFieldJson($"{fieldName}");
             codeListBox.Items.Clear();
-            currentStage.Text = type(fieldName);
+            currentStage.Text =fieldName;
 
 
             _graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
 
-            //foreach (var obj in _field.GameObjectList())
-            //{
-            //    if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
-            //}
-            //globalTimer.Start();
-            //codeTimer.Start();
+            foreach (var obj in _field.GameObjectList())
+            {
+                if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
+            }
+            globalTimer.Start();
+            codeTimer.Start();
         }
 
         private void currentStage_caret_control(object sender, EventArgs e)
@@ -143,7 +143,35 @@ namespace unilab2019.Forms
 
         private void globalTimer_Tick(object sender, EventArgs e)
         {
-            
+            _update();
+            _draw();
+
+            // ゴールに着いたらタイマーを止める
+            if (_field.Player.Intersect(_field.Goal))
+            {
+                globalTimer.Stop();
+                MessageBox.Show("ゴール！");
+            }
+        }
+        private void _draw()
+        {
+            _graphicsFore.Clear(Color.Transparent);
+            foreach (var obj in _field.GameObjectList())
+            {
+                if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+            }
+            Refresh();
+            HPTextBox.Text = $"HP: {_field.Player.HP}/{_field.Player.MaxHP}";
+            if (isGoaledDictionary[_field.StageName])
+            {
+                MPTextBox.Text = $"行数: {codeListBox.Items.Count}　　目標: {desiredMP}";
+                PedometerTextBox.Text = $"時間: {_field.Player.Pedometer}　　目標: {_field.Player.DesiredPedometer}";
+            }
+            else
+            {
+                MPTextBox.Text = $"行数: {codeListBox.Items.Count}　　目標: ?";
+                PedometerTextBox.Text = $"時間: {_field.Player.Pedometer}　　目標: ?";
+            }
         }
     }
 }
