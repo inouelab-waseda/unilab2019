@@ -109,10 +109,6 @@ namespace unilab2019.Forms
         #endregion
 
 
-        private void ForBtn_Click(object sender, EventArgs e)
-        {
-
-        }
         #region JSONファイルの読み出し
 
         //何をやってるか不明？？　
