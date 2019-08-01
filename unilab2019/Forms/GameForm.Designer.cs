@@ -218,10 +218,10 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.AutoSize = true;
-            this.numericUpDown1.Location = new System.Drawing.Point(105, 20);
+            this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.numericUpDown1.Location = new System.Drawing.Point(115, 21);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(51, 22);
+            this.numericUpDown1.Size = new System.Drawing.Size(41, 22);
             this.numericUpDown1.TabIndex = 2;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
@@ -364,11 +364,11 @@
             // pictureBox1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+
             this.pictureBox1.Location = new System.Drawing.Point(44, 151);
             this.pictureBox1.Name = "pictureBox1";
             this.tableLayoutPanel1.SetRowSpan(this.pictureBox1, 8);
-            this.pictureBox1.Size = new System.Drawing.Size(706, 553);
+            this.pictureBox1.Size = new System.Drawing.Size(689, 534);
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
             // 
@@ -460,7 +460,7 @@
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(43, 86);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(299, 55);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
