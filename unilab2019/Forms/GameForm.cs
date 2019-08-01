@@ -12,6 +12,7 @@ namespace unilab2019.Forms
 {
     public partial class GameForm : Form
     {
+
         public GameForm()
         {
             InitializeComponent();
@@ -55,7 +56,7 @@ namespace unilab2019.Forms
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
-            Selectstage selectstage = new Selectstage();
+            Selectstage selectstage = new Selectstage(this);
             this.Hide();
             selectstage.Show();
         }

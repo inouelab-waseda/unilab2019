@@ -12,9 +12,12 @@ namespace unilab2019.Forms
 {
     public partial class Selectstage : Form
     {
-        public Selectstage()
+        GameForm gf1;
+        public Selectstage(GameForm gf)
         {
             InitializeComponent();
+            gf1 = gf;
+
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -64,72 +67,73 @@ namespace unilab2019.Forms
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            GameForm gameForm6 = new GameForm();
+
             this.Hide();
-            gameForm6.Show();
+            gf1.Show();
         }
+        //ステージ6のボタン
 
         private void pictureBox5_Click_1(object sender, EventArgs e)
         {
-            GameForm gameForm5 = new GameForm();
             this.Hide();
-            gameForm5.Show();
+            gf1.Show();
         }
+        //ステージ5のボタン
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            GameForm gameForm1 = new GameForm();
             this.Hide();
-            gameForm1.Show();
+            gf1.Show();
         }
+        //ステージ1のボタン
 
         private void PictureBox2_Click_1(object sender, EventArgs e)
         {
-            GameForm gameForm2 = new GameForm();
             this.Hide();
-            gameForm2.Show();
+            gf1.Show();
         }
+        //ステージ2のボタン
 
         private void PictureBox3_Click_1(object sender, EventArgs e)
         {
-            GameForm gameForm3 = new GameForm();
             this.Hide();
-            gameForm3.Show();
+            gf1.Show();
         }
+        //ステージ3のボタン
 
         private void PictureBox4_Click_1(object sender, EventArgs e)
         {
-            GameForm gameForm4 = new GameForm();
             this.Hide();
-            gameForm4.Show();
+            gf1.Show();
         }
+        //ステージ4のボタン
 
         private void PictureBox7_Click(object sender, EventArgs e)
         {
-            GameForm gameForm7 = new GameForm();
             this.Hide();
-            gameForm7.Show();
+            gf1.Show();
         }
+        //ステージ7のボタン
 
         private void PictureBox8_Click(object sender, EventArgs e)
         {
-            GameForm gameForm8 = new GameForm();
             this.Hide();
-            gameForm8.Show();
+            gf1.Show();
         }
+        //ステージ8のボタン
 
         private void PictureBox9_Click(object sender, EventArgs e)
         {
-            GameForm gameForm9 = new GameForm();
             this.Hide();
-            gameForm9.Show();
+            gf1.Show();
         }
+        //ステージ9のボタン
 
         private void PictureBox10_Click(object sender, EventArgs e)
         {
-            GameForm gameForm10 = new GameForm();
             this.Hide();
-            gameForm10.Show();
+            gf1.Show();
         }
+        //ステージ10のボタン
     }
 }
