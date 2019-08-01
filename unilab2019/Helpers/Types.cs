@@ -7,7 +7,7 @@ namespace Unilab2019.Helpers
 {
     public static class Types
     {
-        public enum Instruction { IfCode, ForCode, WhileCode }
+        public enum Instruction { IfCode, ForCode, WhileCode, Forward, Backward, Right, Left, End }
         public enum Direction { None, Up, Down, Right, Left }
         public enum Obj { Wall, Enemy, Road }
     }

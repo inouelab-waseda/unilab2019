@@ -156,13 +156,13 @@
             this.currentStage.TabIndex = 12;
             this.currentStage.TabStop = false;
             this.currentStage.Text = "ステージ";
-            this.currentStage.Click += new System.EventHandler(this.currentStage_caret_control);
-            this.currentStage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.currentStage_caret_control);
-            this.currentStage.MouseEnter += new System.EventHandler(this.textboxCursorControl);
-            this.currentStage.MouseLeave += new System.EventHandler(this.textboxCursorControl);
-            this.currentStage.MouseHover += new System.EventHandler(this.textboxCursorControl);
-            this.currentStage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textboxCursorControl);
-            this.currentStage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.currentStage_caret_control);
+            this.currentStage.Click += new System.EventHandler(this.TextboxCaretControl);
+            this.currentStage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
+            this.currentStage.MouseEnter += new System.EventHandler(this.TextboxCursorControl);
+            this.currentStage.MouseLeave += new System.EventHandler(this.TextboxCursorControl);
+            this.currentStage.MouseHover += new System.EventHandler(this.TextboxCursorControl);
+            this.currentStage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TextboxCursorControl);
+            this.currentStage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
             // 
             // panel2
             // 
@@ -192,7 +192,7 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "前",
@@ -241,7 +241,6 @@
             this.forBtn.TabIndex = 1;
             this.forBtn.Text = "　　\r\n";
             this.forBtn.UseVisualStyleBackColor = true;
-            this.forBtn.Click += new System.EventHandler(this.ForBtn_Click);
             // 
             // whileBtn
             // 
@@ -365,6 +364,7 @@
             // pictureBox1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
+
             this.pictureBox1.Location = new System.Drawing.Point(44, 151);
             this.pictureBox1.Name = "pictureBox1";
             this.tableLayoutPanel1.SetRowSpan(this.pictureBox1, 8);
@@ -385,13 +385,13 @@
             this.numOfLines.TabIndex = 15;
             this.numOfLines.TabStop = false;
             this.numOfLines.Text = "行数：";
-            this.numOfLines.Click += new System.EventHandler(this.currentStage_caret_control);
-            this.numOfLines.MouseDown += new System.Windows.Forms.MouseEventHandler(this.currentStage_caret_control);
-            this.numOfLines.MouseEnter += new System.EventHandler(this.textboxCursorControl);
-            this.numOfLines.MouseLeave += new System.EventHandler(this.textboxCursorControl);
-            this.numOfLines.MouseHover += new System.EventHandler(this.textboxCursorControl);
-            this.numOfLines.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textboxCursorControl);
-            this.numOfLines.MouseUp += new System.Windows.Forms.MouseEventHandler(this.currentStage_caret_control);
+            this.numOfLines.Click += new System.EventHandler(this.TextboxCaretControl);
+            this.numOfLines.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
+            this.numOfLines.MouseEnter += new System.EventHandler(this.TextboxCursorControl);
+            this.numOfLines.MouseLeave += new System.EventHandler(this.TextboxCursorControl);
+            this.numOfLines.MouseHover += new System.EventHandler(this.TextboxCursorControl);
+            this.numOfLines.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TextboxCursorControl);
+            this.numOfLines.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
             // 
             // countTime
             // 
@@ -406,13 +406,13 @@
             this.countTime.TabIndex = 28;
             this.countTime.TabStop = false;
             this.countTime.Text = "時間：";
-            this.countTime.Click += new System.EventHandler(this.currentStage_caret_control);
-            this.countTime.MouseDown += new System.Windows.Forms.MouseEventHandler(this.currentStage_caret_control);
-            this.countTime.MouseEnter += new System.EventHandler(this.textboxCursorControl);
-            this.countTime.MouseLeave += new System.EventHandler(this.textboxCursorControl);
-            this.countTime.MouseHover += new System.EventHandler(this.textboxCursorControl);
-            this.countTime.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textboxCursorControl);
-            this.countTime.MouseUp += new System.Windows.Forms.MouseEventHandler(this.currentStage_caret_control);
+            this.countTime.Click += new System.EventHandler(this.TextboxCaretControl);
+            this.countTime.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
+            this.countTime.MouseEnter += new System.EventHandler(this.TextboxCursorControl);
+            this.countTime.MouseLeave += new System.EventHandler(this.TextboxCursorControl);
+            this.countTime.MouseHover += new System.EventHandler(this.TextboxCursorControl);
+            this.countTime.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TextboxCursorControl);
+            this.countTime.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
             // 
             // oneUpCount
             // 
@@ -426,13 +426,13 @@
             this.oneUpCount.TabIndex = 14;
             this.oneUpCount.TabStop = false;
             this.oneUpCount.Text = "残機：";
-            this.oneUpCount.Click += new System.EventHandler(this.currentStage_caret_control);
-            this.oneUpCount.MouseDown += new System.Windows.Forms.MouseEventHandler(this.currentStage_caret_control);
-            this.oneUpCount.MouseEnter += new System.EventHandler(this.textboxCursorControl);
-            this.oneUpCount.MouseLeave += new System.EventHandler(this.textboxCursorControl);
-            this.oneUpCount.MouseHover += new System.EventHandler(this.textboxCursorControl);
-            this.oneUpCount.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textboxCursorControl);
-            this.oneUpCount.MouseUp += new System.Windows.Forms.MouseEventHandler(this.currentStage_caret_control);
+            this.oneUpCount.Click += new System.EventHandler(this.TextboxCaretControl);
+            this.oneUpCount.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
+            this.oneUpCount.MouseEnter += new System.EventHandler(this.TextboxCursorControl);
+            this.oneUpCount.MouseLeave += new System.EventHandler(this.TextboxCursorControl);
+            this.oneUpCount.MouseHover += new System.EventHandler(this.TextboxCursorControl);
+            this.oneUpCount.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TextboxCursorControl);
+            this.oneUpCount.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
             // 
             // coinCount
             // 
@@ -446,13 +446,13 @@
             this.coinCount.TabIndex = 13;
             this.coinCount.TabStop = false;
             this.coinCount.Text = "コイン数：";
-            this.coinCount.Click += new System.EventHandler(this.currentStage_caret_control);
-            this.coinCount.MouseDown += new System.Windows.Forms.MouseEventHandler(this.currentStage_caret_control);
-            this.coinCount.MouseEnter += new System.EventHandler(this.textboxCursorControl);
-            this.coinCount.MouseLeave += new System.EventHandler(this.textboxCursorControl);
-            this.coinCount.MouseHover += new System.EventHandler(this.textboxCursorControl);
-            this.coinCount.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textboxCursorControl);
-            this.coinCount.MouseUp += new System.Windows.Forms.MouseEventHandler(this.currentStage_caret_control);
+            this.coinCount.Click += new System.EventHandler(this.TextboxCaretControl);
+            this.coinCount.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
+            this.coinCount.MouseEnter += new System.EventHandler(this.TextboxCursorControl);
+            this.coinCount.MouseLeave += new System.EventHandler(this.TextboxCursorControl);
+            this.coinCount.MouseHover += new System.EventHandler(this.TextboxCursorControl);
+            this.coinCount.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TextboxCursorControl);
+            this.coinCount.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
             // 
             // pictureBox2
             // 
@@ -480,6 +480,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
