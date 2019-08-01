@@ -64,17 +64,72 @@ namespace unilab2019.Forms
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-
+            GameForm gameForm6 = new GameForm();
+            this.Hide();
+            gameForm6.Show();
         }
 
         private void pictureBox5_Click_1(object sender, EventArgs e)
         {
-
+            GameForm gameForm5 = new GameForm();
+            this.Hide();
+            gameForm5.Show();
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
+            GameForm gameForm1 = new GameForm();
+            this.Hide();
+            gameForm1.Show();
+        }
 
+        private void PictureBox2_Click_1(object sender, EventArgs e)
+        {
+            GameForm gameForm2 = new GameForm();
+            this.Hide();
+            gameForm2.Show();
+        }
+
+        private void PictureBox3_Click_1(object sender, EventArgs e)
+        {
+            GameForm gameForm3 = new GameForm();
+            this.Hide();
+            gameForm3.Show();
+        }
+
+        private void PictureBox4_Click_1(object sender, EventArgs e)
+        {
+            GameForm gameForm4 = new GameForm();
+            this.Hide();
+            gameForm4.Show();
+        }
+
+        private void PictureBox7_Click(object sender, EventArgs e)
+        {
+            GameForm gameForm7 = new GameForm();
+            this.Hide();
+            gameForm7.Show();
+        }
+
+        private void PictureBox8_Click(object sender, EventArgs e)
+        {
+            GameForm gameForm8 = new GameForm();
+            this.Hide();
+            gameForm8.Show();
+        }
+
+        private void PictureBox9_Click(object sender, EventArgs e)
+        {
+            GameForm gameForm9 = new GameForm();
+            this.Hide();
+            gameForm9.Show();
+        }
+
+        private void PictureBox10_Click(object sender, EventArgs e)
+        {
+            GameForm gameForm10 = new GameForm();
+            this.Hide();
+            gameForm10.Show();
         }
     }
 }
