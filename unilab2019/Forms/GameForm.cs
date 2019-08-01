@@ -27,7 +27,8 @@ namespace unilab2019.Forms
             InitializeComponent();
         }
 
-        private void currentStage_caret_control(object sender, EventArgs e)
+        #region ステージ名などが消せなくなるようにするのに必要な関数
+        private void TextboxCaretControl(object sender, EventArgs e)
         {
             if (Cursor.Current != Cursors.Default)
             {
@@ -38,14 +39,14 @@ namespace unilab2019.Forms
             textbox.Enabled = true;
         }
 
-        private void textboxCursorControl(object sender, EventArgs e)
+        private void TextboxCursorControl(object sender, EventArgs e)
         {
             if (Cursor.Current != Cursors.Default)
             {
                 Cursor.Current = Cursors.Default;
             }
         }
-        private void textboxCursorControl(object sender, MouseEventArgs e)
+        private void TextboxCursorControl(object sender, MouseEventArgs e)
         {
             if (Cursor.Current != Cursors.Default)
             {
@@ -53,10 +54,8 @@ namespace unilab2019.Forms
             }
         }
 
-        private void currentStage_caret_control(object sender, MouseEventArgs e)
-        {
+        #endregion
 
-        }
 
         private void ForBtn_Click(object sender, EventArgs e)
         {
