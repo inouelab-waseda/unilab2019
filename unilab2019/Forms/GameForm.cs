@@ -24,6 +24,7 @@ namespace unilab2019.Forms
     public partial class GameForm : Form
     {
         #region code
+
         /// <summary>
         /// ボタン入力に対して"if"や"for"の形で保存する
         /// </summary>
@@ -40,8 +41,14 @@ namespace unilab2019.Forms
         /// ステージごとのコードリストボックスのアイテムを入れる
         /// </summary>
         public Dictionary<string, List<string>> codeListBoxItemsDictionary;
-        public Dictionary<string, bool> isGoaledDictionary; // ステージごとにゴールしているかどうかを入れる
-        public bool isAllGoaledFlag; // 全てのステージをクリアしたかどうか
+        /// <summary>
+        /// ステージごとにゴールしているかどうかを入れる
+        /// </summary>
+        public Dictionary<string, bool> isGoaledDictionary;
+        /// <summary>
+        /// 全てのステージをクリアしたかどうか
+        /// </summary>
+        public bool isAllGoaledFlag; 
         #region old member valiable
         //public Dictionary<string, int> depthDictionary; // ステージごとのコードのdepthを入れる(おそらく途中から再開するため)
         /// <summary>
