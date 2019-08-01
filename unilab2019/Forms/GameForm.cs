@@ -22,9 +22,55 @@ namespace unilab2019.Forms
 {
     public partial class GameForm : Form
     {
+        private readonly int _fps;
+        private Field _field;
+        private Graphics _graphicsBack,_graphicsFore;
+        public float CellWidth => (float)backPictureBox.Width / _field.Width;
+        public float CellHeight => (float)backPictureBox.Height / _field.Height;
+
         public GameForm()
         {
             InitializeComponent();
+            _graphicsBack = Graphics.FromImage(tableLayoutPanel1.BackgroundImage);
+            _fps = 10;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            typeof(PictureBox).InvokeMember("DoubleBuffered", BindingFlags.SetProperty |
+                BindingFlags.Instance | BindingFlags.NonPublic, null, backPictureBox, new object[] { true });
+
+            backPictureBox.Image = new Bitmap(backPictureBox.Width, backPictureBox.Height);
+            _graphicsFore = Graphics.FromImage(backPictureBox.Image);
+            _graphicsFore.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            _graphicsFore.Clear(Color.Transparent);
+
+            // Set background graphics
+            backPictureBox.BackgroundImage = new Bitmap(backPictureBox.Width, backPictureBox.Height);
+            _graphicsBack = Graphics.FromImage(backPictureBox.BackgroundImage);
+            _graphicsBack.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            _graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
+
+            globalTimer.Interval = (int)(1000 / (double)_fps);
+            codeTimer.Interval = 333;
+            _initialize("stage2");
+        }
+   
+        private void _initialize(string fieldName)
+        {
+            // Read field from "{fieldName}.json"
+            _field = ReadFieldJson($"{fieldName}");
+            codeListBox.Items.Clear();
+            currentStage.Text = type(fieldName);
+
+
+            _graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
+
+            //foreach (var obj in _field.GameObjectList())
+            //{
+            //    if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
+            //}
+            //globalTimer.Start();
+            //codeTimer.Start();
         }
 
         private void currentStage_caret_control(object sender, EventArgs e)
@@ -94,5 +140,10 @@ namespace unilab2019.Forms
             return deserialized;
         }
         #endregion
+
+        private void globalTimer_Tick(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
