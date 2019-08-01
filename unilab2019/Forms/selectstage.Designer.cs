@@ -67,9 +67,10 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 42);
+            this.pictureBox1.Location = new System.Drawing.Point(26, 84);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.Size = new System.Drawing.Size(173, 160);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
@@ -77,36 +78,40 @@
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(106, 42);
+            this.pictureBox2.Location = new System.Drawing.Point(230, 84);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox2.Size = new System.Drawing.Size(173, 160);
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(200, 42);
+            this.pictureBox3.Location = new System.Drawing.Point(433, 84);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox3.Size = new System.Drawing.Size(173, 160);
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
-            this.pictureBox4.Location = new System.Drawing.Point(294, 42);
+            this.pictureBox4.Location = new System.Drawing.Point(637, 84);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox4.Size = new System.Drawing.Size(173, 160);
             this.pictureBox4.TabIndex = 8;
             this.pictureBox4.TabStop = false;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
-            this.pictureBox5.Location = new System.Drawing.Point(388, 42);
+            this.pictureBox5.Location = new System.Drawing.Point(841, 84);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox5.Size = new System.Drawing.Size(173, 160);
             this.pictureBox5.TabIndex = 9;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click_1);
@@ -114,9 +119,10 @@
             // pictureBox6
             // 
             this.pictureBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.BackgroundImage")));
-            this.pictureBox6.Location = new System.Drawing.Point(12, 163);
+            this.pictureBox6.Location = new System.Drawing.Point(26, 326);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox6.Size = new System.Drawing.Size(173, 160);
             this.pictureBox6.TabIndex = 10;
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
@@ -124,131 +130,151 @@
             // pictureBox7
             // 
             this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
-            this.pictureBox7.Location = new System.Drawing.Point(106, 163);
+            this.pictureBox7.Location = new System.Drawing.Point(230, 326);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox7.Size = new System.Drawing.Size(173, 160);
             this.pictureBox7.TabIndex = 11;
             this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.PictureBox7_Click);
             // 
             // pictureBox8
             // 
             this.pictureBox8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.BackgroundImage")));
-            this.pictureBox8.Location = new System.Drawing.Point(200, 163);
+            this.pictureBox8.Location = new System.Drawing.Point(433, 326);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox8.Size = new System.Drawing.Size(173, 160);
             this.pictureBox8.TabIndex = 12;
             this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.PictureBox8_Click);
             // 
             // pictureBox9
             // 
             this.pictureBox9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.BackgroundImage")));
-            this.pictureBox9.Location = new System.Drawing.Point(294, 163);
+            this.pictureBox9.Location = new System.Drawing.Point(637, 326);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox9.Size = new System.Drawing.Size(173, 160);
             this.pictureBox9.TabIndex = 13;
             this.pictureBox9.TabStop = false;
+            this.pictureBox9.Click += new System.EventHandler(this.PictureBox9_Click);
             // 
             // pictureBox10
             // 
             this.pictureBox10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox10.BackgroundImage")));
-            this.pictureBox10.Location = new System.Drawing.Point(388, 163);
+            this.pictureBox10.Location = new System.Drawing.Point(841, 326);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox10.Size = new System.Drawing.Size(173, 160);
             this.pictureBox10.TabIndex = 14;
             this.pictureBox10.TabStop = false;
+            this.pictureBox10.Click += new System.EventHandler(this.PictureBox10_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 128);
+            this.textBox1.Location = new System.Drawing.Point(26, 256);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(80, 19);
+            this.textBox1.Size = new System.Drawing.Size(169, 31);
             this.textBox1.TabIndex = 15;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(106, 128);
+            this.textBox2.Location = new System.Drawing.Point(230, 256);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(80, 19);
+            this.textBox2.Size = new System.Drawing.Size(169, 31);
             this.textBox2.TabIndex = 16;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(200, 128);
+            this.textBox3.Location = new System.Drawing.Point(433, 256);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(80, 19);
+            this.textBox3.Size = new System.Drawing.Size(169, 31);
             this.textBox3.TabIndex = 17;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(294, 128);
+            this.textBox4.Location = new System.Drawing.Point(637, 256);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(80, 19);
+            this.textBox4.Size = new System.Drawing.Size(169, 31);
             this.textBox4.TabIndex = 18;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(388, 128);
+            this.textBox5.Location = new System.Drawing.Point(841, 256);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(80, 19);
+            this.textBox5.Size = new System.Drawing.Size(169, 31);
             this.textBox5.TabIndex = 19;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(12, 249);
+            this.textBox6.Location = new System.Drawing.Point(26, 498);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(80, 19);
+            this.textBox6.Size = new System.Drawing.Size(169, 31);
             this.textBox6.TabIndex = 20;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(106, 249);
+            this.textBox7.Location = new System.Drawing.Point(230, 498);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(80, 19);
+            this.textBox7.Size = new System.Drawing.Size(169, 31);
             this.textBox7.TabIndex = 21;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(200, 249);
+            this.textBox8.Location = new System.Drawing.Point(433, 498);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(80, 19);
+            this.textBox8.Size = new System.Drawing.Size(169, 31);
             this.textBox8.TabIndex = 22;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(294, 249);
+            this.textBox9.Location = new System.Drawing.Point(637, 498);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(80, 19);
+            this.textBox9.Size = new System.Drawing.Size(169, 31);
             this.textBox9.TabIndex = 23;
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(388, 249);
+            this.textBox10.Location = new System.Drawing.Point(841, 498);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(80, 19);
+            this.textBox10.Size = new System.Drawing.Size(169, 31);
             this.textBox10.TabIndex = 24;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(388, 12);
+            this.textBox11.Location = new System.Drawing.Point(841, 24);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(80, 19);
+            this.textBox11.Size = new System.Drawing.Size(169, 31);
             this.textBox11.TabIndex = 26;
             // 
             // pictureBox11
             // 
             this.pictureBox11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox11.BackgroundImage")));
-            this.pictureBox11.Location = new System.Drawing.Point(310, 12);
+            this.pictureBox11.Location = new System.Drawing.Point(672, 24);
+            this.pictureBox11.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(72, 19);
+            this.pictureBox11.Size = new System.Drawing.Size(156, 38);
             this.pictureBox11.TabIndex = 27;
             this.pictureBox11.TabStop = false;
             // 
             // Selectstage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(480, 300);
+            this.ClientSize = new System.Drawing.Size(1040, 600);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.textBox11);
             this.Controls.Add(this.textBox10);
@@ -271,7 +297,7 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Selectstage";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Selectstage_Load);

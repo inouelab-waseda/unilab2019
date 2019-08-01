@@ -52,5 +52,12 @@ namespace unilab2019.Forms
         {
 
         }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            Selectstage selectstage = new Selectstage();
+            this.Hide();
+            selectstage.Show();
+        }
     }
 }
