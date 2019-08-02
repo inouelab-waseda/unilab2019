@@ -16,20 +16,7 @@ namespace Unilab2019.Objects.FieldItems
             ImageType = imageType;
             for (int i = 0; i < Bitmaps.Length; i++)
             {
-                switch (ImageType)
-                {
-                    default:
-                    case 0:
-                        Bitmaps[i] = GetBitmap("Wall.jpg");
-                        break;
-                    case 1:
-                        Bitmaps[i] = GetBitmap("WhiteRose.jpg");
-                        break;
-                    case 2:
-                        Bitmaps[i] = GetBitmap("RedRose.jpg");
-                        break;
-                }
-
+                Bitmaps[i] = GetBitmap("Wall.jpg");
             }
         }
 
