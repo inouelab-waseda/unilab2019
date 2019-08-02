@@ -39,20 +39,16 @@ namespace unilab2019.Forms
             typeof(PictureBox).InvokeMember("DoubleBuffered", BindingFlags.SetProperty |
                 BindingFlags.Instance | BindingFlags.NonPublic, null, backPictureBox, new object[] { true });
 
-            backPictureBox.Image = new Bitmap(backPictureBox.Width, backPictureBox.Height);
-            _graphicsFore = Graphics.FromImage(backPictureBox.Image);
-            _graphicsFore.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            _graphicsFore.Clear(Color.Transparent);
 
             // Set background graphics
             backPictureBox.BackgroundImage = new Bitmap(backPictureBox.Width, backPictureBox.Height);
             _graphicsBack = Graphics.FromImage(backPictureBox.BackgroundImage);
             _graphicsBack.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            _graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
+            //_graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
 
             globalTimer.Interval = (int)(1000 / (double)_fps);
             codeTimer.Interval = 333;
-            _initialize("stage7");
+            _initialize("stage10");
         }
    
         private void _initialize(string fieldName)

@@ -125,7 +125,7 @@
     <EmbeddedResource Include="Images\Player_None.jpg" />
     <EmbeddedResource Include="Images\Player_Right.jpg" />
     <EmbeddedResource Include="Images\Player_Up.jpg" />
-    <EmbeddedResource Include="Images\Teleporer_in2.jpg" />
+    <EmbeddedResource Include="Images\Teleporter_in2.jpg" />
     <EmbeddedResource Include="Images\Teleporter_in3.jpg" />
     <EmbeddedResource Include="Images\Teleporter_in4.jpg" />
     <EmbeddedResource Include="Images\Teleporter_in5.jpg" />
@@ -154,7 +154,7 @@
     <EmbeddedResource Include="Images\Teleporter_out_6_down.jpg" />
     <EmbeddedResource Include="Images\Teleporter_out_6_left.jpg" />
     <EmbeddedResource Include="Images\Teleporter_out_6_right.jpg" />
-    <EmbeddedResource Include="Images\Teleportor_out_6_up.jpg" />
+    <EmbeddedResource Include="Images\Teleporter_out_6_up.jpg" />
     <EmbeddedResource Include="Images\Wall.jpg" />
     <Content Include="Images\ずっと.gif" />
     <Content Include="Images\もし.gif" />
