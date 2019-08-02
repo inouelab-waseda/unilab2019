@@ -76,6 +76,7 @@ namespace unilab2019.Forms
         //public int desiredMP; //　コマンドライン行数の目標値 
         //public int TeleporterPairId; // テレポート時のペアID
         //private Teleporter TeleportDestination; // テレポート先のテレポートマット
+
         #endregion
         #endregion
         public GameForm()
@@ -152,11 +153,25 @@ namespace unilab2019.Forms
 
         #endregion
 
+        #region 追加メソッド・判別用メソッド
+        private void AddEnemy(int x, int y) => _field.Enemies.Add(new Enemy(x, y));
 
-        private void ForBtn_Click(object sender, EventArgs e)
+        private void AddTeleporter(int x, int y, int pairId, bool isDestination, Types.Direction direction) => _field.Teleporters.Add(new Teleporter(x, y, pairId, isDestination, direction));
+
+        private bool IsWall(int x, int y) => _field.Walls.Where(w => w.X == x && w.Y == y).Count() > 0;
+
+        private bool IsEnemy(int x, int y) => _field.Enemies.Where(w => w.X == x && w.Y == y).Count() > 0;
+
+
+        private bool IsTeleporter(int x, int y) => _field.Teleporters.Where(w => w.X == x && w.Y == y && !w.IsDestination).Count() > 0;
+
+        private bool IsRoad(int x, int y)
         {
-
+            return _field.Walls.Where(w => w.X == x && w.Y == y).Count() +
+                   _field.Teleporters.Where(w => w.X == x && w.Y == y).Count() == 0;
         }
+        #endregion
+
         #region JSONファイルの読み出し
 
         //何をやってるか不明？？　
@@ -263,6 +278,275 @@ namespace unilab2019.Forms
         }
 
         private bool IsTeleporter(int x, int y) => _field.Teleporters.Where(w => w.X == x && w.Y == y && !w.IsDestination).Count() > 0;
+        #region スクリプト実行
+        //
+
+        ////コードを実行
+        private IEnumerator<Code> CarryOutScript(List<Code> code)
+        {
+           
+            int a = 1;
+
+            for (int i = 0; i < code.Count(); i += a)
+            {
+                a = 1;
+                switch (code[i].Instruction)
+                {
+                    case Types.Instruction.Forward:
+                        if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
+                        {
+                            MessageBox.Show("前は壁だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            globalTimer.Stop();
+                        }
+                        else
+                        {
+                            _field.Player.Pedometer++;
+                            _field.Player.Move();
+                        }
+                        break;
+
+                    case Types.Instruction.TurnRight:
+                        _field.Player.Pedometer++;
+                        _field.Player.TurnRight();
+                        break;
+
+                    case Types.Instruction.TurnLeft:
+                        _field.Player.Pedometer++;
+                        _field.Player.TurnLeft();
+                        break;
+
+                    case Types.Instruction.Stop:
+                        break;
+
+                    case Types.Instruction.IfCode:
+                        //endの行数を格納する変数
+                        int if_sub_indent = 0;
+
+                        //if文のendを取得
+                        for (int k = i; k < code.Count(); k++)
+                        {
+                            if (code[k].Instruction == Types.Instruction.End && code[i].Indent == code[k].Indent)
+                            {
+                                if_sub_indent = k;
+                                break;
+                            }
+                        }
+                        //中身の部分だけ一時的に取り出すcodeリストを作成
+                        List<Code> if_subcode = new List<Code>();
+                        for (int j = i + 1; j < if_sub_indent; j++)
+                        {
+                            if_subcode.Add(code[j]);
+                        }
+                        //ここまでforの処理と同じ
+                        
+                        //壁に関する条件分岐
+                        //もし前が壁なら
+                        if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Forward)
+                        {
+                            if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし後ろが壁なら
+                        if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Backward)
+                        {
+                            if (IsWall(_field.Player.BackX(), _field.Player.BackY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし右が壁なら
+                        if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Right)
+                        {
+                            if (IsWall(_field.Player.RightX(), _field.Player.RightY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし左が壁なら
+                        if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Left)
+                        {
+                            if (IsWall(_field.Player.LeftX(), _field.Player.LeftY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+
+                        //敵に関する条件分岐
+                        //もし前が敵なら
+                        if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Forward)
+                        {
+                            if (IsEnemy(_field.Player.ForwardX(), _field.Player.ForwardY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし後ろが敵なら
+                        if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Backward)
+                        {
+                            if (IsEnemy(_field.Player.BackX(), _field.Player.BackY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし右が敵なら
+                        if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Right)
+                        {
+                            if (IsEnemy(_field.Player.RightX(), _field.Player.RightY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし左が敵なら
+                        if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Left)
+                        {
+                            if (IsEnemy(_field.Player.LeftX(), _field.Player.LeftY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+
+                        //道に関する条件分岐
+                        //もし前が道なら
+                        if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Forward)
+                        {
+                            if (IsRoad(_field.Player.ForwardX(), _field.Player.ForwardY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし後ろが道なら
+                        if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Backward)
+                        {
+                            if (IsRoad(_field.Player.BackX(), _field.Player.BackY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし右が道なら
+                        if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Right)
+                        {
+                            if (IsRoad(_field.Player.RightX(), _field.Player.RightY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし左が道なら
+                        if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Left)
+                        {
+                            if (IsRoad(_field.Player.LeftX(), _field.Player.LeftY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+
+                        a = 1;
+                        break;
+
+                    case Types.Instruction.ForCode:
+                        //endの行数を格納する変数
+                        int for_sub_indent = 0;
+                        
+                        //for文のendを取得
+                        for (int k = i; k < code.Count();k++)
+                        {
+                            if (code[k].Instruction == Types.Instruction.End && code[i].Indent == code[k].Indent)
+                            {
+                                for_sub_indent = k;
+                                break;
+                            }
+                        }
+                        //中身の部分だけ一時的に取り出すcodeリストを作成
+                        List<Code> for_subcode = new List<Code>();
+                        for (int j = i+1; j < for_sub_indent; j++)
+                        {
+                            for_subcode.Add(code[j]);
+                        }
+
+                        //中身のコードに対してスクリプト関数を実行
+                        for (int m = 0; m < code[i].Repeat_num; m++)
+                        {
+                            CarryOutScript(for_subcode);
+                        }
+                        a = for_sub_indent;
+
+                        break;
+
+                    case Types.Instruction.WhileCode:
+                        //endの行数を格納する変数
+                        int while_sub_indent = 0;
+
+                        //while文のendを取得
+                        for (int k = i; k < code.Count(); k++)
+                        {
+                            if (code[k].Instruction == Types.Instruction.End && code[i].Indent == code[k].Indent)
+                            {
+                                while_sub_indent = k;
+                                break;
+                            }
+                        }
+                        
+                        //中身の部分だけ一時的に取り出すcodeリストを作成
+                        List<Code> while_subcode = new List<Code>();
+                        for (int j = i + 1; j < while_sub_indent; j++)
+                        {
+                            while_subcode.Add(code[j]);
+                        }
+                        //ここまでfor文と処理は一緒
+
+                        //checkcodeをかける（無限ループの判定）
+                        CheckCode(while_subcode);
+
+                        while(true)
+                        {
+                            CarryOutScript(while_subcode);
+                        }
+
+                    default:
+                        break;
+                }
+                yield return null;
+            }
+            yield break;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void GameForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void ifComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundPictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void startPagePictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //// コードをチェック
+        //// while文を使ったときに無限ループするかどうかを判定
+        private void CheckCode(List<Code> code)
+        {
+            if (code[0].Instruction == Types.Instruction.WhileCode &&  code[1].Instruction == Types.Instruction.End)
+            {
+                MessageBox.Show("無限ループしてしまうよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                globalTimer.Stop();
+            }
+
+        }
+
+        #endregion
     }
     
 }
