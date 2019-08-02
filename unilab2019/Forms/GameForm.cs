@@ -124,8 +124,7 @@ namespace unilab2019.Forms
         private bool IsRoad(int x, int y)
         {
             return _field.Walls.Where(w => w.X == x && w.Y == y).Count() +
-                   _field.Teleporters.Where(w => w.X == x && w.Y == y).Count() +
-                   _field.Swamps.Where(w => w.X == x && w.Y == y).Count() == 0;
+                   _field.Teleporters.Where(w => w.X == x && w.Y == y).Count() == 0;
         }
         #endregion
 
