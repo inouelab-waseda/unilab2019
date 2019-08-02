@@ -24,11 +24,11 @@ namespace Unilab2019.Objects.FieldItems
             IsDestination = isDestination;
             Direction = direction != null ? (Types.Direction)direction : Types.Direction.None;
 
-            Bitmaps[0] = GetBitmap($"Teleporter_None{PairId}.jpg");
-            Bitmaps[1] = GetBitmap($"Teleporter_Up{PairId}.jpg");
-            Bitmaps[2] = GetBitmap($"Teleporter_Down{PairId}.jpg");
-            Bitmaps[3] = GetBitmap($"Teleporter_Right{PairId}.jpg");
-            Bitmaps[4] = GetBitmap($"Teleporter_Left{PairId}.jpg");
+            Bitmaps[0] = GetBitmap($"Teleporter_in{PairId}.jpg");
+            Bitmaps[1] = GetBitmap($"Teleporter_out_{PairId}_up.jpg");
+            Bitmaps[2] = GetBitmap($"Teleporter_out_{PairId}_down.jpg");
+            Bitmaps[3] = GetBitmap($"Teleporter_out_{PairId}_right.jpg");
+            Bitmaps[4] = GetBitmap($"Teleporter_out_{PairId}_left.jpg");
         }
         
         public override void Draw(Graphics graphics, float width, float height)

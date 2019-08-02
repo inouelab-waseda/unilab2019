@@ -30,8 +30,8 @@ namespace unilab2019.Forms
         private Field _field;
         private Random _rand;
 
-        public float CellWidth => (float)pictureBox1.Width / _field.Width;
-        public float CellHeight => (float)pictureBox1.Height / _field.Height;
+        public float CellWidth => (float)backPictureBox.Width / _field.Width;
+        public float CellHeight => (float)backPictureBox.Height / _field.Height;
         #endregion
 
         #region code
@@ -78,6 +78,47 @@ namespace unilab2019.Forms
         public GameForm()
         {
             InitializeComponent();
+            _graphicsBack = Graphics.FromImage(tableLayoutPanel1.BackgroundImage);
+            _fps = 10;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            typeof(PictureBox).InvokeMember("DoubleBuffered", BindingFlags.SetProperty |
+                BindingFlags.Instance | BindingFlags.NonPublic, null, backPictureBox, new object[] { true });
+            
+            // Set foreground graphics
+            backPictureBox.Image = new Bitmap(backPictureBox.Width, backPictureBox.Height);
+            _graphicsFore = Graphics.FromImage(backPictureBox.Image);
+            _graphicsFore.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            _graphicsFore.Clear(Color.Transparent);
+
+            // Set background graphics
+            backPictureBox.BackgroundImage = new Bitmap(backPictureBox.Width, backPictureBox.Height);
+            _graphicsBack = Graphics.FromImage(backPictureBox.BackgroundImage);
+            _graphicsBack.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            //_graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
+
+            globalTimer.Interval = (int)(1000 / (double)_fps);
+            codeTimer.Interval = 333;
+            _initialize("stage10");
+        }
+   
+        private void _initialize(string fieldName)
+        {
+            // Read field from "{fieldName}.json"
+            _field = ReadFieldJson($"{fieldName}");
+            codeListBox.Items.Clear();
+            currentStage.Text =fieldName;
+
+
+            _graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
+
+            foreach (var obj in _field.GameObjectList())
+            {
+                if (obj != null &&!obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
+            }
+            globalTimer.Start();
+            codeTimer.Start();
         }
 
         #region ステージ名などが消せなくなるようにするのに必要な関数
@@ -150,7 +191,7 @@ namespace unilab2019.Forms
             //現在のコードを実行しているAssemblyを取得
             var myAssembly = Assembly.GetExecutingAssembly();
             var sr = new StreamReader(
-                myAssembly.GetManifestResourceStream("Unilab2019.Fields." + name + ".json"),
+                myAssembly.GetManifestResourceStream("unilab2019.Fields." + name + ".json"),
                     Encoding.GetEncoding("utf-8"));
             var input = sr.ReadToEnd();
             sr.Close();
@@ -161,6 +202,41 @@ namespace unilab2019.Forms
         }
         #endregion
 
+        private void globalTimer_Tick(object sender, EventArgs e)
+        {
+            _update();
+            _draw();
+
+            // ゴールに着いたらタイマーを止める
+            if (_field.Player.Intersect(_field.Goal))
+            {
+                globalTimer.Stop();
+                MessageBox.Show("ゴール！");
+            }
+        }
+        private void _update()
+        {
+            // Initialize Player
+            foreach (var enemy in _field.Enemies)
+            {
+                if (_field.Player.Intersect(enemy))
+                {
+                    _initialize("stage10");
+                }
+            }
+        }
+        private void _draw()
+        {
+            _graphicsFore.Clear(Color.Transparent);
+            foreach (var obj in _field.GameObjectList())
+            {
+                if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+            }
+            Refresh();
+            oneUpCount.Text = $"残機: {_field.Player.HP}";
+            numOfLines.Text = $"行数: {codeListBox.Items.Count}";
+            countTime.Text = $"時間: {_field.Player.Pedometer}";
+        }
         #region スクリプト実行
         // コードを実行
         // 何を実行するかcodeに入れておく
