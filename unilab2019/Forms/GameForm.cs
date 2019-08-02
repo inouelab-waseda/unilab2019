@@ -30,8 +30,8 @@ namespace unilab2019.Forms
         private Field _field;
         private Random _rand;
 
-        public float CellWidth => (float)pictureBox1.Width / _field.Width;
-        public float CellHeight => (float)pictureBox1.Height / _field.Height;
+        public float CellWidth => (float)backPictureBox.Width / _field.Width;
+        public float CellHeight => (float)backPictureBox.Height / _field.Height;
         #endregion
 
         #region code
