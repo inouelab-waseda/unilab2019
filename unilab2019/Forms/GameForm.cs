@@ -29,9 +29,13 @@ namespace unilab2019.Forms
         private readonly HashSet<Keys> _pressedKeys;
         private Field _field;
         private Random _rand;
-
+        public int TeleporterPairId;
+        private Teleporter TeleportDestination;
+        public bool canMoveNextCode;
+        private int countEnemy;
         public float CellWidth => (float)backPictureBox.Width / _field.Width;
         public float CellHeight => (float)backPictureBox.Height / _field.Height;
+        private string stageName = "stage4";
         #endregion
 
         #region code
@@ -99,7 +103,7 @@ namespace unilab2019.Forms
 
             globalTimer.Interval = (int)(1000 / (double)_fps);
             codeTimer.Interval = 333;
-            _initialize("stage10");
+            _initialize(stageName);
         }
    
         private void _initialize(string fieldName)
@@ -117,7 +121,6 @@ namespace unilab2019.Forms
                 if (obj != null &&!obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
             }
             globalTimer.Start();
-            codeTimer.Start();
         }
 
         #region ステージ名などが消せなくなるようにするのに必要な関数
@@ -195,6 +198,7 @@ namespace unilab2019.Forms
             // ゴールに着いたらタイマーを止める
             if (_field.Player.Intersect(_field.Goal))
             {
+                codeTimer.Stop();
                 globalTimer.Stop();
                 MessageBox.Show("ゴール！");
             }
@@ -206,7 +210,7 @@ namespace unilab2019.Forms
             {
                 if (_field.Player.Intersect(enemy))
                 {
-                    _initialize("stage10");
+                    _initialize(stageName);
                 }
             }
         }
@@ -222,5 +226,43 @@ namespace unilab2019.Forms
             numOfLines.Text = $"行数: {codeListBox.Items.Count}";
             countTime.Text = $"時間: {_field.Player.Pedometer}";
         }
+        private void codeTimer_Tick(object sender, EventArgs e)
+        {
+            foreach (var enemy in _field.Enemies)
+            {
+                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
+                enemy.X = enemy.MoveRoute[countEnemy % enemyAllRouteCount]["X"];
+                enemy.Y = enemy.MoveRoute[countEnemy % enemyAllRouteCount]["Y"];
+            }
+            if (IsTeleporter(_field.Player.X, _field.Player.Y))
+            {
+                TeleporterPairId = _field.Teleporters.Find(t => t.X == _field.Player.X && t.Y == _field.Player.Y).PairId;
+                TeleportDestination = _field.Teleporters.Find(t => t.PairId == TeleporterPairId && (t.X != _field.Player.X || t.Y != _field.Player.Y));
+                _field.Player.X = TeleportDestination.X;
+                _field.Player.Y = TeleportDestination.Y;
+                _field.Player.Direction = TeleportDestination.Direction;
+                _field.Player.Pedometer++;
+            }
+            else if (!_field.Player.Intersect(_field.Goal))
+            {
+                canMoveNextCode = true;
+                while (exeCodeStack.Count > 0 && canMoveNextCode) exeCodeStack.Peek().MoveNext();
+            }
+
+            if (_field.Player.HP <= 0)
+            {
+                exeCodeStack.Clear();
+                _initialize(stageName);
+            }
+        }
+
+        private void startBtn_Click(object sender, EventArgs e)
+        {
+            countEnemy = 0;
+            codeTimer.Start();
+        }
+
+        private bool IsTeleporter(int x, int y) => _field.Teleporters.Where(w => w.X == x && w.Y == y && !w.IsDestination).Count() > 0;
     }
+    
 }
