@@ -26,9 +26,9 @@ namespace unilab2019.Forms
         #region field
         private readonly int _fps;
         private Graphics _graphicsBack, _graphicsFore;
-        private readonly HashSet<Keys> _pressedKeys;
+        //private readonly HashSet<Keys> _pressedKeys;
         private Field _field;
-        private Random _rand;
+        //private Random _rand;
         public int TeleporterPairId;
         private Teleporter TeleportDestination;
         public bool canMoveNextCode;
@@ -277,7 +277,6 @@ namespace unilab2019.Forms
             codeTimer.Start();
         }
 
-        private bool IsTeleporter(int x, int y) => _field.Teleporters.Where(w => w.X == x && w.Y == y && !w.IsDestination).Count() > 0;
         #region スクリプト実行
         //
 
