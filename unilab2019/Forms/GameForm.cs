@@ -30,8 +30,8 @@ namespace unilab2019.Forms
         private Field _field;
         private Random _rand;
 
-        public float CellWidth => (float)pictureBox1.Width / _field.Width;
-        public float CellHeight => (float)pictureBox1.Height / _field.Height;
+        public float CellWidth => (float)backPictureBox.Width / _field.Width;
+        public float CellHeight => (float)backPictureBox.Height / _field.Height;
         #endregion
 
         #region code
@@ -84,7 +84,12 @@ namespace unilab2019.Forms
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             typeof(PictureBox).InvokeMember("DoubleBuffered", BindingFlags.SetProperty |
                 BindingFlags.Instance | BindingFlags.NonPublic, null, backPictureBox, new object[] { true });
-
+            
+            // Set foreground graphics
+            backPictureBox.Image = new Bitmap(backPictureBox.Width, backPictureBox.Height);
+            _graphicsFore = Graphics.FromImage(backPictureBox.Image);
+            _graphicsFore.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            _graphicsFore.Clear(Color.Transparent);
 
             // Set background graphics
             backPictureBox.BackgroundImage = new Bitmap(backPictureBox.Width, backPictureBox.Height);
@@ -109,7 +114,7 @@ namespace unilab2019.Forms
 
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
+                if (obj != null &&!obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
             }
             globalTimer.Start();
             codeTimer.Start();
@@ -184,8 +189,8 @@ namespace unilab2019.Forms
 
         private void globalTimer_Tick(object sender, EventArgs e)
         {
-            //_update();
-            //_draw();
+            _update();
+            _draw();
 
             // ゴールに着いたらタイマーを止める
             if (_field.Player.Intersect(_field.Goal))
@@ -194,25 +199,28 @@ namespace unilab2019.Forms
                 MessageBox.Show("ゴール！");
             }
         }
-        //private void _draw()
-        //{
-        //    _graphicsFore.Clear(Color.Transparent);
-        //    foreach (var obj in _field.GameObjectList())
-        //    {
-        //        if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, CellWidth, CellHeight);
-        //    }
-        //    Refresh();
-        //    HPTextBox.Text = $"HP: {_field.Player.HP}/{_field.Player.MaxHP}";
-        //    if (isGoaledDictionary[_field.StageName])
-        //    {
-        //        MPTextBox.Text = $"行数: {codeListBox.Items.Count}　　目標: {desiredMP}";
-        //        PedometerTextBox.Text = $"時間: {_field.Player.Pedometer}　　目標: {_field.Player.DesiredPedometer}";
-        //    }
-        //    else
-        //    {
-        //        MPTextBox.Text = $"行数: {codeListBox.Items.Count}　　目標: ?";
-        //        PedometerTextBox.Text = $"時間: {_field.Player.Pedometer}　　目標: ?";
-        //    }
-        //}
+        private void _update()
+        {
+            // Initialize Player
+            foreach (var enemy in _field.Enemies)
+            {
+                if (_field.Player.Intersect(enemy))
+                {
+                    _initialize("stage10");
+                }
+            }
+        }
+        private void _draw()
+        {
+            _graphicsFore.Clear(Color.Transparent);
+            foreach (var obj in _field.GameObjectList())
+            {
+                if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+            }
+            Refresh();
+            oneUpCount.Text = $"残機: {_field.Player.HP}";
+            numOfLines.Text = $"行数: {codeListBox.Items.Count}";
+            countTime.Text = $"時間: {_field.Player.Pedometer}";
+        }
     }
 }
