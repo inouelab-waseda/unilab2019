@@ -2290,6 +2290,9 @@
       "Direction": 0
     },
     {
+	  "ImageType": 1,
+      "X": 21,
+      "Y": 6,
       "ImageType": 1
     },
     {
