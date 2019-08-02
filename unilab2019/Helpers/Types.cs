@@ -8,7 +8,7 @@ namespace Unilab2019.Helpers
     public static class Types
     {
         public enum Instruction { IfCode, ForCode, WhileCode, Forward, TurnRight, TurnLeft, End, Stop}
-        public enum Direction { None, Up, Down, Right, Left }
+        public enum Direction { None, Up, Down, Right, Left, Forward, Backward }
         public enum Obj { Wall, Enemy, Road }
     }
     public class Code {
@@ -22,7 +22,7 @@ namespace Unilab2019.Helpers
         /// </summary>
         public int Repeat_num { get; set; }
 
-        public Types.Direction Diriection { get; set; }
+        public Types.Direction Direction { get; set; }
         /// <summary>
         /// Wall,Enemy,Road
         /// </summary>
