@@ -134,7 +134,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.360518F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.258889F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(770, 521);
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1157, 779);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // codeListBox
@@ -149,7 +148,6 @@
             this.tableLayoutPanel1.SetRowSpan(this.codeListBox, 6);
             this.codeListBox.Size = new System.Drawing.Size(160, 281);
             this.codeListBox.TabIndex = 16;
-
             // 
             // currentStage
             // 
@@ -182,7 +180,6 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(106, 42);
-
             this.panel2.TabIndex = 24;
             // 
             // comboBox2
@@ -477,7 +474,7 @@
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(29, 58);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(224, 38);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -502,7 +499,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.backPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
