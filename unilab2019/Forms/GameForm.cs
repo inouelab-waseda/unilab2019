@@ -243,12 +243,7 @@ namespace unilab2019.Forms
         ////コードを実行
         private IEnumerator<Code> CarryOutScript(List<Code> code)
         {
-            // 全体で使う変数
-            //int i; // 現在実行しているコードのindex
-            //string c; // i番目のコード
-
-            // for・until用の変数
-            //List<string> subCode; // for文の内側のコード
+           
             int a = 1;
 
             for (int i = 0; i < code.Count(); i += a)
