@@ -274,6 +274,7 @@ namespace unilab2019.Forms
                         if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
                         {
                             MessageBox.Show("前は壁だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            globalTimer.Stop();
                         }
                         else
                         {
@@ -282,48 +283,132 @@ namespace unilab2019.Forms
                         }
                         break;
 
-                    case Types.Instruction.Right:
+                    case Types.Instruction.TurnRight:
                         _field.Player.Pedometer++;
                         _field.Player.TurnRight();
                         break;
 
-                    case Types.Instruction.Left:
+                    case Types.Instruction.TurnLeft:
                         _field.Player.Pedometer++;
                         _field.Player.TurnLeft();
                         break;
 
-                    case Types.Instruction.IfCode:
+                    case Types.Instruction.Stop:
+                        break;
 
+                    case Types.Instruction.IfCode:
+                        //endの行数を格納する変数
+                        int if_sub_indent = 0;
+
+                        //if文のendを取得
+                        for (int k = i; k < code.Count(); k++)
+                        {
+                            if (code[k].Instruction == Types.Instruction.End && code[i].Indent == code[k].Indent)
+                            {
+                                if_sub_indent = k;
+                                break;
+                            }
+                        }
+                        //中身の部分だけ一時的に取り出すcodeリストを作成
+                        List<Code> if_subcode = new List<Code>();
+                        for (int j = i + 1; j < if_sub_indent; j++)
+                        {
+                            if_subcode.Add(code[j]);
+                        }
+                        //ここまでforの処理と同じ
+
+                        //もし前が壁なら
+                        if (code[i].Obj == Types.Obj.Wall && code[i].Diriection == Types.Direction.Up)
+                        {
+                            if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし後ろが壁なら
+                        if (code[i].Obj == Types.Obj.Wall)
+                        {
+                            if (IsWall(_field.Player.BackX(), _field.Player.BackY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし右が壁なら
+                        if (code[i].Obj == Types.Obj.Wall)
+                        {
+                            if (IsWall(_field.Player.RightX(), _field.Player.RightY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし左が壁なら
+                        if (code[i].Obj == Types.Obj.Wall)
+                        {
+                            if (IsWall(_field.Player.LeftX(), _field.Player.LeftY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+
+
+                        i = if_sub_indent + 1;
                         break;
 
                     case Types.Instruction.ForCode:
                         //endの行数を格納する変数
-                        int sub_indent = 0;
+                        int for_sub_indent = 0;
                         
                         //for文のendを取得
                         for (int k = i; k < code.Count();k++)
                         {
                             if (code[k].Instruction == Types.Instruction.End && code[i].Indent == code[k].Indent)
                             {
-                                sub_indent = k;
+                                for_sub_indent = k;
                                 break;
                             }
                         }
                         //中身の部分だけ一時的に取り出すcodeリストを作成
-                        List<Code> subcode = new List<Code>();
-                        for (int j = i+1; j < sub_indent; j++)
+                        List<Code> for_subcode = new List<Code>();
+                        for (int j = i+1; j < for_sub_indent; j++)
                         {
-                            subcode.Add(code[j]);
+                            for_subcode.Add(code[j]);
                         }
-                        for (int m = 0; m < code[i].Repeat_num; m ++)
+
+                        //中身のコードに対してスクリプト関数を実行
+                        for (int m = 0; m < code[i].Repeat_num; m++)
                         {
-                            CarryOutScript(subcode);
+                            CarryOutScript(for_subcode);
                         }
-                        i = sub_indent
+                        i = for_sub_indent + 1;
 
                         break;
 
-                    case "end":
+                    case Types.Instruction.WhileCode:
+                        //endの行数を格納する変数
+                        int while_sub_indent = 0;
+
+                        //while文のendを取得
+                        for (int k = i; k < code.Count(); k++)
+                        {
+                            if (code[k].Instruction == Types.Instruction.End && code[i].Indent == code[k].Indent)
+                            {
+                                while_sub_indent = k;
+                                break;
+                            }
+                        }
+                        
+                        //中身の部分だけ一時的に取り出すcodeリストを作成
+                        List<Code> while_subcode = new List<Code>();
+                        for (int j = i + 1; j < while_sub_indent; j++)
+                        {
+                            while_subcode.Add(code[j]);
+                        }
+                        //ここまでfor文と処理は一緒
+
+                        //checkcodeをかける（無限ループの判定）
+                        CheckCode(while_subcode);
+                        i = while_sub_indent + 1;
+
                         break;
 
                     default:
@@ -442,14 +527,12 @@ namespace unilab2019.Forms
 
         //// コードをチェック
         //// while文を使ったときに無限ループするかどうかを判定
-        private void CheckCode()
+        private void CheckCode(List<Code> code)
         {
-            for (int i=0; i < code.Count(); i++)
+            if (code[0].Instruction == Types.Instruction.WhileCode &&  code[1].Instruction == Types.Instruction.End)
             {
-                if (code[i].Instruction == Types.Instruction.WhileCode &&  code[i+1].Instruction == Types.Instruction.End)
-                {
-                    MessageBox.Show("無限ループしてしまうよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("無限ループしてしまうよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                globalTimer.Stop();
             }
 
         }
