@@ -165,14 +165,14 @@ namespace unilab2019.Forms
         //
 
         ////コードを実行
-        private IEnumerator<string> CarryOutScript()
+        private IEnumerator<Code> CarryOutScript(List<Code> code)
         {
             // 全体で使う変数
             //int i; // 現在実行しているコードのindex
             //string c; // i番目のコード
 
             // for・until用の変数
-            List<string> subCode; // for文の内側のコード
+            //List<string> subCode; // for文の内側のコード
 
             for (int i = 0; i < code.Count(); i++)
             {
@@ -217,14 +217,34 @@ namespace unilab2019.Forms
                         break;
 
                     case Types.Instruction.IfCode:
+
                         break;
 
                     case Types.Instruction.ForCode:
+                        //endの行数を格納する変数
+                        int sub_indent = 0;
                         
-                        for (int _ = 0; _ < loopNum; _++)
+                        //for文のendを取得
+                        for (int k = i; k < code.Count();k++)
                         {
-                            exeCodeStack.Push(ExeCode(subCode));
+                            if (code[k].Instruction == Types.Instruction.End && code[i].Indent == code[k].Indent)
+                            {
+                                sub_indent = k;
+                                break;
+                            }
                         }
+                        //中身の部分だけ一時的に取り出すcodeリストを作成
+                        List<Code> subcode = new List<Code>();
+                        for (int j = i+1; j < sub_indent; j++)
+                        {
+                            subcode.Add(code[j]);
+                        }
+                        for (int m = 0; m < code[i].Repeat_num; m ++)
+                        {
+                            CarryOutScript(subcode);
+                        }
+                        i = sub_indent
+
                         break;
 
                     case "end":
@@ -235,7 +255,6 @@ namespace unilab2019.Forms
                 }
                 yield return null;
             }
-            exeCodeStack.Pop();
             yield break;
         }
 
