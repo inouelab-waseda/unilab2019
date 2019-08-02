@@ -52,7 +52,7 @@ namespace unilab2019.Forms
 
             globalTimer.Interval = (int)(1000 / (double)_fps);
             codeTimer.Interval = 333;
-            _initialize("stage1");
+            _initialize("stage7");
         }
    
         private void _initialize(string fieldName)
