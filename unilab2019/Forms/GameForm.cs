@@ -249,27 +249,13 @@ namespace unilab2019.Forms
 
             // for・until用の変数
             //List<string> subCode; // for文の内側のコード
+            int a = 1;
 
-            for (int i = 0; i < code.Count(); i++)
+            for (int i = 0; i < code.Count(); i += a)
             {
+                a = 1;
                 switch (code[i].Instruction)
                 {
-                    //case Types.Instruction.Right:
-                    //    if (!IsWall(_field.Player.X + 1, _field.Player.Y)) _field.Player.X++;
-                    //    break;
-
-                    //case Types.Instruction.Left:
-                    //    if (!IsWall(_field.Player.X - 1, _field.Player.Y)) _field.Player.X--;
-                    //    break;
-
-                    //case Types.Instruction.Forward:
-                    //    if (!IsWall(_field.Player.X, _field.Player.Y - 1)) _field.Player.Y--;
-                    //    break;
-
-                    //case "down":
-                    //    if (!IsWall(_field.Player.X, _field.Player.Y + 1)) _field.Player.Y++;
-                    //    break;
-
                     case Types.Instruction.Forward:
                         if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
                         {
@@ -316,9 +302,10 @@ namespace unilab2019.Forms
                             if_subcode.Add(code[j]);
                         }
                         //ここまでforの処理と同じ
-
+                        
+                        //壁に関する条件分岐
                         //もし前が壁なら
-                        if (code[i].Obj == Types.Obj.Wall && code[i].Diriection == Types.Direction.Up)
+                        if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Forward)
                         {
                             if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
                             {
@@ -326,7 +313,7 @@ namespace unilab2019.Forms
                             }
                         }
                         //もし後ろが壁なら
-                        if (code[i].Obj == Types.Obj.Wall)
+                        if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Backward)
                         {
                             if (IsWall(_field.Player.BackX(), _field.Player.BackY()))
                             {
@@ -334,7 +321,7 @@ namespace unilab2019.Forms
                             }
                         }
                         //もし右が壁なら
-                        if (code[i].Obj == Types.Obj.Wall)
+                        if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Right)
                         {
                             if (IsWall(_field.Player.RightX(), _field.Player.RightY()))
                             {
@@ -342,7 +329,7 @@ namespace unilab2019.Forms
                             }
                         }
                         //もし左が壁なら
-                        if (code[i].Obj == Types.Obj.Wall)
+                        if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Left)
                         {
                             if (IsWall(_field.Player.LeftX(), _field.Player.LeftY()))
                             {
@@ -350,8 +337,75 @@ namespace unilab2019.Forms
                             }
                         }
 
+                        //敵に関する条件分岐
+                        //もし前が敵なら
+                        if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Forward)
+                        {
+                            if (IsEnemy(_field.Player.ForwardX(), _field.Player.ForwardY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし後ろが敵なら
+                        if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Backward)
+                        {
+                            if (IsEnemy(_field.Player.BackX(), _field.Player.BackY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし右が敵なら
+                        if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Right)
+                        {
+                            if (IsEnemy(_field.Player.RightX(), _field.Player.RightY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし左が敵なら
+                        if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Left)
+                        {
+                            if (IsEnemy(_field.Player.LeftX(), _field.Player.LeftY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
 
-                        i = if_sub_indent + 1;
+                        //道に関する条件分岐
+                        //もし前が道なら
+                        if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Forward)
+                        {
+                            if (IsRoad(_field.Player.ForwardX(), _field.Player.ForwardY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし後ろが道なら
+                        if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Backward)
+                        {
+                            if (IsRoad(_field.Player.BackX(), _field.Player.BackY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし右が道なら
+                        if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Right)
+                        {
+                            if (IsRoad(_field.Player.RightX(), _field.Player.RightY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+                        //もし左が道なら
+                        if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Left)
+                        {
+                            if (IsRoad(_field.Player.LeftX(), _field.Player.LeftY()))
+                            {
+                                CarryOutScript(if_subcode);
+                            }
+                        }
+
+                        a = if_sub_indent + 1;
                         break;
 
                     case Types.Instruction.ForCode:
@@ -379,7 +433,7 @@ namespace unilab2019.Forms
                         {
                             CarryOutScript(for_subcode);
                         }
-                        i = for_sub_indent + 1;
+                        a = for_sub_indent;
 
                         break;
 
@@ -407,7 +461,7 @@ namespace unilab2019.Forms
 
                         //checkcodeをかける（無限ループの判定）
                         CheckCode(while_subcode);
-                        i = while_sub_indent + 1;
+                        a = while_sub_indent;
 
                         break;
 
@@ -419,95 +473,12 @@ namespace unilab2019.Forms
             yield break;
         }
 
-        // if文・until文の中の最後のコードのindexを返す
-        // stopAtElse == true なら, 条件文 == true の else があった時に, その条件文の index を返す
-        private int skipSubCode(List<string> code, int i, bool stopAtElse)
-        {
-            string c;
-            string ifType; // if文の条件文の種類. if文の場合に使う.
-            int subDepth;
-
-            subDepth = 0;
-            while (true)
-            {
-                i++;
-                c = code[i];
-                if (c == "elseIf" && subDepth == 0 && stopAtElse)
-                {
-                    i++;
-                    ifType = code[i];
-                    if (IfCheck(ifType)) break;
-                }
-                if (c == "end")
-                {
-                    if (subDepth == 0)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        subDepth--;
-                    }
-                }
-                if (c == "if" || c == "for" || c == "until" || c == "endless")
-                {
-                    subDepth++;
-                }
-            }
-
-            return i;
-        }
-
-        // for文・until文の内側のコードを返す
-        private List<string> GetSubCode(List<string> code, int i)
-        {
-            int j; // 現在いるコードのindex
-            int starti; // 内側の最初のコードのindex
-            int endi; // 内側の最後のコードのindex
-            int subDepth; // 現在いるコードの深さ
-            string cj; // j番目のコード
-
-            subDepth = 0;
-            starti = i + 1;
-            j = i;
-
-            while (true)
-            {
-                j++;
-                cj = code[j];
-                if (cj == "end")
-                {
-                    if (subDepth == 0)
-                    {
-                        endi = j;
-                        break;
-                    }
-                    else
-                    {
-                        subDepth--;
-                    }
-                }
-                if (cj == "if" || cj == "for" || cj == "until" || cj == "endless")
-                {
-                    subDepth++;
-                }
-            }
-            return code.GetRange(starti, endi - starti);
-        }
-
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
-        private void editCustomSatgeBtn_Click(object sender, EventArgs e)
-        {
-            var csForm = new CustomStageForm();
-            csForm.Show();
-        }
-
         private void GameForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void ifComboBox_SelectedIndexChanged(object sender, EventArgs e)
