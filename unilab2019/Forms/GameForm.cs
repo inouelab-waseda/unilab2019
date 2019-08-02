@@ -405,7 +405,7 @@ namespace unilab2019.Forms
                             }
                         }
 
-                        a = if_sub_indent + 1;
+                        a = 1;
                         break;
 
                     case Types.Instruction.ForCode:
@@ -461,9 +461,11 @@ namespace unilab2019.Forms
 
                         //checkcodeをかける（無限ループの判定）
                         CheckCode(while_subcode);
-                        a = while_sub_indent;
 
-                        break;
+                        while(true)
+                        {
+                            CarryOutScript(while_subcode);
+                        }
 
                     default:
                         break;
