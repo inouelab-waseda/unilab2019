@@ -130,7 +130,7 @@ namespace unilab2019.Forms
             //現在のコードを実行しているAssemblyを取得
             var myAssembly = Assembly.GetExecutingAssembly();
             var sr = new StreamReader(
-                myAssembly.GetManifestResourceStream("Unilab2019.Fields." + name + ".json"),
+                myAssembly.GetManifestResourceStream("unilab2019.Fields." + name + ".json"),
                     Encoding.GetEncoding("utf-8"));
             var input = sr.ReadToEnd();
             sr.Close();
@@ -143,8 +143,8 @@ namespace unilab2019.Forms
 
         private void globalTimer_Tick(object sender, EventArgs e)
         {
-            _update();
-            _draw();
+            //_update();
+            //_draw();
 
             // ゴールに着いたらタイマーを止める
             if (_field.Player.Intersect(_field.Goal))
@@ -153,25 +153,25 @@ namespace unilab2019.Forms
                 MessageBox.Show("ゴール！");
             }
         }
-        private void _draw()
-        {
-            _graphicsFore.Clear(Color.Transparent);
-            foreach (var obj in _field.GameObjectList())
-            {
-                if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, CellWidth, CellHeight);
-            }
-            Refresh();
-            HPTextBox.Text = $"HP: {_field.Player.HP}/{_field.Player.MaxHP}";
-            if (isGoaledDictionary[_field.StageName])
-            {
-                MPTextBox.Text = $"行数: {codeListBox.Items.Count}　　目標: {desiredMP}";
-                PedometerTextBox.Text = $"時間: {_field.Player.Pedometer}　　目標: {_field.Player.DesiredPedometer}";
-            }
-            else
-            {
-                MPTextBox.Text = $"行数: {codeListBox.Items.Count}　　目標: ?";
-                PedometerTextBox.Text = $"時間: {_field.Player.Pedometer}　　目標: ?";
-            }
-        }
+        //private void _draw()
+        //{
+        //    _graphicsFore.Clear(Color.Transparent);
+        //    foreach (var obj in _field.GameObjectList())
+        //    {
+        //        if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+        //    }
+        //    Refresh();
+        //    HPTextBox.Text = $"HP: {_field.Player.HP}/{_field.Player.MaxHP}";
+        //    if (isGoaledDictionary[_field.StageName])
+        //    {
+        //        MPTextBox.Text = $"行数: {codeListBox.Items.Count}　　目標: {desiredMP}";
+        //        PedometerTextBox.Text = $"時間: {_field.Player.Pedometer}　　目標: {_field.Player.DesiredPedometer}";
+        //    }
+        //    else
+        //    {
+        //        MPTextBox.Text = $"行数: {codeListBox.Items.Count}　　目標: ?";
+        //        PedometerTextBox.Text = $"時間: {_field.Player.Pedometer}　　目標: ?";
+        //    }
+        //}
     }
 }

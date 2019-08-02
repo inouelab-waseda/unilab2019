@@ -85,9 +85,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Fields\stage1.json" />
+    <EmbeddedResource Include="Fields\stage1.json" />
     <None Include="Fields\stage10.json" />
-    <None Include="Fields\stage2.json" />
+    <EmbeddedResource Include="Fields\stage2.json" />
     <None Include="Fields\stage3.json" />
     <None Include="Fields\stage4.json" />
     <None Include="Fields\stage5.json" />
@@ -122,7 +122,7 @@
     <Content Include="Images\Goal.jpg" />
     <Content Include="Images\Player_Down.jpg" />
     <Content Include="Images\Player_Left.jpg" />
-    <Content Include="Images\Player_None.jpg" />
+    <EmbeddedResource Include="Images\Player_None.jpg" />
     <Content Include="Images\Player_Right.jpg" />
     <Content Include="Images\Player_Up.jpg" />
     <Content Include="Images\Teleporer_in2.jpg" />
