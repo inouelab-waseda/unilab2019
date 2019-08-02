@@ -901,7 +901,7 @@
       },
       {
         "ImageType": 1,
-        "X": 12,
+        "X": 10,
         "Y": 14,
         "Direction": 0
       },
@@ -1620,6 +1620,9 @@
       "Direction": 0
     },
     {
+	  "ImageType": 1,
+      "X": 21,
+      "Y": 6,
       "ImageType": 1
     },
     {
