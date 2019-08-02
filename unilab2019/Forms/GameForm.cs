@@ -12,6 +12,7 @@ using Unilab2019.Objects;
 using Unilab2019.Objects.Enemies;
 using Unilab2019.Objects.Player;
 using Unilab2019.Objects.Goal;
+using Unilab2019.Objects.FieldItems;
 using Unilab2019.Fields;
 using System.IO;
 using Newtonsoft.Json;
@@ -22,12 +23,57 @@ namespace unilab2019.Forms
 {
     public partial class GameForm : Form
     {
+        #region field
         private readonly int _fps;
+        private Graphics _graphicsBack, _graphicsFore;
+        private readonly HashSet<Keys> _pressedKeys;
         private Field _field;
-        private Graphics _graphicsBack,_graphicsFore;
-        public float CellWidth => (float)backPictureBox.Width / _field.Width;
-        public float CellHeight => (float)backPictureBox.Height / _field.Height;
+        private Random _rand;
 
+        public float CellWidth => (float)pictureBox1.Width / _field.Width;
+        public float CellHeight => (float)pictureBox1.Height / _field.Height;
+        #endregion
+
+        #region code
+
+        /// <summary>
+        /// ボタン入力に対して"if"や"for"の形で保存する
+        /// </summary>
+        public List<Code> code;
+        /// <summary>
+        /// codeをif,forなどの条件を加味して翻訳したもの。codeと統合する予定
+        /// </summary>
+        public Stack<IEnumerator> exeCodeStack;
+        /// <summary>
+        /// ステージごとのコードいれる
+        /// </summary>
+        public Dictionary<string, List<string>> codeDictionary;
+        /// <summary>
+        /// ステージごとのコードリストボックスのアイテムを入れる
+        /// </summary>
+        public Dictionary<string, List<string>> codeListBoxItemsDictionary;
+        /// <summary>
+        /// ステージごとにゴールしているかどうかを入れる
+        /// </summary>
+        public Dictionary<string, bool> isGoaledDictionary;
+        /// <summary>
+        /// 全てのステージをクリアしたかどうか
+        /// </summary>
+        public bool isAllGoaledFlag; 
+        #region old member valiable
+        //public Dictionary<string, int> depthDictionary; // ステージごとのコードのdepthを入れる(おそらく途中から再開するため)
+        /// <summary>
+        /// 無限ループ阻止用措置ただしendの直前がfor,whileならエラーを吐けば不要
+        /// </summary>
+        //public bool endlessFlag; // 「ずっと」コマンドの中にいて、動作コマンド（前に進む、左を向く、右を向く、回復）が行われていない状態であるかどうか
+        //public int depth;
+        //public bool canMoveNextCode;  // 同フレーム内で次の行も実行していいかどうか. for・if・end の行を実行した時に true にして使う.
+        //public bool canMoveEnemy; // コード実行時のフレーム処理で2フレームに1回だけエネミーが動くようにする
+        //public int desiredMP; //　コマンドライン行数の目標値 
+        //public int TeleporterPairId; // テレポート時のペアID
+        //private Teleporter TeleportDestination; // テレポート先のテレポートマット
+        #endregion
+        #endregion
         public GameForm()
         {
             InitializeComponent();
@@ -69,7 +115,8 @@ namespace unilab2019.Forms
             codeTimer.Start();
         }
 
-        private void currentStage_caret_control(object sender, EventArgs e)
+        #region ステージ名などが消せなくなるようにするのに必要な関数
+        private void TextboxCaretControl(object sender, EventArgs e)
         {
             if (Cursor.Current != Cursors.Default)
             {
@@ -80,14 +127,14 @@ namespace unilab2019.Forms
             textbox.Enabled = true;
         }
 
-        private void textboxCursorControl(object sender, EventArgs e)
+        private void TextboxCursorControl(object sender, EventArgs e)
         {
             if (Cursor.Current != Cursors.Default)
             {
                 Cursor.Current = Cursors.Default;
             }
         }
-        private void textboxCursorControl(object sender, MouseEventArgs e)
+        private void TextboxCursorControl(object sender, MouseEventArgs e)
         {
             if (Cursor.Current != Cursors.Default)
             {
@@ -95,10 +142,8 @@ namespace unilab2019.Forms
             }
         }
 
-        private void currentStage_caret_control(object sender, MouseEventArgs e)
-        {
+        #endregion
 
-        }
 
         private void ForBtn_Click(object sender, EventArgs e)
         {
