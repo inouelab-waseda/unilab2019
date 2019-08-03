@@ -26,9 +26,9 @@ namespace unilab2019.Forms
         #region field
         private readonly int _fps;
         private Graphics _graphicsBack, _graphicsFore;
-        private readonly HashSet<Keys> _pressedKeys;
+        //private readonly HashSet<Keys> _pressedKeys;
         private Field _field;
-        private Random _rand;
+        //private Random _rand;
 
         public float CellWidth => (float)backPictureBox.Width / _field.Width;
         public float CellHeight => (float)backPictureBox.Height / _field.Height;
@@ -39,7 +39,7 @@ namespace unilab2019.Forms
         /// <summary>
         /// ボタン入力に対して"if"や"for"の形で保存する
         /// </summary>
-        public List<Code> code;
+        public List<Code> code = new List<Code> { };
         /// <summary>
         /// codeをif,forなどの条件を加味して翻訳したもの。codeと統合する予定
         /// </summary>
@@ -237,6 +237,279 @@ namespace unilab2019.Forms
             numOfLines.Text = $"行数: {codeListBox.Items.Count}";
             countTime.Text = $"時間: {_field.Player.Pedometer}";
         }
+
+        private void GoForwardBtn_Click(object sender, EventArgs e)
+        {
+            var selected = codeListBox.SelectedIndex;
+            Code tmp = new Code
+            {
+                Instruction = Types.Instruction.Forward
+            };
+            if (selected == -1)
+            {
+                //選択されていないとき
+                code.Add(tmp);
+                codeListBox.Items.Add("前に進む");
+            }
+            else
+            {
+                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                code.Insert(selected,tmp);
+                codeListBox.Items.Insert(selected,"前に進む");
+            }
+        }
+
+        private void TurnLeftBtn_Click(object sender, EventArgs e)
+        {
+            var selected = codeListBox.SelectedIndex;
+            Code tmp = new Code
+            {
+                Instruction = Types.Instruction.TurnLeft
+            };
+            if (selected == -1)
+            {
+                //選択されていないとき
+                code.Add(tmp);
+                codeListBox.Items.Add("左に曲がる");
+            }
+            else
+            {
+                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, "左に曲がる");
+            }
+        }
+
+        private void TurnRightBtn_Click(object sender, EventArgs e)
+        {
+            var selected = codeListBox.SelectedIndex;
+            Code tmp = new Code();
+            tmp.Instruction = Types.Instruction.TurnRight;
+            if (selected == -1)
+            {
+                //選択されていないとき
+                code.Add(tmp);
+                codeListBox.Items.Add("右に曲がる");
+            }
+            else
+            {
+                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, "右に曲がる");
+
+            }
+        }
+
+        private void StopBtn_Click(object sender, EventArgs e)
+        {
+            var selected = codeListBox.SelectedIndex;
+            Code tmp = new Code
+            {
+                Instruction = Types.Instruction.Stop
+            };
+            if (selected == -1)
+            {
+                //選択されていないとき
+                code.Add(tmp);
+                codeListBox.Items.Add("止まる");
+            }
+            else
+            {
+                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, "止まる");
+
+            }
+        }
+        private void IfBtn_Click(object sender, EventArgs e)
+        {
+            var selected = codeListBox.SelectedIndex;
+            bool add_flag = true;
+            Code tmp = new Code
+            {
+                Instruction = Types.Instruction.IfCode
+            };
+            Code end = new Code
+            {
+                Instruction = Types.Instruction.End
+            };
+            string dir="";
+            string obj="";
+            try
+            {
+                dir = comboBox1.SelectedItem.ToString();
+                obj = comboBox2.SelectedItem.ToString();
+            }
+            catch
+            {
+
+            }
+            //Direction設定
+            switch (dir)
+            {
+                case "前":
+                    tmp.Direction = Types.Direction.Forward;
+                    break;
+                case "左":
+                    tmp.Direction = Types.Direction.Left;
+                    break;
+                case "右":
+                    tmp.Direction = Types.Direction.Right;
+                    break;
+                case "後ろ":
+                    tmp.Direction = Types.Direction.Backward;
+                    break;
+                default:
+                    MessageBox.Show("方向が変だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    add_flag = false;
+                    break;
+
+            }
+            //Object設定
+            switch (obj)
+            {
+                case "壁":
+                    tmp.Obj = Types.Obj.Wall;
+                    break;
+                case "敵":
+                    tmp.Obj = Types.Obj.Enemy;
+                    break;
+                case "道":
+                    tmp.Obj = Types.Obj.Road;
+                    break;
+                default:
+                    MessageBox.Show("対象が変だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    add_flag = false;
+                    break;
+
+            }
+            if (add_flag)
+            {
+                if (selected == -1)
+                {
+                    //選択されていないとき
+                    code.Add(tmp);
+                    code.Add(end);
+                    codeListBox.Items.Add($"もし{dir}が{obj}なら{{");
+                    codeListBox.Items.Add("}");
+                    codeListBox.SelectedIndex=codeListBox.Items.Count-1;
+                }
+                else
+                {
+                    if (selected != 0) tmp.Indent = code[selected-1].Indent+1;
+                    if (selected != 0) end.Indent = code[selected-1].Indent + 1;
+                    code.Insert(selected, tmp);
+                    code.Insert(selected + 1, end);
+                    codeListBox.Items.Insert(selected,$"もし{dir}が{obj}なら{{");
+                    codeListBox.Items.Insert(selected+1,"}");
+                    codeListBox.SelectedIndex++;
+
+                }
+            }
+
+        }
+
+        private void ForBtn_Click(object sender, EventArgs e)
+        {
+            bool add_flag = true;
+            var selected = codeListBox.SelectedIndex;
+            int num=0;
+            Code tmp = new Code
+            {
+                Instruction = Types.Instruction.ForCode
+            };
+            Code end = new Code
+            {
+                Instruction = Types.Instruction.End
+            };
+            try
+            {
+                num= (int)numericUpDown1.Value;
+                tmp.Repeat_num = num;
+            }
+            catch
+            {
+                MessageBox.Show("変な値を入れないで！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                add_flag = false;
+            }
+            if (add_flag)
+            {
+                if (selected == -1)
+                {
+                    //選択されていないとき
+                    code.Add(tmp);
+                    code.Add(end);
+                    codeListBox.Items.Add($"{num}回繰り返す{{");
+                    codeListBox.Items.Add("}");
+                    codeListBox.SelectedIndex = codeListBox.Items.Count - 1;
+                }
+                else
+                {
+                    if (selected != 0) tmp.Indent = code[selected - 1].Indent + 1;
+                    if (selected != 0) end.Indent = code[selected - 1].Indent + 1;
+                    code.Insert(selected, tmp);
+                    code.Insert(selected + 1, end);
+                    codeListBox.Items.Insert(selected,$"{num}回繰り返す{{");
+                    codeListBox.Items.Insert(selected+1,"}");
+                    codeListBox.SelectedIndex++;
+
+                }
+            }
+        }
+
+        private void WhileBtn_Click(object sender, EventArgs e)
+        {
+            var selected = codeListBox.SelectedIndex;
+            Code tmp = new Code
+            {
+                Instruction = Types.Instruction.WhileCode
+            };
+            Code end = new Code
+            {
+                Instruction = Types.Instruction.End
+            };
+            if (selected == -1)
+            {
+                //選択されていないとき
+                code.Add(tmp);
+                code.Add(end);
+                codeListBox.Items.Add("ずっと{");
+                codeListBox.Items.Add("}");
+                codeListBox.SelectedIndex = codeListBox.Items.Count - 1;
+            }
+            else
+            {
+                if (selected != 0) tmp.Indent = code[selected - 1].Indent + 1;
+                if (selected != 0) end.Indent = code[selected - 1].Indent + 1;
+                code.Insert(selected, tmp);
+                code.Insert(selected + 1, end);
+                codeListBox.Items.Insert(selected,"ずっと{");
+                codeListBox.Items.Insert(selected+1,"}");
+                codeListBox.SelectedIndex++;
+
+            }
+        }
+        /// <summary>
+        /// 実行ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StartBtn_Click(object sender, EventArgs e)
+        {
+            throw new DivideByZeroException();
+        }
+
+        private void BackPictureBox_Click(object sender, EventArgs e)
+        {
+            codeListBox.SelectedIndex = -1;
+        }
+
+        private void TableLayoutPanel1_Click(object sender, EventArgs e)
+        {
+            codeListBox.SelectedIndex = -1;
+        }
+
+
         #region スクリプト実行
         // コードを実行
         // 何を実行するかcodeに入れておく
