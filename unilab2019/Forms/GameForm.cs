@@ -560,7 +560,7 @@ namespace unilab2019.Forms
             else if (!_field.Player.Intersect(_field.Goal))
             {
                 canMoveNextCode = true;
-                while (exeCodeStack.Count > 0 && canMoveNextCode) exeCodeStack.Peek().MoveNext();
+                while (code.Count > 0) exeCodeStack.Peek().MoveNext();
             }
 
             if (_field.Player.HP <= 0)
