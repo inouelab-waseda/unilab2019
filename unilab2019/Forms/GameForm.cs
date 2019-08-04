@@ -339,11 +339,13 @@ namespace unilab2019.Forms
             bool add_flag = true;
             Code tmp = new Code
             {
-                Instruction = Types.Instruction.IfCode
+                Instruction = Types.Instruction.IfCode,
+                Indent=1
             };
             Code end = new Code
             {
-                Instruction = Types.Instruction.End
+                Instruction = Types.Instruction.End,
+                Indent=1
             };
             string dir="";
             string obj="";
@@ -414,6 +416,7 @@ namespace unilab2019.Forms
                     code.Insert(selected + 1, end);
                     codeListBox.Items.Insert(selected,$"もし{dir}が{obj}なら{{");
                     codeListBox.Items.Insert(selected+1,"}");
+                    codeListBox.SelectedIndex = selected + 1;
 
                 }
             }
@@ -427,11 +430,13 @@ namespace unilab2019.Forms
             int num=0;
             Code tmp = new Code
             {
-                Instruction = Types.Instruction.ForCode
+                Instruction = Types.Instruction.ForCode,
+                Indent=1
             };
             Code end = new Code
             {
-                Instruction = Types.Instruction.End
+                Instruction = Types.Instruction.End,
+                Indent=1
             };
             try
             {
@@ -456,12 +461,13 @@ namespace unilab2019.Forms
                 }
                 else
                 {
-                    if (selected != 0) tmp.Indent = code[selected - 1].Indent + 1;
-                    if (selected != 0) end.Indent = code[selected - 1].Indent + 1;
+                    tmp.Indent = code[selected].Indent + 1;
+                    end.Indent = code[selected].Indent + 1;
                     code.Insert(selected, tmp);
                     code.Insert(selected + 1, end);
                     codeListBox.Items.Insert(selected,$"{num}回繰り返す{{");
                     codeListBox.Items.Insert(selected+1,"}");
+                    codeListBox.SelectedIndex = selected + 1;
 
                 }
             }
@@ -472,11 +478,13 @@ namespace unilab2019.Forms
             var selected = codeListBox.SelectedIndex;
             Code tmp = new Code
             {
-                Instruction = Types.Instruction.WhileCode
+                Instruction = Types.Instruction.WhileCode,
+                Indent=1
             };
             Code end = new Code
             {
-                Instruction = Types.Instruction.End
+                Instruction = Types.Instruction.End,
+                Indent=1
             };
             if (selected == -1)
             {
@@ -489,13 +497,13 @@ namespace unilab2019.Forms
             }
             else
             {
-                if (selected != 0) tmp.Indent = code[selected - 1].Indent + 1;
-                if (selected != 0) end.Indent = code[selected - 1].Indent + 1;
+                tmp.Indent = code[selected].Indent + 1;
+                end.Indent = code[selected].Indent + 1;
                 code.Insert(selected, tmp);
                 code.Insert(selected + 1, end);
                 codeListBox.Items.Insert(selected,"ずっと{");
                 codeListBox.Items.Insert(selected+1,"}");
-
+                codeListBox.SelectedIndex=selected+1;
             }
         }
         /// <summary>
