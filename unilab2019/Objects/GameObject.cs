@@ -109,7 +109,7 @@ namespace Unilab2019.Objects
             対象画像を読み込む
             */
             Assembly assembly = Assembly.GetExecutingAssembly();
-            Stream stream = assembly.GetManifestResourceStream("Unilab2019.Images." + name);
+            Stream stream = assembly.GetManifestResourceStream("unilab2019.Images." + name);
             Bitmap bmp = new Bitmap(stream);
             return bmp;
         }
