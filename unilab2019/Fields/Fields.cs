@@ -16,6 +16,8 @@ namespace Unilab2019.Fields
         public Player Player { get; set; }
         public Goal Goal { get; set; }
         public List<Enemy> Enemies { get; set; } = new List<Enemy>();
+        public List<Coin> Coins { get; set; } = new List<Coin>();
+        public List<oneup> Oneups { get; set; } =new List<oneup>();
         public List<Teleporter> Teleporters { get; set; } = new List<Teleporter>();
         public List<Wall> Walls { get; set; } = new List<Wall>();
         public int Width { get; set; }
@@ -28,6 +30,8 @@ namespace Unilab2019.Fields
             objs.Add(Player);
             objs.Add(Goal);
             objs.AddRange(Enemies);
+            objs.AddRange(Coins);
+            objs.AddRange(Oneups);
             objs.AddRange(Teleporters);
             objs.AddRange(Walls);
             return objs;
