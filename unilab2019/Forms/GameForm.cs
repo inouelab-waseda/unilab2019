@@ -242,7 +242,7 @@ namespace unilab2019.Forms
             countTime.Text = $"時間: {_field.Player.Pedometer}";
         }
 
-
+        #region button_event
         //{}を含む部分はindentは増加しているが、codelistboxには反映させない。
         //
         //例
@@ -525,6 +525,7 @@ namespace unilab2019.Forms
         /// <param name="e"></param>
         private void StartBtn_Click(object sender, EventArgs e)
         {
+            CarryOutScript(code);
             throw new DivideByZeroException();
         }
 
@@ -537,9 +538,9 @@ namespace unilab2019.Forms
         {
             codeListBox.SelectedIndex = -1;
         }
+        #endregion
 
-
-        private void codeTimer_Tick(object sender, EventArgs e)
+        private void CodeTimer_Tick_1(object sender, EventArgs e)
         {
             foreach (var enemy in _field.Enemies)
             {
@@ -574,7 +575,6 @@ namespace unilab2019.Forms
             countEnemy = 0;
             codeTimer.Start();
         }
-
         #region スクリプト実行
         //
 
@@ -807,6 +807,8 @@ namespace unilab2019.Forms
             }
             yield break;
         }
+
+
 
         //// コードをチェック
         //// while文を使ったときに無限ループするかどうかを判定
