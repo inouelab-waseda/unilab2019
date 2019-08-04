@@ -238,6 +238,18 @@ namespace unilab2019.Forms
             countTime.Text = $"時間: {_field.Player.Pedometer}";
         }
 
+        //{}を含む部分はindentは増加しているが、codelistboxには反映させない。
+        //
+        //例
+        //              indent
+        //前に進む　　　0
+        //もし {        1
+        //    前に進む  1
+        //}             1
+        //前に進む      0
+        //
+        //選択されていなければindentは必ず0なので、本体の初期化部分が対応する
+
         private void GoForwardBtn_Click(object sender, EventArgs e)
         {
             var selected = codeListBox.SelectedIndex;
@@ -396,13 +408,12 @@ namespace unilab2019.Forms
                 }
                 else
                 {
-                    if (selected != 0) tmp.Indent = code[selected-1].Indent+1;
+                    if (selected != 0) tmp.Indent = code[selected-1].Indent + 1;
                     if (selected != 0) end.Indent = code[selected-1].Indent + 1;
                     code.Insert(selected, tmp);
                     code.Insert(selected + 1, end);
                     codeListBox.Items.Insert(selected,$"もし{dir}が{obj}なら{{");
                     codeListBox.Items.Insert(selected+1,"}");
-                    codeListBox.SelectedIndex++;
 
                 }
             }
@@ -451,7 +462,6 @@ namespace unilab2019.Forms
                     code.Insert(selected + 1, end);
                     codeListBox.Items.Insert(selected,$"{num}回繰り返す{{");
                     codeListBox.Items.Insert(selected+1,"}");
-                    codeListBox.SelectedIndex++;
 
                 }
             }
@@ -485,7 +495,6 @@ namespace unilab2019.Forms
                 code.Insert(selected + 1, end);
                 codeListBox.Items.Insert(selected,"ずっと{");
                 codeListBox.Items.Insert(selected+1,"}");
-                codeListBox.SelectedIndex++;
 
             }
         }
