@@ -808,29 +808,6 @@ namespace unilab2019.Forms
             yield break;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-        private void GameForm_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void ifComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void backgroundPictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void startPagePictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
         //// コードをチェック
         //// while文を使ったときに無限ループするかどうかを判定
         private void CheckCode(List<Code> code)
