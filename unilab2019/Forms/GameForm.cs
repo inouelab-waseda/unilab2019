@@ -557,15 +557,10 @@ namespace unilab2019.Forms
                 _field.Player.Direction = TeleportDestination.Direction;
                 _field.Player.Pedometer++;
             }
-            else if (!_field.Player.Intersect(_field.Goal))
-            {
-                canMoveNextCode = true;
-                while (code.Count > 0) exeCodeStack.Peek().MoveNext();
-            }
 
             if (_field.Player.HP <= 0)
             {
-                exeCodeStack.Clear();
+                MessageBox.Show("体力がなくなっちゃった！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _initialize(stageName);
             }
         }
