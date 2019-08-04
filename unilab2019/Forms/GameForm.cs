@@ -47,7 +47,7 @@ namespace unilab2019.Forms
         /// <summary>
         /// codeをif,forなどの条件を加味して翻訳したもの。codeと統合する予定
         /// </summary>
-        public Stack<IEnumerator> exeCodeStack;
+        public Stack<IEnumerator> exeCodeStack = new Stack<IEnumerator>();
         /// <summary>
         /// ステージごとのコードいれる
         /// </summary>
@@ -225,6 +225,7 @@ namespace unilab2019.Forms
             {
                 if (_field.Player.Intersect(enemy))
                 {
+                    codeTimer.Stop();
                     _initialize(stageName);
                 }
             }
@@ -548,6 +549,7 @@ namespace unilab2019.Forms
                 enemy.X = enemy.MoveRoute[countEnemy % enemyAllRouteCount]["X"];
                 enemy.Y = enemy.MoveRoute[countEnemy % enemyAllRouteCount]["Y"];
             }
+            if (exeCodeStack.Count > 0) exeCodeStack.Peek().MoveNext();
             if (IsTeleporter(_field.Player.X, _field.Player.Y))
             {
                 TeleporterPairId = _field.Teleporters.Find(t => t.X == _field.Player.X && t.Y == _field.Player.Y).PairId;
@@ -563,11 +565,14 @@ namespace unilab2019.Forms
                 MessageBox.Show("体力がなくなっちゃった！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _initialize(stageName);
             }
+            countEnemy++;
+            if (exeCodeStack.Count == 0) codeTimer.Stop();
         }
 
         private void startBtn_Click(object sender, EventArgs e)
         {
             countEnemy = 0;
+            exeCodeStack.Push(CarryOutScript(code));
             codeTimer.Start();
         }
         #region スクリプト実行
@@ -637,7 +642,7 @@ namespace unilab2019.Forms
                         {
                             if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
                             {
-                                CarryOutScript(if_subcode);
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
                         //もし後ろが壁なら
@@ -645,7 +650,7 @@ namespace unilab2019.Forms
                         {
                             if (IsWall(_field.Player.BackX(), _field.Player.BackY()))
                             {
-                                CarryOutScript(if_subcode);
+                               exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
                         //もし右が壁なら
@@ -653,7 +658,7 @@ namespace unilab2019.Forms
                         {
                             if (IsWall(_field.Player.RightX(), _field.Player.RightY()))
                             {
-                                CarryOutScript(if_subcode);
+                               exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
                         //もし左が壁なら
@@ -661,7 +666,7 @@ namespace unilab2019.Forms
                         {
                             if (IsWall(_field.Player.LeftX(), _field.Player.LeftY()))
                             {
-                                CarryOutScript(if_subcode);
+                               exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
 
@@ -671,7 +676,7 @@ namespace unilab2019.Forms
                         {
                             if (IsEnemy(_field.Player.ForwardX(), _field.Player.ForwardY()))
                             {
-                                CarryOutScript(if_subcode);
+                               exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
                         //もし後ろが敵なら
@@ -679,7 +684,7 @@ namespace unilab2019.Forms
                         {
                             if (IsEnemy(_field.Player.BackX(), _field.Player.BackY()))
                             {
-                                CarryOutScript(if_subcode);
+                               exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
                         //もし右が敵なら
@@ -687,7 +692,7 @@ namespace unilab2019.Forms
                         {
                             if (IsEnemy(_field.Player.RightX(), _field.Player.RightY()))
                             {
-                                CarryOutScript(if_subcode);
+                               exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
                         //もし左が敵なら
@@ -695,7 +700,7 @@ namespace unilab2019.Forms
                         {
                             if (IsEnemy(_field.Player.LeftX(), _field.Player.LeftY()))
                             {
-                                CarryOutScript(if_subcode);
+                               exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
 
@@ -705,7 +710,7 @@ namespace unilab2019.Forms
                         {
                             if (IsRoad(_field.Player.ForwardX(), _field.Player.ForwardY()))
                             {
-                                CarryOutScript(if_subcode);
+                               exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
                         //もし後ろが道なら
@@ -713,7 +718,7 @@ namespace unilab2019.Forms
                         {
                             if (IsRoad(_field.Player.BackX(), _field.Player.BackY()))
                             {
-                                CarryOutScript(if_subcode);
+                               exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
                         //もし右が道なら
@@ -721,7 +726,7 @@ namespace unilab2019.Forms
                         {
                             if (IsRoad(_field.Player.RightX(), _field.Player.RightY()))
                             {
-                                CarryOutScript(if_subcode);
+                               exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
                         //もし左が道なら
@@ -729,7 +734,7 @@ namespace unilab2019.Forms
                         {
                             if (IsRoad(_field.Player.LeftX(), _field.Player.LeftY()))
                             {
-                                CarryOutScript(if_subcode);
+                               exeCodeStack.Push(CarryOutScript(if_subcode));
                             }
                         }
 
@@ -759,7 +764,7 @@ namespace unilab2019.Forms
                         //中身のコードに対してスクリプト関数を実行
                         for (int m = 0; m < code[i].Repeat_num; m++)
                         {
-                            CarryOutScript(for_subcode);
+                           exeCodeStack.Push(CarryOutScript(for_subcode));
                         }
                         a = for_sub_indent;
 
@@ -792,7 +797,7 @@ namespace unilab2019.Forms
 
                         while(true)
                         {
-                            CarryOutScript(while_subcode);
+                           exeCodeStack.Push(CarryOutScript(while_subcode));
                         }
 
                     default:
@@ -800,6 +805,7 @@ namespace unilab2019.Forms
                 }
                 yield return null;
             }
+            exeCodeStack.Pop();
             yield break;
         }
 
