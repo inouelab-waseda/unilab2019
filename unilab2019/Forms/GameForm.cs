@@ -63,7 +63,7 @@ namespace unilab2019.Forms
         /// <summary>
         /// 全てのステージをクリアしたかどうか
         /// </summary>
-        public bool isAllGoaledFlag; 
+        public bool isAllGoaledFlag;
         #region old member valiable
         //public Dictionary<string, int> depthDictionary; // ステージごとのコードのdepthを入れる(おそらく途中から再開するため)
         /// <summary>
@@ -72,7 +72,7 @@ namespace unilab2019.Forms
         //public bool endlessFlag; // 「ずっと」コマンドの中にいて、動作コマンド（前に進む、左を向く、右を向く、回復）が行われていない状態であるかどうか
         //public int depth;
         //public bool canMoveNextCode;  // 同フレーム内で次の行も実行していいかどうか. for・if・end の行を実行した時に true にして使う.
-        //public bool canMoveEnemy; // コード実行時のフレーム処理で2フレームに1回だけエネミーが動くようにする
+        //public bool canMoveEnemy=false; // コード実行時のフレーム処理で2フレームに1回だけエネミーが動くようにする
         //public int desiredMP; //　コマンドライン行数の目標値 
         //public int TeleporterPairId; // テレポート時のペアID
         //private Teleporter TeleportDestination; // テレポート先のテレポートマット
@@ -154,10 +154,6 @@ namespace unilab2019.Forms
         #endregion
 
         #region 追加メソッド・判別用メソッド
-        private void AddEnemy(int x, int y) => _field.Enemies.Add(new Enemy(x, y));
-
-        private void AddTeleporter(int x, int y, int pairId, bool isDestination, Types.Direction direction) => _field.Teleporters.Add(new Teleporter(x, y, pairId, isDestination, direction));
-
         private bool IsWall(int x, int y) => _field.Walls.Where(w => w.X == x && w.Y == y).Count() > 0;
 
         private bool IsEnemy(int x, int y) => _field.Enemies.Where(w => w.X == x && w.Y == y).Count() > 0;
@@ -543,30 +539,35 @@ namespace unilab2019.Forms
 
         private void CodeTimer_Tick_1(object sender, EventArgs e)
         {
-            foreach (var enemy in _field.Enemies)
-            {
-                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
-                enemy.X = enemy.MoveRoute[countEnemy % enemyAllRouteCount]["X"];
-                enemy.Y = enemy.MoveRoute[countEnemy % enemyAllRouteCount]["Y"];
-            }
             if (exeCodeStack.Count > 0) exeCodeStack.Peek().MoveNext();
-            if (IsTeleporter(_field.Player.X, _field.Player.Y))
-            {
-                TeleporterPairId = _field.Teleporters.Find(t => t.X == _field.Player.X && t.Y == _field.Player.Y).PairId;
-                TeleportDestination = _field.Teleporters.Find(t => t.PairId == TeleporterPairId && (t.X != _field.Player.X || t.Y != _field.Player.Y));
-                _field.Player.X = TeleportDestination.X;
-                _field.Player.Y = TeleportDestination.Y;
-                _field.Player.Direction = TeleportDestination.Direction;
-                _field.Player.Pedometer++;
-            }
-
-            if (_field.Player.HP <= 0)
-            {
-                MessageBox.Show("体力がなくなっちゃった！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                _initialize(stageName);
-            }
-            countEnemy++;
             if (exeCodeStack.Count == 0) codeTimer.Stop();
+            else
+            {
+
+                foreach (var enemy in _field.Enemies)
+                {
+                    var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
+                    enemy.X = enemy.MoveRoute[countEnemy % enemyAllRouteCount]["X"];
+                    enemy.Y = enemy.MoveRoute[countEnemy % enemyAllRouteCount]["Y"];
+                }
+                countEnemy++;
+                if (IsTeleporter(_field.Player.X, _field.Player.Y))
+                {
+                    TeleporterPairId = _field.Teleporters.Find(t => t.X == _field.Player.X && t.Y == _field.Player.Y).PairId;
+                    TeleportDestination = _field.Teleporters.Find(t => t.PairId == TeleporterPairId && (t.X != _field.Player.X || t.Y != _field.Player.Y));
+                    _field.Player.X = TeleportDestination.X;
+                    _field.Player.Y = TeleportDestination.Y;
+                    _field.Player.Direction = TeleportDestination.Direction;
+                    _field.Player.Pedometer++;
+                }
+
+                if (_field.Player.HP <= 0)
+                {
+                    MessageBox.Show("体力がなくなっちゃった！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _initialize(stageName);
+                }
+
+            }
         }
 
         private void startBtn_Click(object sender, EventArgs e)
