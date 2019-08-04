@@ -35,7 +35,7 @@ namespace unilab2019.Forms
         private int countEnemy;
         public float CellWidth => (float)backPictureBox.Width / _field.Width;
         public float CellHeight => (float)backPictureBox.Height / _field.Height;
-        private string stageName = "stage4";
+        private string stageName = "stage10";
         #endregion
 
         #region code
@@ -226,6 +226,7 @@ namespace unilab2019.Forms
                 if (_field.Player.Intersect(enemy))
                 {
                     _initialize(stageName);
+                    codeTimer.Stop();
                 }
             }
         }
@@ -563,6 +564,7 @@ namespace unilab2019.Forms
                 MessageBox.Show("体力がなくなっちゃった！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _initialize(stageName);
             }
+            countEnemy++;
         }
 
         private void startBtn_Click(object sender, EventArgs e)
