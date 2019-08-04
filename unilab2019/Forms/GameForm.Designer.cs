@@ -82,6 +82,7 @@
             ifBtn.TabIndex = 2;
             ifBtn.Text = "　　　";
             ifBtn.UseVisualStyleBackColor = true;
+            ifBtn.Click += new System.EventHandler(this.IfBtn_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -135,12 +136,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.258889F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1283, 782);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Click += new System.EventHandler(this.TableLayoutPanel1_Click);
             // 
             // codeListBox
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.codeListBox, 4);
             this.codeListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.codeListBox.FormattingEnabled = true;
+
             this.codeListBox.ItemHeight = 18;
             this.codeListBox.Location = new System.Drawing.Point(846, 224);
             this.codeListBox.Margin = new System.Windows.Forms.Padding(10, 16, 25, 4);
@@ -250,6 +253,7 @@
             this.forBtn.TabIndex = 1;
             this.forBtn.Text = "　　\r\n";
             this.forBtn.UseVisualStyleBackColor = true;
+            this.forBtn.Click += new System.EventHandler(this.ForBtn_Click);
             // 
             // whileBtn
             // 
@@ -264,6 +268,7 @@
             this.whileBtn.Size = new System.Drawing.Size(178, 52);
             this.whileBtn.TabIndex = 0;
             this.whileBtn.UseVisualStyleBackColor = true;
+            this.whileBtn.Click += new System.EventHandler(this.WhileBtn_Click);
             // 
             // turnRightBtn
             // 
@@ -277,6 +282,7 @@
             this.turnRightBtn.TabIndex = 6;
             this.turnRightBtn.Text = "右を向く";
             this.turnRightBtn.UseVisualStyleBackColor = false;
+            this.turnRightBtn.Click += new System.EventHandler(this.TurnRightBtn_Click);
             // 
             // turnLeftBtn
             // 
@@ -290,6 +296,7 @@
             this.turnLeftBtn.TabIndex = 5;
             this.turnLeftBtn.Text = "左を向く";
             this.turnLeftBtn.UseVisualStyleBackColor = false;
+            this.turnLeftBtn.Click += new System.EventHandler(this.TurnLeftBtn_Click);
             // 
             // goForwardBtn
             // 
@@ -304,6 +311,7 @@
             this.goForwardBtn.TabIndex = 4;
             this.goForwardBtn.Text = "前に進む";
             this.goForwardBtn.UseVisualStyleBackColor = false;
+            this.goForwardBtn.Click += new System.EventHandler(this.GoForwardBtn_Click);
             // 
             // stopBtn
             // 
@@ -318,6 +326,7 @@
             this.stopBtn.TabIndex = 22;
             this.stopBtn.Text = "止まる";
             this.stopBtn.UseVisualStyleBackColor = false;
+            this.stopBtn.Click += new System.EventHandler(this.StopBtn_Click);
             // 
             // deleteOneBtn
             // 
@@ -386,6 +395,7 @@
             this.backPictureBox.Size = new System.Drawing.Size(783, 549);
             this.backPictureBox.TabIndex = 27;
             this.backPictureBox.TabStop = false;
+            this.backPictureBox.Click += new System.EventHandler(this.BackPictureBox_Click);
             // 
             // numOfLines
             // 
