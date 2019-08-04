@@ -539,7 +539,6 @@ namespace unilab2019.Forms
         }
 
 
-        #region スクリプト実行
         private void codeTimer_Tick(object sender, EventArgs e)
         {
             foreach (var enemy in _field.Enemies)
