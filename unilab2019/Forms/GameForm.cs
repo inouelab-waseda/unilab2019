@@ -32,6 +32,8 @@ namespace unilab2019.Forms
 
         public float CellWidth => (float)backPictureBox.Width / _field.Width;
         public float CellHeight => (float)backPictureBox.Height / _field.Height;
+        public float initialCellWidth;
+        public float initialCellHeight;
         #endregion
 
         #region code
@@ -109,10 +111,11 @@ namespace unilab2019.Forms
             _field = ReadFieldJson($"{fieldName}");
             codeListBox.Items.Clear();
             currentStage.Text =fieldName;
-
+            initialCellHeight = CellHeight;
+            initialCellWidth = CellWidth;
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
+                if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, initialCellWidth, initialCellHeight);
             }
             globalTimer.Start();
             codeTimer.Start();
@@ -229,7 +232,7 @@ namespace unilab2019.Forms
             
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+                if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, initialCellWidth, initialCellHeight);
             }
             Refresh();
             oneUpCount.Text = $"残機: {_field.Player.HP}";
