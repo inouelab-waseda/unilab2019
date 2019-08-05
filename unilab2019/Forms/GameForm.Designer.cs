@@ -354,6 +354,7 @@
             this.deleteAllBtn.TabIndex = 8;
             this.deleteAllBtn.Text = "全て削除";
             this.deleteAllBtn.UseVisualStyleBackColor = false;
+            this.deleteAllBtn.Click += new System.EventHandler(this.DeleteAllBtn_Click);
             // 
             // startBtn
             // 

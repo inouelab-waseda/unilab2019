@@ -36,6 +36,9 @@ namespace unilab2019.Forms
         public float CellWidth => (float)backPictureBox.Width / _field.Width;
         public float CellHeight => (float)backPictureBox.Height / _field.Height;
         private string stageName = "stage4";
+        private List<int> _initial_player_position;
+        private List<List<int>> _initial_enemy_position;
+
         #endregion
 
         #region code
@@ -113,6 +116,14 @@ namespace unilab2019.Forms
             _field = ReadFieldJson($"{fieldName}");
             codeListBox.Items.Clear();
             currentStage.Text =fieldName;
+            _initial_player_position = new List<int> { _field.Player.X, _field.Player.Y };
+            _initial_enemy_position = new List<List<int>> { };
+            foreach (var enemy in _field.Enemies)
+            {
+                var tmp = new List<int>{enemy.X, enemy.Y};
+                _initial_enemy_position.Add(tmp);
+            }
+
 
 
             _graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
@@ -520,11 +531,6 @@ namespace unilab2019.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void StartBtn_Click(object sender, EventArgs e)
-        {
-            CarryOutScript(code);
-            throw new DivideByZeroException();
-        }
 
         private void BackPictureBox_Click(object sender, EventArgs e)
         {
@@ -573,8 +579,21 @@ namespace unilab2019.Forms
         private void startBtn_Click(object sender, EventArgs e)
         {
             countEnemy = 0;
+            _field.Player.X = _initial_player_position[0];
+            _field.Player.Y = _initial_player_position[1];
+            foreach (var enemy in _field.Enemies)
+            {
+                var tmp = new List<int> { enemy.X, enemy.Y };
+                _initial_enemy_position.Add(tmp);
+            }
             exeCodeStack.Push(CarryOutScript(code));
             codeTimer.Start();
+        }
+        private void DeleteAllBtn_Click(object sender, EventArgs e)
+        {
+            code.Clear();
+            codeListBox.Items.Clear();
+
         }
         #region スクリプト実行
         //
@@ -809,6 +828,7 @@ namespace unilab2019.Forms
             exeCodeStack.Pop();
             yield break;
         }
+
 
 
 
