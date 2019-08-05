@@ -225,6 +225,10 @@ namespace unilab2019.Forms
                 codeTimer.Stop();
                 //globalTimer.Stop();
                 MessageBox.Show("ゴール！");
+
+                var stage_table = new Dictionary<string, int>();
+                stage_table.Add("stage1", calc_score());
+                int score_result = stage_table.Count;
             }
         }
         private void _update()
@@ -273,8 +277,15 @@ namespace unilab2019.Forms
             oneUpCount.Text = $"残機: {_field.Player.HP}";
             numOfLines.Text = $"行数: {codeListBox.Items.Count}";
             countTime.Text = $"時間: {_field.Player.Pedometer}";
-        }
 
+        }
+        public int calc_score()
+        {
+            int score_Result = 0;
+            score_Result = 100 + (_field.Player.Coins) * 10 - _field.Player.HP - (codeListBox.Items.Count) * 2;
+            return score_Result;
+        }
+        
         private void TextboxCaretControl(object sender, MouseEventArgs e)
         {
 
