@@ -9,7 +9,6 @@ namespace Unilab2019.Objects.FieldItems
 {
     class oneup : GameObject
     {
-        public override bool CanMove { get; } = false;
         public oneup(int x, int y) : base(x, y)
         {
             for (int i = 0; i < Bitmaps.Length; i++)

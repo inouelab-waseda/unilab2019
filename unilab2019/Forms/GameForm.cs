@@ -219,13 +219,6 @@ namespace unilab2019.Forms
         {
             _draw();
 
-            // ゴールに着いたらタイマーを止める
-            if (_field.Player.Intersect(_field.Goal))
-            {
-                codeTimer.Stop();
-                //globalTimer.Stop();
-                MessageBox.Show("ゴール！");
-            }
         }
         private void _update()
         {
@@ -258,6 +251,13 @@ namespace unilab2019.Forms
                     oneup.IsAlive = false;
                 }
             }
+            // ゴールに着いたらタイマーを止める
+            if (_field.Player.Intersect(_field.Goal))
+            {
+                codeTimer.Stop();
+                //globalTimer.Stop();
+                MessageBox.Show("ゴール！");
+            }
         }
         private void _draw()
         {
@@ -266,7 +266,8 @@ namespace unilab2019.Forms
             
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, initialCellWidth, initialCellHeight);
+                if (obj != null && obj.CanMove && obj.IsAlive) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+
             }
             Refresh();
             coinCount.Text = $"コイン数:{_field.Player.Coins}";
@@ -275,6 +276,31 @@ namespace unilab2019.Forms
             countTime.Text = $"時間: {_field.Player.Pedometer}";
         }
 
+        private void _reset()
+        {
+            countEnemy = 0;
+            _field.Player.X = _initial_player_position[0];
+            _field.Player.Y = _initial_player_position[1];
+            _field.Player.Direction = _initial_player_direction;
+            _field.Player.Coins = 0;
+            _field.Player.HP = 1;
+            _field.Player.Pedometer = 0;
+            codeTimer.Stop();
+            foreach (var enemy in _field.Enemies)
+            {
+                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
+                enemy.X = enemy.MoveRoute[enemyAllRouteCount - 1]["X"];
+                enemy.Y = enemy.MoveRoute[enemyAllRouteCount - 1]["Y"];
+            }
+            foreach (var coin in _field.Coins)
+            {
+                coin.IsAlive = true;
+            }
+            foreach (var oneup in _field.Oneups)
+            {
+                oneup.IsAlive = true;
+            }
+        }
         private void TextboxCaretControl(object sender, MouseEventArgs e)
         {
 
@@ -639,28 +665,7 @@ namespace unilab2019.Forms
 
         private void startBtn_Click(object sender, EventArgs e)
         {
-            countEnemy = 0;
-            _field.Player.X = _initial_player_position[0];
-            _field.Player.Y = _initial_player_position[1];
-            _field.Player.Direction = _initial_player_direction;
-            _field.Player.Coins = 0;
-            _field.Player.HP = 1;
-            _field.Player.Pedometer = 0;
-
-            foreach (var enemy in _field.Enemies)
-            {
-                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
-                enemy.X = enemy.MoveRoute[enemyAllRouteCount-1]["X"];
-                enemy.Y = enemy.MoveRoute[enemyAllRouteCount-1]["Y"];
-            }
-            foreach (var coin in _field.Coins)
-            {
-                coin.IsAlive = true;
-            }
-            foreach (var oneup in _field.Oneups)
-            {
-                oneup.IsAlive = true;
-            }
+            _reset();
             exeCodeStack.Push(CarryOutScript(code));
             codeTimer.Start();
         }
@@ -969,17 +974,7 @@ namespace unilab2019.Forms
 
         private void ResetBtn_Click(object sender, EventArgs e)
         {
-            countEnemy = 0;
-            _field.Player.X = _initial_player_position[0];
-            _field.Player.Y = _initial_player_position[1];
-            _field.Player.Direction = _initial_player_direction;
-            codeTimer.Stop();
-            foreach (var enemy in _field.Enemies)
-            {
-                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
-                enemy.X = enemy.MoveRoute[enemyAllRouteCount - 1]["X"];
-                enemy.Y = enemy.MoveRoute[enemyAllRouteCount - 1]["Y"];
-            }
+            _reset();
         }
 
 
