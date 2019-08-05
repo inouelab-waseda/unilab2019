@@ -81,6 +81,7 @@
             ifBtn.TabIndex = 2;
             ifBtn.Text = "　　　";
             ifBtn.UseVisualStyleBackColor = true;
+            ifBtn.Click += new System.EventHandler(this.IfBtn_Click);
             // 
             // globalTimer
             // 
@@ -139,6 +140,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.658119F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1923, 1054);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Click += new System.EventHandler(this.TableLayoutPanel1_Click);
             // 
             // codeListBox
             // 
@@ -181,11 +183,25 @@
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(ifBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(1123, 95);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
+            this.panel2.Location = new System.Drawing.Point(503, 11);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(341, 78);
+            this.panel2.Size = new System.Drawing.Size(106, 43);
             this.panel2.TabIndex = 24;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "壁",
+            "敵",
+            "道"});
+            this.comboBox2.Location = new System.Drawing.Point(55, 23);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(18, 20);
+            this.comboBox2.TabIndex = 4;
             // 
             // comboBox1
             // 
@@ -197,8 +213,8 @@
             "後ろ",
             "右",
             "左"});
-            this.comboBox1.Location = new System.Drawing.Point(175, 2);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.comboBox1.Location = new System.Drawing.Point(6, 22);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(84, 36);
             this.comboBox1.TabIndex = 3;
@@ -261,6 +277,7 @@
             this.forBtn.TabIndex = 1;
             this.forBtn.Text = "　　\r\n";
             this.forBtn.UseVisualStyleBackColor = true;
+            this.forBtn.Click += new System.EventHandler(this.ForBtn_Click);
             // 
             // whileBtn
             // 
@@ -275,6 +292,7 @@
             this.whileBtn.Size = new System.Drawing.Size(341, 56);
             this.whileBtn.TabIndex = 0;
             this.whileBtn.UseVisualStyleBackColor = true;
+            this.whileBtn.Click += new System.EventHandler(this.WhileBtn_Click);
             // 
             // turnRightBtn
             // 
@@ -289,6 +307,7 @@
             this.turnRightBtn.TabIndex = 6;
             this.turnRightBtn.Text = "右を向く";
             this.turnRightBtn.UseVisualStyleBackColor = false;
+            this.turnRightBtn.Click += new System.EventHandler(this.TurnRightBtn_Click);
             // 
             // turnLeftBtn
             // 
@@ -303,6 +322,7 @@
             this.turnLeftBtn.TabIndex = 5;
             this.turnLeftBtn.Text = "左を向く";
             this.turnLeftBtn.UseVisualStyleBackColor = false;
+            this.turnLeftBtn.Click += new System.EventHandler(this.TurnLeftBtn_Click);
             // 
             // goForwardBtn
             // 
@@ -318,6 +338,7 @@
             this.goForwardBtn.TabIndex = 4;
             this.goForwardBtn.Text = "前に進む";
             this.goForwardBtn.UseVisualStyleBackColor = false;
+            this.goForwardBtn.Click += new System.EventHandler(this.GoForwardBtn_Click);
             // 
             // stopBtn
             // 
@@ -333,6 +354,7 @@
             this.stopBtn.TabIndex = 22;
             this.stopBtn.Text = "止まる";
             this.stopBtn.UseVisualStyleBackColor = false;
+            this.stopBtn.Click += new System.EventHandler(this.StopBtn_Click);
             // 
             // deleteOneBtn
             // 
@@ -363,6 +385,7 @@
             this.deleteAllBtn.TabIndex = 8;
             this.deleteAllBtn.Text = "全て削除";
             this.deleteAllBtn.UseVisualStyleBackColor = false;
+            this.deleteAllBtn.Click += new System.EventHandler(this.DeleteAllBtn_Click);
             // 
             // startBtn
             // 
@@ -379,12 +402,12 @@
             this.startBtn.TabIndex = 10;
             this.startBtn.Text = "実行！";
             this.startBtn.UseVisualStyleBackColor = false;
+            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
             // resetBtn
             // 
             this.resetBtn.BackColor = System.Drawing.Color.LightSalmon;
             this.resetBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resetBtn.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.resetBtn.Location = new System.Drawing.Point(1611, 792);
             this.resetBtn.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
@@ -411,6 +434,7 @@
             this.backPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.backPictureBox.TabIndex = 27;
             this.backPictureBox.TabStop = false;
+            this.backPictureBox.Click += new System.EventHandler(this.BackPictureBox_Click);
             // 
             // numOfLines
             // 
@@ -507,6 +531,15 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 29;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
+            // 
+            // globalTimer
+            // 
+            this.globalTimer.Tick += new System.EventHandler(this.globalTimer_Tick);
+            // 
+            // codeTimer
+            // 
+            this.codeTimer.Tick += new System.EventHandler(this.CodeTimer_Tick_1);
             // 
             // GameForm
             // 

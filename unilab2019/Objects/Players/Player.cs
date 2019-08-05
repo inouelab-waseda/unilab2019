@@ -19,7 +19,9 @@ namespace Unilab2019.Objects.Player
             Bitmaps[(int)Direction.Right] = GetBitmap("Player_Right.jpg");
             Bitmaps[(int)Direction.Left] = GetBitmap("Player_Left.jpg");
         }
-        public int HP { get; set; }
+        public int HP { get; set; } = 1;
+
+        public int Coins { get; set; } = 0;
 
         public int MaxHP { get; set; }
 

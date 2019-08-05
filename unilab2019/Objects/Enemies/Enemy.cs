@@ -18,6 +18,7 @@ namespace Unilab2019.Objects.Enemies
             Bitmaps[(int)Direction.Right] = GetBitmap("Enemy_right.jpg");
             Bitmaps[(int)Direction.Left] = GetBitmap("Enemy_left.jpg");
         }
+        public List<Dictionary<string,int>> MoveRoute { get; set; }
         public int HP { get; set; }
 
         public int MaxHP { get; set; }
