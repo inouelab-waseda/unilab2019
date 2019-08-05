@@ -136,6 +136,67 @@ namespace unilab2019.Forms
         }
 
         private void TableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            var score_stage1 = gameForm.calc_score();
+            textBox1.Text = score_stage1.ToString();
+        }
+
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            var score_stage2 = gameForm.calc_score();
+            textBox1.Text = score_stage2.ToString();
+        }
+
+        private void TextBox3_TextChanged(object sender, EventArgs e)
+        {
+            var score_stage3 = gameForm.calc_score();
+            textBox1.Text = score_stage3.ToString();
+        }
+
+        private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+            var score_stage4 = gameForm.calc_score();
+            textBox1.Text = score_stage4.ToString();
+        }
+
+        private void TextBox5_TextChanged(object sender, EventArgs e)
+        {
+            var score_stage5 = gameForm.calc_score();
+            textBox1.Text = score_stage5.ToString();
+        }
+
+        private void TextBox6_TextChanged(object sender, EventArgs e)
+        {
+            var score_stage6 = gameForm.calc_score();
+            textBox1.Text = score_stage6.ToString();
+        }
+
+        private void TextBox7_TextChanged(object sender, EventArgs e)
+        {
+            var score_stage7 = gameForm.calc_score();
+            textBox1.Text = score_stage7.ToString();
+        }
+
+        private void TextBox8_TextChanged(object sender, EventArgs e)
+        {
+            var score_stage8 = gameForm.calc_score();
+            textBox1.Text = score_stage8.ToString();
+        }
+
+        private void TextBox9_TextChanged(object sender, EventArgs e)
+        {
+            var score_stage9 = gameForm.calc_score();
+            textBox1.Text = score_stage9.ToString();
+        }
+
+        private void TextBox10_TextChanged(object sender, EventArgs e)
+        {
+            var score_stage10 = gameForm.calc_score();
+            textBox1.Text = score_stage10.ToString();
+        }
+
+        private void TextBox11_TextChanged(object sender, EventArgs e)
         {
 
         }
