@@ -39,6 +39,8 @@ namespace unilab2019.Forms
         Selectstage selectStage;
         private List<int> _initial_player_position;
 
+        public float initialCellWidth;
+        public float initialCellHeight;
         #endregion
 
         #region code
@@ -67,6 +69,7 @@ namespace unilab2019.Forms
         /// 全てのステージをクリアしたかどうか
         /// </summary>
         public bool isAllGoaledFlag;
+        public Types.Direction _initial_player_direction;
         #region old member valiable
         //public Dictionary<string, int> depthDictionary; // ステージごとのコードのdepthを入れる(おそらく途中から再開するため)
         /// <summary>
@@ -104,7 +107,7 @@ namespace unilab2019.Forms
             backPictureBox.BackgroundImage = new Bitmap(backPictureBox.Width, backPictureBox.Height);
             _graphicsBack = Graphics.FromImage(backPictureBox.BackgroundImage);
             _graphicsBack.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            //_graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
+            _graphicsBack.Clear(Color.FromArgb(255, 181, 229, 29));
 
             globalTimer.Interval = (int)(1000 / (double)_fps);
             codeTimer.Interval = 333;
@@ -118,20 +121,19 @@ namespace unilab2019.Forms
             codeListBox.Items.Clear();
             currentStage.Text =fieldName;
             _initial_player_position = new List<int> { _field.Player.X, _field.Player.Y };
+            _initial_player_direction = _field.Player.Direction;
             //_initial_enemy_position = new List<List<int>> { };
             foreach (var enemy in _field.Enemies)
             {
                 var tmp = new List<int>{enemy.X, enemy.Y};
                 //_initial_enemy_position.Add(tmp);
             }
-
-
-
             _graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
-
+            initialCellHeight = CellHeight;
+            initialCellWidth = CellWidth;
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null &&!obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
+                if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, initialCellWidth, initialCellHeight);
             }
             globalTimer.Start();
         }
@@ -215,26 +217,22 @@ namespace unilab2019.Forms
 
         private void globalTimer_Tick(object sender, EventArgs e)
         {
-            _update();
             _draw();
 
-            // ゴールに着いたらタイマーを止める
-            if (_field.Player.Intersect(_field.Goal))
-            {
-                codeTimer.Stop();
-                globalTimer.Stop();
-                MessageBox.Show("ゴール！");
-            }
         }
         private void _update()
         {
             foreach (var enemy in _field.Enemies)
             {
-                if (_field.Player.Intersect(enemy))
+                if (_field.Player.Intersect(enemy)&&_field.Player.HP==0)
                 {
                     codeTimer.Stop();
                     _initialize(stageName);
                     codeTimer.Stop();
+                }
+                else if(_field.Player.Intersect(enemy))
+                {
+                    _field.Player.HP--;
                 }
             }
             foreach (var coin in _field.Coins)
@@ -253,13 +251,23 @@ namespace unilab2019.Forms
                     oneup.IsAlive = false;
                 }
             }
+            // ゴールに着いたらタイマーを止める
+            if (_field.Player.Intersect(_field.Goal))
+            {
+                codeTimer.Stop();
+                //globalTimer.Stop();
+                MessageBox.Show("ゴール！");
+            }
         }
         private void _draw()
         {
             _graphicsFore.Clear(Color.Transparent);
+            
+            
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+                if (obj != null && obj.CanMove && obj.IsAlive) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+
             }
             Refresh();
             coinCount.Text = $"コイン数:{_field.Player.Coins}";
@@ -267,6 +275,43 @@ namespace unilab2019.Forms
             numOfLines.Text = $"行数: {codeListBox.Items.Count}";
             countTime.Text = $"時間: {_field.Player.Pedometer}";
         }
+
+        private void _reset()
+        {
+            countEnemy = 0;
+            _field.Player.X = _initial_player_position[0];
+            _field.Player.Y = _initial_player_position[1];
+            _field.Player.Direction = _initial_player_direction;
+            _field.Player.Coins = 0;
+            _field.Player.HP = 1;
+            _field.Player.Pedometer = 0;
+            codeTimer.Stop();
+            foreach (var enemy in _field.Enemies)
+            {
+                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
+                enemy.X = enemy.MoveRoute[enemyAllRouteCount - 1]["X"];
+                enemy.Y = enemy.MoveRoute[enemyAllRouteCount - 1]["Y"];
+            }
+            foreach (var coin in _field.Coins)
+            {
+                coin.IsAlive = true;
+            }
+            foreach (var oneup in _field.Oneups)
+            {
+                oneup.IsAlive = true;
+            }
+        }
+        private void TextboxCaretControl(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         #region button_event
         //{}を含む部分はindentは増加しているが、codelistboxには反映させない。
@@ -409,6 +454,7 @@ namespace unilab2019.Forms
                     tmp.Direction = Types.Direction.Backward;
                     break;
                 default:
+                    exeCodeStack.Clear();
                     MessageBox.Show("方向が変だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     add_flag = false;
                     break;
@@ -427,6 +473,7 @@ namespace unilab2019.Forms
                     tmp.Obj = Types.Obj.Road;
                     break;
                 default:
+                    exeCodeStack.Clear();
                     MessageBox.Show("対象が変だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     add_flag = false;
                     break;
@@ -481,6 +528,7 @@ namespace unilab2019.Forms
             }
             catch
             {
+                exeCodeStack.Clear();
                 MessageBox.Show("変な値を入れないで！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 add_flag = false;
             }
@@ -589,24 +637,19 @@ namespace unilab2019.Forms
 
                 if (_field.Player.HP <= 0)
                 {
+                    exeCodeStack.Clear();
                     MessageBox.Show("体力がなくなっちゃった！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    _initialize(stageName);
+                    
                 }
 
             }
+            _update();
+
         }
 
         private void startBtn_Click(object sender, EventArgs e)
         {
-            countEnemy = 0;
-            _field.Player.X = _initial_player_position[0];
-            _field.Player.Y = _initial_player_position[1];
-            foreach (var enemy in _field.Enemies)
-            {
-                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
-                enemy.X = enemy.MoveRoute[enemyAllRouteCount-1]["X"];
-                enemy.Y = enemy.MoveRoute[enemyAllRouteCount-1]["Y"];
-            }
+            _reset();
             exeCodeStack.Push(CarryOutScript(code));
             codeTimer.Start();
         }
@@ -614,9 +657,9 @@ namespace unilab2019.Forms
         {
             code.Clear();
             codeListBox.Items.Clear();
+            //codeTimer.Stop();
 
         }
-
         private void DeleteOneLineBtn_Click(object sender, EventArgs e)
         {
             var selected = codeListBox.SelectedIndex;
@@ -700,8 +743,10 @@ namespace unilab2019.Forms
                     case Types.Instruction.Forward:
                         if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
                         {
+                            exeCodeStack.Clear();
                             MessageBox.Show("前は壁だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            globalTimer.Stop();
+                            //codeTimer.Stop();
+                            //globalTimer.Stop();
                         }
                         else
                         {
@@ -757,9 +802,10 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
-                        
+
+
                         //もし後ろが壁なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Backward)
                         {
@@ -768,8 +814,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし右が壁なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Right)
@@ -779,8 +826,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし左が壁なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Left)
@@ -790,8 +838,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //敵に関する条件分岐
                         //もし前が敵なら
@@ -802,8 +851,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし後ろが敵なら
                         if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Backward)
@@ -813,8 +863,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし右が敵なら
                         if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Right)
@@ -824,8 +875,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし左が敵なら
                         if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Left)
@@ -835,8 +887,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //道に関する条件分岐
                         //もし前が道なら
@@ -847,8 +900,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし後ろが道なら
                         if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Backward)
@@ -858,9 +912,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
-                        
+
                         //もし右が道なら
                         if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Right)
                         {
@@ -869,8 +923,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
 
                         //もし左が道なら
                         if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Left)
@@ -880,9 +935,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
-
+                        i+=if_subcode.Count+1;//読まなかった分・読んでpushした分を飛ばす
                         a = 1;
                         break;
 
@@ -944,10 +999,11 @@ namespace unilab2019.Forms
                         }
 
                         //checkcodeをかける（無限ループの判定）
-                        CheckCode(while_subcode);
-                        exeCodeStack.Push(CarryOutScript(while_subcode));
-                        CheckCode(while_subcode_2);
-                        exeCodeStack.Push(CarryOutScript(while_subcode_2));
+                        if(CheckCode(while_subcode)&& CheckCode(while_subcode_2))
+                        {
+                            exeCodeStack.Push(CarryOutScript(while_subcode));
+                            exeCodeStack.Push(CarryOutScript(while_subcode_2));
+                        }
                         canMoveNextCode = true;
                         break;
 
@@ -966,18 +1022,27 @@ namespace unilab2019.Forms
             selectStage.Show();
         }
 
+        private void ResetBtn_Click(object sender, EventArgs e)
+        {
+            _reset();
+        }
+
 
 
 
         //// コードをチェック
         //// while文を使ったときに無限ループするかどうかを判定
-        private void CheckCode(List<Code> code)
+        private bool CheckCode(List<Code> code)
         {
             if (code[0].Instruction == Types.Instruction.WhileCode &&  code[1].Instruction == Types.Instruction.End)
             {
+                exeCodeStack.Clear();
                 MessageBox.Show("無限ループしてしまうよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                globalTimer.Stop();
+                codeTimer.Stop();
+                return false;
+                //globalTimer.Stop();
             }
+            return true;
 
         }
 
