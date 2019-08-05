@@ -39,6 +39,8 @@ namespace unilab2019.Forms
         Selectstage selectStage;
         private List<int> _initial_player_position;
 
+        public float initialCellWidth;
+        public float initialCellHeight;
         #endregion
 
         #region code
@@ -105,7 +107,7 @@ namespace unilab2019.Forms
             backPictureBox.BackgroundImage = new Bitmap(backPictureBox.Width, backPictureBox.Height);
             _graphicsBack = Graphics.FromImage(backPictureBox.BackgroundImage);
             _graphicsBack.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            //_graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
+            _graphicsBack.Clear(Color.FromArgb(255, 181, 229, 29));
 
             globalTimer.Interval = (int)(1000 / (double)_fps);
             codeTimer.Interval = 333;
@@ -126,14 +128,12 @@ namespace unilab2019.Forms
                 var tmp = new List<int>{enemy.X, enemy.Y};
                 //_initial_enemy_position.Add(tmp);
             }
-
-
-
             _graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
-
+            initialCellHeight = CellHeight;
+            initialCellWidth = CellWidth;
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null &&!obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
+                if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, initialCellWidth, initialCellHeight);
             }
             globalTimer.Start();
         }
@@ -262,9 +262,12 @@ namespace unilab2019.Forms
         private void _draw()
         {
             _graphicsFore.Clear(Color.Transparent);
+            
+            
             foreach (var obj in _field.GameObjectList())
             {
                 if (obj != null && obj.CanMove && obj.IsAlive) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+
             }
             Refresh();
             coinCount.Text = $"コイン数:{_field.Player.Coins}";
@@ -298,6 +301,34 @@ namespace unilab2019.Forms
                 oneup.IsAlive = true;
             }
         }
+        private void TextboxCaretControl(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResetBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+        #region スクリプト実行
+        // コードを実行
+        // 何を実行するかcodeに入れておく
+        // 例： code = {"move", "if", "1", "for", "10", "move", "end", "end"}
+        // if文は { "if", "条件文の種類" } で表す
+        // 例： {"if", "1"}
+        // for文は {"for", "ループ回数"} で表す
+        // 例： {"for", "10"}
+        // "if"と"for"は"end"で閉じておく
+        //private IEnumerator<string> CarryOutScript()
+        //{
+        //    // 全体で使う変数
+        //    //int i; // 現在実行しているコードのindex
+        //    //string c; // i番目のコード
 
         #region button_event
         //{}を含む部分はindentは増加しているが、codelistboxには反映させない。
@@ -856,7 +887,7 @@ namespace unilab2019.Forms
                             }
                             else canMoveNextCode = false;
                         }
-                        if (!canMoveNextCode) i+=if_subcode.Count+1;//読まなかった分を飛ばす
+                        i+=if_subcode.Count+1;//読まなかった分・読んでpushした分を飛ばす
                         a = 1;
                         break;
 

@@ -160,6 +160,8 @@
     <EmbeddedResource Include="Images\Wall.jpg" />
     <EmbeddedResource Include="Images\character_cookie.png" />
     <EmbeddedResource Include="Images\coin_medal_gold.png" />
+    <Content Include="Images\back.png" />
+    <EmbeddedResource Include="Images\background.png" />
     <Content Include="Images\ずっと.gif" />
     <Content Include="Images\もし.gif" />
     <Content Include="Images\ステージ選択.gif" />
