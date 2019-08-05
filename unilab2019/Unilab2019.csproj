@@ -66,6 +66,8 @@
     </Compile>
     <Compile Include="Helpers\Types.cs" />
     <Compile Include="Images\CodeFile1.cs" />
+    <Compile Include="Objects\FieldObjects\oneup.cs" />
+    <Compile Include="Objects\FieldObjects\Coin.cs" />
     <Compile Include="Objects\Enemies\Enemy.cs" />
     <Compile Include="Objects\FieldObjects\Teleporter.cs" />
     <Compile Include="Objects\FieldObjects\Wall.cs" />
@@ -156,6 +158,8 @@
     <EmbeddedResource Include="Images\Teleporter_out_6_right.jpg" />
     <EmbeddedResource Include="Images\Teleporter_out_6_up.jpg" />
     <EmbeddedResource Include="Images\Wall.jpg" />
+    <EmbeddedResource Include="Images\character_cookie.png" />
+    <EmbeddedResource Include="Images\coin_medal_gold.png" />
     <Content Include="Images\ずっと.gif" />
     <Content Include="Images\もし.gif" />
     <Content Include="Images\ステージ選択.gif" />
