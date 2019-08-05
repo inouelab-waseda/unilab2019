@@ -96,7 +96,7 @@ namespace unilab2019.Forms
             backPictureBox.BackgroundImage = new Bitmap(backPictureBox.Width, backPictureBox.Height);
             _graphicsBack = Graphics.FromImage(backPictureBox.BackgroundImage);
             _graphicsBack.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            //_graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
+            _graphicsBack.Clear(Color.FromArgb(255, 181, 229, 29));
 
             globalTimer.Interval = (int)(1000 / (double)_fps);
             codeTimer.Interval = 333;
@@ -110,12 +110,9 @@ namespace unilab2019.Forms
             codeListBox.Items.Clear();
             currentStage.Text =fieldName;
 
-
-            _graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
-
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null &&!obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
+                if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
             }
             globalTimer.Start();
             codeTimer.Start();
@@ -228,6 +225,8 @@ namespace unilab2019.Forms
         private void _draw()
         {
             _graphicsFore.Clear(Color.Transparent);
+            
+            
             foreach (var obj in _field.GameObjectList())
             {
                 if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, CellWidth, CellHeight);

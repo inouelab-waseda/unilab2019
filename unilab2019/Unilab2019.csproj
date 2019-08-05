@@ -157,6 +157,7 @@
     <EmbeddedResource Include="Images\Teleporter_out_6_up.jpg" />
     <EmbeddedResource Include="Images\Wall.jpg" />
     <Content Include="Images\back.png" />
+    <EmbeddedResource Include="Images\background.png" />
     <Content Include="Images\ずっと.gif" />
     <Content Include="Images\もし.gif" />
     <Content Include="Images\ステージ選択.gif" />
