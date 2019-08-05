@@ -135,6 +135,7 @@ namespace unilab2019.Forms
             gameForm.Show();
         }
 
+        private void TableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
         private void TextBox1_TextChanged(object sender, EventArgs e)
         {
             var score_stage1 = gameForm.calc_score();
