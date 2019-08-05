@@ -52,6 +52,24 @@
   <ItemGroup>
     <Compile Include="CustomControls\CodeFile1.cs" />
     <Compile Include="Fields\Fields.cs" />
+    <Compile Include="Forms\Clear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Clear.Designer.cs">
+      <DependentUpon>Clear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StageClear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StageClear.Designer.cs">
+      <DependentUpon>StageClear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StartForm.Designer.cs">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,11 +94,20 @@
     <Compile Include="Objects\Players\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Clear.resx">
+      <DependentUpon>Clear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StageClear.resx">
+      <DependentUpon>StageClear.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\selectstage.resx">
       <DependentUpon>Selectstage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StartForm.resx">
+      <DependentUpon>StartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -162,6 +189,10 @@
     <EmbeddedResource Include="Images\coin_medal_gold.png" />
     <Content Include="Images\ずっと.gif" />
     <Content Include="Images\もし.gif" />
+    <Content Include="Images\クリア画面.jpg" />
+    <Content Include="Images\ゴール画面.jpg" />
+    <Content Include="Images\スタートボタン.png" />
+    <Content Include="Images\スタート画面.png" />
     <Content Include="Images\ステージ選択.gif" />
     <Content Include="Images\繰り返し.gif" />
   </ItemGroup>

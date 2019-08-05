@@ -898,6 +898,21 @@ namespace unilab2019.Forms
             selectStage.Show();
         }
 
+        private void TextboxCaretControl(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void CountTime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OneUpCount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 

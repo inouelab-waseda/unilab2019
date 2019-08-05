@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button ifBtn;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
+            this.globalTimer = new System.Windows.Forms.Timer(this.components);
+            this.codeTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.codeListBox = new System.Windows.Forms.ListBox();
             this.currentStage = new System.Windows.Forms.TextBox();
@@ -55,8 +57,6 @@
             this.oneUpCount = new System.Windows.Forms.TextBox();
             this.coinCount = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.globalTimer = new System.Windows.Forms.Timer(this.components);
-            this.codeTimer = new System.Windows.Forms.Timer(this.components);
             ifBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,23 +66,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // ifBtn
+            // globalTimer
             // 
-            ifBtn.AutoSize = true;
-            ifBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            ifBtn.BackgroundImage = global::unilab2019.Properties.Resources.もし1;
-            ifBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            ifBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            ifBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            ifBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            ifBtn.Location = new System.Drawing.Point(0, 0);
-            ifBtn.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            ifBtn.Name = "ifBtn";
-            ifBtn.Size = new System.Drawing.Size(180, 63);
-            ifBtn.TabIndex = 2;
-            ifBtn.Text = "　　　";
-            ifBtn.UseVisualStyleBackColor = true;
-            ifBtn.Click += new System.EventHandler(this.IfBtn_Click);
+            this.globalTimer.Tick += new System.EventHandler(this.globalTimer_Tick);
+            // 
+            // codeTimer
+            // 
+            this.codeTimer.Tick += new System.EventHandler(this.CodeTimer_Tick_1);
             // 
             // tableLayoutPanel1
             // 
@@ -212,6 +202,24 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(32, 26);
             this.comboBox1.TabIndex = 3;
+            // 
+            // ifBtn
+            // 
+            ifBtn.AutoSize = true;
+            ifBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            ifBtn.BackgroundImage = global::unilab2019.Properties.Resources.もし1;
+            ifBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            ifBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            ifBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            ifBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            ifBtn.Location = new System.Drawing.Point(0, 0);
+            ifBtn.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            ifBtn.Name = "ifBtn";
+            ifBtn.Size = new System.Drawing.Size(180, 63);
+            ifBtn.TabIndex = 2;
+            ifBtn.Text = "　　　";
+            ifBtn.UseVisualStyleBackColor = true;
+            ifBtn.Click += new System.EventHandler(this.IfBtn_Click);
             // 
             // panel3
             // 
@@ -432,6 +440,7 @@
             this.countTime.TabStop = false;
             this.countTime.Text = "時間：";
             this.countTime.Click += new System.EventHandler(this.TextboxCaretControl);
+            this.countTime.TextChanged += new System.EventHandler(this.CountTime_TextChanged);
             this.countTime.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
             this.countTime.MouseEnter += new System.EventHandler(this.TextboxCursorControl);
             this.countTime.MouseLeave += new System.EventHandler(this.TextboxCursorControl);
@@ -452,6 +461,7 @@
             this.oneUpCount.TabStop = false;
             this.oneUpCount.Text = "残機：";
             this.oneUpCount.Click += new System.EventHandler(this.TextboxCaretControl);
+            this.oneUpCount.TextChanged += new System.EventHandler(this.OneUpCount_TextChanged);
             this.oneUpCount.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
             this.oneUpCount.MouseEnter += new System.EventHandler(this.TextboxCursorControl);
             this.oneUpCount.MouseLeave += new System.EventHandler(this.TextboxCursorControl);
@@ -492,14 +502,6 @@
             this.pictureBox2.TabIndex = 29;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
-            // 
-            // globalTimer
-            // 
-            this.globalTimer.Tick += new System.EventHandler(this.globalTimer_Tick);
-            // 
-            // codeTimer
-            // 
-            this.codeTimer.Tick += new System.EventHandler(this.CodeTimer_Tick_1);
             // 
             // GameForm
             // 
