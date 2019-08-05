@@ -300,6 +300,11 @@ namespace unilab2019.Forms
             foreach (var enemy in _field.Enemies)
             {
                 var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
+                if (enemyAllRouteCount > 1)
+                {
+                    enemy.X = enemy.MoveRoute[enemyAllRouteCount - 2]["X"];
+                    enemy.Y = enemy.MoveRoute[enemyAllRouteCount - 2]["Y"];
+                }
                 enemy.X = enemy.MoveRoute[enemyAllRouteCount - 1]["X"];
                 enemy.Y = enemy.MoveRoute[enemyAllRouteCount - 1]["Y"];
             }
