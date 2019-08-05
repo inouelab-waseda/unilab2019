@@ -56,7 +56,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\GameForm.Designer.cs">
-      <SubType>Form</SubType>
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Selectstage.cs">
@@ -64,7 +63,6 @@
     </Compile>
     <Compile Include="Forms\Selectstage.Designer.cs">
       <DependentUpon>Selectstage.cs</DependentUpon>
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Helpers\Types.cs" />
     <Compile Include="Images\CodeFile1.cs" />
