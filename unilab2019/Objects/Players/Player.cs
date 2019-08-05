@@ -21,6 +21,8 @@ namespace Unilab2019.Objects.Player
         }
         public int HP { get; set; } = 1;
 
+        public int Coins { get; set; } = 0;
+
         public int MaxHP { get; set; }
 
         public int Pedometer { get; set; } 
