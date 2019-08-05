@@ -701,7 +701,7 @@ namespace unilab2019.Forms
             else
             {
                 //閉じ括弧が選択されているときは何もしない
-                if (codeListBox.Text == "}") { }
+                if (code[selected].Instruction == Types.Instruction.End) { }
                 //始まり括弧の行が選択されているときは、括弧閉じも同時に削除,中身のインデント調整
                 else if (codeListBox.Text.EndsWith("{"))
                 {
