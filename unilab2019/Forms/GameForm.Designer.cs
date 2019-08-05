@@ -75,9 +75,9 @@
             ifBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             ifBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             ifBtn.Location = new System.Drawing.Point(0, 0);
-            ifBtn.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            ifBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             ifBtn.Name = "ifBtn";
-            ifBtn.Size = new System.Drawing.Size(341, 78);
+            ifBtn.Size = new System.Drawing.Size(142, 53);
             ifBtn.TabIndex = 2;
             ifBtn.Text = "　　　";
             ifBtn.UseVisualStyleBackColor = true;
@@ -122,23 +122,23 @@
             this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 13;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.059829F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.863248F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.641026F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.153846F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.589744F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.53846F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.521368F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.205129F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.48718F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.239316F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.094017F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.863248F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.658119F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1923, 1054);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.245989F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.663101F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.235294F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.723277F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.723277F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.81618F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.350407F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.350407F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.350407F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.384706F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.403002F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.360518F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.258889F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1026, 652);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Click += new System.EventHandler(this.TableLayoutPanel1_Click);
             // 
@@ -148,23 +148,23 @@
             this.codeListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.codeListBox.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.codeListBox.FormattingEnabled = true;
-            this.codeListBox.ItemHeight = 28;
-            this.codeListBox.Location = new System.Drawing.Point(1131, 316);
-            this.codeListBox.Margin = new System.Windows.Forms.Padding(10, 16, 25, 4);
+            this.codeListBox.ItemHeight = 15;
+            this.codeListBox.Location = new System.Drawing.Point(674, 186);
+            this.codeListBox.Margin = new System.Windows.Forms.Padding(8, 13, 20, 3);
             this.codeListBox.Name = "codeListBox";
             this.tableLayoutPanel1.SetRowSpan(this.codeListBox, 6);
-            this.codeListBox.Size = new System.Drawing.Size(453, 468);
+            this.codeListBox.Size = new System.Drawing.Size(212, 352);
             this.codeListBox.TabIndex = 16;
             // 
             // currentStage
             // 
             this.currentStage.Dock = System.Windows.Forms.DockStyle.Top;
             this.currentStage.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.currentStage.Location = new System.Drawing.Point(120, 123);
-            this.currentStage.Margin = new System.Windows.Forms.Padding(2, 28, 52, 4);
+            this.currentStage.Location = new System.Drawing.Point(38, 37);
+            this.currentStage.Margin = new System.Windows.Forms.Padding(2, 23, 42, 3);
             this.currentStage.Name = "currentStage";
             this.currentStage.ReadOnly = true;
-            this.currentStage.Size = new System.Drawing.Size(488, 35);
+            this.currentStage.Size = new System.Drawing.Size(271, 31);
             this.currentStage.TabIndex = 12;
             this.currentStage.TabStop = false;
             this.currentStage.Text = "ステージ";
@@ -183,10 +183,10 @@
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(ifBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(503, 11);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
+            this.panel2.Location = new System.Drawing.Point(668, 14);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(106, 43);
+            this.panel2.Size = new System.Drawing.Size(142, 53);
             this.panel2.TabIndex = 24;
             // 
             // comboBox2
@@ -197,10 +197,10 @@
             "壁",
             "敵",
             "道"});
-            this.comboBox2.Location = new System.Drawing.Point(55, 23);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Location = new System.Drawing.Point(73, 29);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(18, 20);
+            this.comboBox2.Size = new System.Drawing.Size(22, 23);
             this.comboBox2.TabIndex = 4;
             // 
             // comboBox1
@@ -213,10 +213,10 @@
             "後ろ",
             "右",
             "左"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 22);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Location = new System.Drawing.Point(8, 27);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(84, 36);
+            this.comboBox1.Size = new System.Drawing.Size(26, 23);
             this.comboBox1.TabIndex = 3;
             this.comboBox1.Text = "前";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
@@ -243,20 +243,19 @@
             this.panel3.Controls.Add(this.numericUpDown1);
             this.panel3.Controls.Add(this.forBtn);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(1123, 181);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
+            this.panel3.Location = new System.Drawing.Point(668, 73);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(341, 55);
+            this.panel3.Size = new System.Drawing.Size(142, 50);
             this.panel3.TabIndex = 25;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.numericUpDown1.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.numericUpDown1.Location = new System.Drawing.Point(211, 8);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.numericUpDown1.Location = new System.Drawing.Point(107, 16);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(63, 35);
+            this.numericUpDown1.Size = new System.Drawing.Size(42, 22);
             this.numericUpDown1.TabIndex = 2;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
@@ -271,9 +270,9 @@
             this.forBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.forBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.forBtn.Location = new System.Drawing.Point(0, 0);
-            this.forBtn.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.forBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.forBtn.Name = "forBtn";
-            this.forBtn.Size = new System.Drawing.Size(341, 55);
+            this.forBtn.Size = new System.Drawing.Size(142, 50);
             this.forBtn.TabIndex = 1;
             this.forBtn.Text = "　　\r\n";
             this.forBtn.UseVisualStyleBackColor = true;
@@ -286,10 +285,10 @@
             this.tableLayoutPanel1.SetColumnSpan(this.whileBtn, 2);
             this.whileBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.whileBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.whileBtn.Location = new System.Drawing.Point(1123, 244);
-            this.whileBtn.Margin = new System.Windows.Forms.Padding(2, 8, 2, 0);
+            this.whileBtn.Location = new System.Drawing.Point(668, 130);
+            this.whileBtn.Margin = new System.Windows.Forms.Padding(2, 7, 2, 0);
             this.whileBtn.Name = "whileBtn";
-            this.whileBtn.Size = new System.Drawing.Size(341, 56);
+            this.whileBtn.Size = new System.Drawing.Size(142, 43);
             this.whileBtn.TabIndex = 0;
             this.whileBtn.UseVisualStyleBackColor = true;
             this.whileBtn.Click += new System.EventHandler(this.WhileBtn_Click);
@@ -370,6 +369,7 @@
             this.deleteOneBtn.TabIndex = 7;
             this.deleteOneBtn.Text = "1つ削除";
             this.deleteOneBtn.UseVisualStyleBackColor = false;
+            this.deleteOneBtn.Click += new System.EventHandler(this.DeleteOneLineBtn_Click);
             // 
             // deleteAllBtn
             // 
@@ -543,11 +543,11 @@
             // 
             // GameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1923, 1054);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "GameForm";
             this.Text = "GameForm";
             this.tableLayoutPanel1.ResumeLayout(false);

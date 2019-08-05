@@ -592,6 +592,7 @@ namespace unilab2019.Forms
                 codeListBox.SelectedIndex=selected+1;
             }
         }
+        
         /// <summary>
         /// 実行ボタン
         /// </summary>
@@ -659,7 +660,72 @@ namespace unilab2019.Forms
             //codeTimer.Stop();
 
         }
+        private void DeleteOneLineBtn_Click(object sender, EventArgs e)
+        {
+            var selected = codeListBox.SelectedIndex;
+            //選択されていないとき
+            if (selected == -1)
+            {
+                int lastIndex = codeListBox.Items.Count - 1;
+                //もし最後の行が"}"のときは削除しない
+                if ((string)codeListBox.Items[lastIndex] == "}") { }
+                else
+                {
+                    code.RemoveAt(lastIndex);
+                    codeListBox.Items.RemoveAt(lastIndex);
+                }
+            }
+            else
+            {
+                //閉じ括弧が選択されているときは何もしない
+                if (codeListBox.Text == "}") { }
+                //始まり括弧の行が選択されているときは、括弧閉じも同時に削除,中身のインデント調整
+                else if (codeListBox.Text.EndsWith("{"))
+                {
+                    int parenthesesIndex = -1;
+                    code.RemoveAt(selected);
+                    //閉じ括弧探す
+                    for (int i = selected; i < code.Count; i++)
+                    {
+                        if (code[i].Instruction == Types.Instruction.End)
+                        {
+                            parenthesesIndex = i;
+                            break;
+                        }
+                        else
+                        {
+                            code[i].Indent--;
+                        }
+                    }
+                    code.RemoveAt(parenthesesIndex);
 
+                    codeListBox.Items.RemoveAt(selected);
+                    while (true)
+                    {
+                        //閉じ括弧だったら、削除
+                        if ((string)codeListBox.Items[selected] == "}")
+                        {
+                            codeListBox.Items.RemoveAt(selected);
+                            break;
+                        }
+                        //括弧の中身だったら、インデント一つ減らす
+                        else
+                        {
+                            var line = (string)codeListBox.Items[selected];
+                            line = line.Remove(0, 2);
+                            codeListBox.Items.RemoveAt(selected);
+                            codeListBox.Items.Insert(selected, line);
+                        }
+                        selected++;
+                    }
+                }
+                else
+                {
+                    code.RemoveAt(selected);
+                    codeListBox.Items.RemoveAt(selected);
+                }
+            }
+        }
         #region スクリプト実行
         //
 
