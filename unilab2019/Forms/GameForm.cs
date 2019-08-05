@@ -32,6 +32,8 @@ namespace unilab2019.Forms
 
         public float CellWidth => (float)backPictureBox.Width / _field.Width;
         public float CellHeight => (float)backPictureBox.Height / _field.Height;
+        public float initialCellWidth;
+        public float initialCellHeight;
         #endregion
 
         #region code
@@ -96,7 +98,7 @@ namespace unilab2019.Forms
             backPictureBox.BackgroundImage = new Bitmap(backPictureBox.Width, backPictureBox.Height);
             _graphicsBack = Graphics.FromImage(backPictureBox.BackgroundImage);
             _graphicsBack.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            //_graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
+            _graphicsBack.Clear(Color.FromArgb(255, 181, 229, 29));
 
             globalTimer.Interval = (int)(1000 / (double)_fps);
             codeTimer.Interval = 333;
@@ -109,13 +111,11 @@ namespace unilab2019.Forms
             _field = ReadFieldJson($"{fieldName}");
             codeListBox.Items.Clear();
             currentStage.Text =fieldName;
-
-
-            _graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
-
+            initialCellHeight = CellHeight;
+            initialCellWidth = CellWidth;
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null &&!obj.CanMove) obj.Draw(_graphicsBack, CellWidth, CellHeight);
+                if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, initialCellWidth, initialCellHeight);
             }
             globalTimer.Start();
             codeTimer.Start();
@@ -228,9 +228,11 @@ namespace unilab2019.Forms
         private void _draw()
         {
             _graphicsFore.Clear(Color.Transparent);
+            
+            
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+                if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, initialCellWidth, initialCellHeight);
             }
             Refresh();
             oneUpCount.Text = $"残機: {_field.Player.HP}";
