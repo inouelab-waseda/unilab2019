@@ -63,6 +63,16 @@ namespace unilab2019.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap back {
+            get {
+                object obj = ResourceManager.GetObject("back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap Wall {
             get {
                 object obj = ResourceManager.GetObject("Wall", resourceCulture);
@@ -96,6 +106,16 @@ namespace unilab2019.Properties {
         internal static System.Drawing.Bitmap ずっと1 {
             get {
                 object obj = ResourceManager.GetObject("ずっと1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap ステージ選択 {
+            get {
+                object obj = ResourceManager.GetObject("ステージ選択", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

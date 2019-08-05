@@ -237,6 +237,21 @@ namespace unilab2019.Forms
             numOfLines.Text = $"行数: {codeListBox.Items.Count}";
             countTime.Text = $"時間: {_field.Player.Pedometer}";
         }
+
+        private void TextboxCaretControl(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResetBtn_Click(object sender, EventArgs e)
+        {
+
+        }
         #region スクリプト実行
         // コードを実行
         // 何を実行するかcodeに入れておく
