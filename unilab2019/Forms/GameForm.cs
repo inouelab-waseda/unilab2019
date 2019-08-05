@@ -544,6 +544,8 @@ namespace unilab2019.Forms
                 codeListBox.SelectedIndex=selected+1;
             }
         }
+        
+        
         /// <summary>
         /// 実行ボタン
         /// </summary>
@@ -614,6 +616,24 @@ namespace unilab2019.Forms
             code.Clear();
             codeListBox.Items.Clear();
 
+        }
+
+        private void DeleteOneLineBtn_Click(object sender, EventArgs e)
+        {
+            var selected = codeListBox.SelectedIndex;
+            if (selected == -1)
+            {
+                //選択されていないとき
+                int lastIndex = codeListBox.Items.Count;
+                code.RemoveAt(lastIndex - 1);
+                codeListBox.Items.RemoveAt(lastIndex - 1);
+            }
+            else
+            {
+                code.RemoveAt(selected);
+                codeListBox.Items.RemoveAt(selected);
+
+            }
         }
         #region スクリプト実行
         //
