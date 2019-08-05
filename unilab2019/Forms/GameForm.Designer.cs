@@ -360,6 +360,7 @@
             this.deleteOneBtn.TabIndex = 7;
             this.deleteOneBtn.Text = "1つ削除";
             this.deleteOneBtn.UseVisualStyleBackColor = false;
+            this.deleteOneBtn.Click += new System.EventHandler(this.DeleteOneLineBtn_Click);
             // 
             // deleteAllBtn
             // 

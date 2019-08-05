@@ -262,6 +262,13 @@ namespace unilab2019.Forms
                     oneup.IsAlive = false;
                 }
             }
+            // ゴールに着いたらタイマーを止める
+            if (_field.Player.Intersect(_field.Goal))
+            {
+                codeTimer.Stop();
+                //globalTimer.Stop();
+                MessageBox.Show("ゴール！");
+            }
         }
         private void _draw()
         {
@@ -270,15 +277,42 @@ namespace unilab2019.Forms
             
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, initialCellWidth, initialCellHeight);
+                if (obj != null && obj.CanMove && obj.IsAlive) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+
             }
             Refresh();
             coinCount.Text = $"コイン数:{_field.Player.Coins}";
             oneUpCount.Text = $"残機: {_field.Player.HP}";
             numOfLines.Text = $"行数: {codeListBox.Items.Count}";
             countTime.Text = $"時間: {_field.Player.Pedometer}";
-
         }
+
+        private void _reset()
+        {
+            countEnemy = 0;
+            _field.Player.X = _initial_player_position[0];
+            _field.Player.Y = _initial_player_position[1];
+            _field.Player.Direction = _initial_player_direction;
+            _field.Player.Coins = 0;
+            _field.Player.HP = 1;
+            _field.Player.Pedometer = 0;
+            codeTimer.Stop();
+            foreach (var enemy in _field.Enemies)
+            {
+                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
+                enemy.X = enemy.MoveRoute[enemyAllRouteCount - 1]["X"];
+                enemy.Y = enemy.MoveRoute[enemyAllRouteCount - 1]["Y"];
+            }
+            foreach (var coin in _field.Coins)
+            {
+                coin.IsAlive = true;
+            }
+            foreach (var oneup in _field.Oneups)
+            {
+                oneup.IsAlive = true;
+            }
+        }
+
         public int calc_score()
         {
             int score_Result = 0;
@@ -295,6 +329,7 @@ namespace unilab2019.Forms
         {
 
         }
+
 
         #region button_event
         //{}を含む部分はindentは増加しているが、codelistboxには反映させない。
@@ -575,6 +610,7 @@ namespace unilab2019.Forms
                 codeListBox.SelectedIndex=selected+1;
             }
         }
+        
         /// <summary>
         /// 実行ボタン
         /// </summary>
@@ -631,28 +667,7 @@ namespace unilab2019.Forms
 
         private void startBtn_Click(object sender, EventArgs e)
         {
-            countEnemy = 0;
-            _field.Player.X = _initial_player_position[0];
-            _field.Player.Y = _initial_player_position[1];
-            _field.Player.Direction = _initial_player_direction;
-            _field.Player.Coins = 0;
-            _field.Player.HP = 1;
-            _field.Player.Pedometer = 0;
-
-            foreach (var enemy in _field.Enemies)
-            {
-                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
-                enemy.X = enemy.MoveRoute[enemyAllRouteCount-1]["X"];
-                enemy.Y = enemy.MoveRoute[enemyAllRouteCount-1]["Y"];
-            }
-            foreach (var coin in _field.Coins)
-            {
-                coin.IsAlive = true;
-            }
-            foreach (var oneup in _field.Oneups)
-            {
-                oneup.IsAlive = true;
-            }
+            _reset();
             exeCodeStack.Push(CarryOutScript(code));
             codeTimer.Start();
         }
@@ -662,6 +677,72 @@ namespace unilab2019.Forms
             codeListBox.Items.Clear();
             //codeTimer.Stop();
 
+        }
+        private void DeleteOneLineBtn_Click(object sender, EventArgs e)
+        {
+            var selected = codeListBox.SelectedIndex;
+            //選択されていないとき
+            if (selected == -1)
+            {
+                int lastIndex = codeListBox.Items.Count - 1;
+                //もし最後の行が"}"のときは削除しない
+                if ((string)codeListBox.Items[lastIndex] == "}") { }
+                else
+                {
+                    code.RemoveAt(lastIndex);
+                    codeListBox.Items.RemoveAt(lastIndex);
+                }
+            }
+            else
+            {
+                //閉じ括弧が選択されているときは何もしない
+                if (codeListBox.Text == "}") { }
+                //始まり括弧の行が選択されているときは、括弧閉じも同時に削除,中身のインデント調整
+                else if (codeListBox.Text.EndsWith("{"))
+                {
+                    int parenthesesIndex = -1;
+                    code.RemoveAt(selected);
+                    //閉じ括弧探す
+                    for (int i = selected; i < code.Count; i++)
+                    {
+                        if (code[i].Instruction == Types.Instruction.End)
+                        {
+                            parenthesesIndex = i;
+                            break;
+                        }
+                        else
+                        {
+                            code[i].Indent--;
+                        }
+                    }
+                    code.RemoveAt(parenthesesIndex);
+
+                    codeListBox.Items.RemoveAt(selected);
+                    while (true)
+                    {
+                        //閉じ括弧だったら、削除
+                        if ((string)codeListBox.Items[selected] == "}")
+                        {
+                            codeListBox.Items.RemoveAt(selected);
+                            break;
+                        }
+                        //括弧の中身だったら、インデント一つ減らす
+                        else
+                        {
+                            var line = (string)codeListBox.Items[selected];
+                            line = line.Remove(0, 2);
+                            codeListBox.Items.RemoveAt(selected);
+                            codeListBox.Items.Insert(selected, line);
+                        }
+                        selected++;
+                    }
+                }
+                else
+                {
+                    code.RemoveAt(selected);
+                    codeListBox.Items.RemoveAt(selected);
+                }
+            }
         }
         #region スクリプト実行
         //
@@ -961,17 +1042,7 @@ namespace unilab2019.Forms
 
         private void ResetBtn_Click(object sender, EventArgs e)
         {
-            countEnemy = 0;
-            _field.Player.X = _initial_player_position[0];
-            _field.Player.Y = _initial_player_position[1];
-            _field.Player.Direction = _initial_player_direction;
-            codeTimer.Stop();
-            foreach (var enemy in _field.Enemies)
-            {
-                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
-                enemy.X = enemy.MoveRoute[enemyAllRouteCount - 1]["X"];
-                enemy.Y = enemy.MoveRoute[enemyAllRouteCount - 1]["Y"];
-            }
+            _reset();
         }
 
 
