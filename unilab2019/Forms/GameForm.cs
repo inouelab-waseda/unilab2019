@@ -1043,6 +1043,11 @@ namespace unilab2019.Forms
             _reset();
         }
 
+        private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
 
 
 
