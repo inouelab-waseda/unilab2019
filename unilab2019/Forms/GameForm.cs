@@ -238,16 +238,18 @@ namespace unilab2019.Forms
             }
             foreach (var coin in _field.Coins)
             {
-                if (_field.Player.Intersect(coin))
+                if (_field.Player.Intersect(coin) && coin.IsAlive)
                 {
-                    _field.Player.Coins++;  
+                    _field.Player.Coins++;
+                    coin.IsAlive = false;
                 }
             }
             foreach (var oneup in _field.Oneups)
             {
-                if (_field.Player.Intersect(oneup))
+                if (_field.Player.Intersect(oneup) && oneup.IsAlive)
                 {
                     _field.Player.HP++;
+                    oneup.IsAlive = false;
                 }
             }
         }
@@ -598,8 +600,9 @@ namespace unilab2019.Forms
             _field.Player.Y = _initial_player_position[1];
             foreach (var enemy in _field.Enemies)
             {
-                var tmp = new List<int> { enemy.X, enemy.Y };
-                _initial_enemy_position.Add(tmp);
+                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
+                enemy.X = enemy.MoveRoute[enemyAllRouteCount-1]["X"];
+                enemy.Y = enemy.MoveRoute[enemyAllRouteCount-1]["Y"];
             }
             exeCodeStack.Push(CarryOutScript(code));
             codeTimer.Start();
