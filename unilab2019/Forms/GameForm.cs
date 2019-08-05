@@ -539,7 +539,8 @@ namespace unilab2019.Forms
 
         private void CodeTimer_Tick_1(object sender, EventArgs e)
         {
-            if (exeCodeStack.Count > 0) exeCodeStack.Peek().MoveNext();
+            canMoveNextCode = true;
+            while (exeCodeStack.Count > 0 && canMoveNextCode == true) exeCodeStack.Peek().MoveNext();
             if (exeCodeStack.Count == 0) codeTimer.Stop();
             else
             {
@@ -601,19 +602,23 @@ namespace unilab2019.Forms
                             _field.Player.Pedometer++;
                             _field.Player.Move();
                         }
+                        canMoveNextCode = false;
                         break;
 
                     case Types.Instruction.TurnRight:
                         _field.Player.Pedometer++;
                         _field.Player.TurnRight();
+                        canMoveNextCode = false;
                         break;
 
                     case Types.Instruction.TurnLeft:
                         _field.Player.Pedometer++;
                         _field.Player.TurnLeft();
+                        canMoveNextCode = false;
                         break;
 
                     case Types.Instruction.Stop:
+                        canMoveNextCode = false;
                         break;
 
                     case Types.Instruction.IfCode:
@@ -740,6 +745,7 @@ namespace unilab2019.Forms
                         }
 
                         a = 1;
+                        canMoveNextCode = true;
                         break;
 
                     case Types.Instruction.ForCode:
@@ -768,7 +774,7 @@ namespace unilab2019.Forms
                            exeCodeStack.Push(CarryOutScript(for_subcode));
                         }
                         a = for_sub_indent;
-
+                        canMoveNextCode = true;
                         break;
 
                     case Types.Instruction.WhileCode:
