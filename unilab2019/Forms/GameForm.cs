@@ -35,7 +35,7 @@ namespace unilab2019.Forms
         private int countEnemy;
         public float CellWidth => (float)backPictureBox.Width / _field.Width;
         public float CellHeight => (float)backPictureBox.Height / _field.Height;
-        private string stageName = "stage6";
+        private string stageName = "stage10";
         #endregion
 
         #region code
