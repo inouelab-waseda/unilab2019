@@ -792,6 +792,7 @@ namespace unilab2019.Forms
                         break;
 
                     case Types.Instruction.Stop:
+                        _field.Player.Pedometer++;
                         canMoveNextCode = false;
                         break;
 
