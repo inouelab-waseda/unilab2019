@@ -118,13 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="back" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ずっと" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\ずっと.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="もし1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="もし" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\もし.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="繰り返し1" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -136,9 +133,6 @@
   <data name="ステージ選択1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\ステージ選択.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="もし" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\もし.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="繰り返し" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\繰り返し.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,7 +142,7 @@
   <data name="Wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Wall.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ステージ選択" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\ステージ選択.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="もし1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\もし.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

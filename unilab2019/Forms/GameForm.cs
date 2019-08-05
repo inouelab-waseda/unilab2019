@@ -267,38 +267,6 @@ namespace unilab2019.Forms
             numOfLines.Text = $"行数: {codeListBox.Items.Count}";
             countTime.Text = $"時間: {_field.Player.Pedometer}";
         }
-<<<<<<< HEAD
-=======
-
-        private void TextboxCaretControl(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ResetBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-        #region スクリプト実行
-        // コードを実行
-        // 何を実行するかcodeに入れておく
-        // 例： code = {"move", "if", "1", "for", "10", "move", "end", "end"}
-        // if文は { "if", "条件文の種類" } で表す
-        // 例： {"if", "1"}
-        // for文は {"for", "ループ回数"} で表す
-        // 例： {"for", "10"}
-        // "if"と"for"は"end"で閉じておく
-        //private IEnumerator<string> CarryOutScript()
-        //{
-        //    // 全体で使う変数
-        //    //int i; // 現在実行しているコードのindex
-        //    //string c; // i番目のコード
->>>>>>> 282187d238edb9aa1704471b67e6c6c0fe84ece6
 
         #region button_event
         //{}を含む部分はindentは増加しているが、codelistboxには反映させない。

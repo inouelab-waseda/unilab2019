@@ -158,12 +158,8 @@
     <EmbeddedResource Include="Images\Teleporter_out_6_right.jpg" />
     <EmbeddedResource Include="Images\Teleporter_out_6_up.jpg" />
     <EmbeddedResource Include="Images\Wall.jpg" />
-<<<<<<< HEAD
     <EmbeddedResource Include="Images\character_cookie.png" />
     <EmbeddedResource Include="Images\coin_medal_gold.png" />
-=======
-    <Content Include="Images\back.png" />
->>>>>>> 282187d238edb9aa1704471b67e6c6c0fe84ece6
     <Content Include="Images\ずっと.gif" />
     <Content Include="Images\もし.gif" />
     <Content Include="Images\ステージ選択.gif" />
