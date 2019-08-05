@@ -36,8 +36,8 @@ namespace unilab2019.Forms
         public float CellWidth => (float)backPictureBox.Width / _field.Width;
         public float CellHeight => (float)backPictureBox.Height / _field.Height;
         private string stageName = "stage4";
+        Selectstage selectStage;
         private List<int> _initial_player_position;
-        private List<List<int>> _initial_enemy_position;
 
         #endregion
 
@@ -85,6 +85,7 @@ namespace unilab2019.Forms
         public GameForm()
         {
             InitializeComponent();
+            selectStage = new Selectstage(this);
             _graphicsBack = Graphics.FromImage(tableLayoutPanel1.BackgroundImage);
             _fps = 10;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -110,7 +111,7 @@ namespace unilab2019.Forms
             _initialize(stageName);
         }
    
-        private void _initialize(string fieldName)
+        public void _initialize(string fieldName)
         {
             // Read field from "{fieldName}.json"
             _field = ReadFieldJson($"{fieldName}");
@@ -845,6 +846,12 @@ namespace unilab2019.Forms
             }
             exeCodeStack.Pop();
             yield break;
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            selectStage.Show();
         }
 
 
