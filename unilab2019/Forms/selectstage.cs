@@ -14,10 +14,10 @@ namespace unilab2019.Forms
     {
         GameForm gameForm;
 
-        public Selectstage(GameForm gf)
+        public Selectstage()
         {
             InitializeComponent();
-            gameForm = gf;
+            gameForm = new GameForm(this);
         }
 
         private void Button1_Click(object sender, EventArgs e)
