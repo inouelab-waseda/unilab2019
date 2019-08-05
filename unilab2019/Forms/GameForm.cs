@@ -219,17 +219,6 @@ namespace unilab2019.Forms
         {
             _draw();
 
-            // ゴールに着いたらタイマーを止める
-            if (_field.Player.Intersect(_field.Goal))
-            {
-                codeTimer.Stop();
-                //globalTimer.Stop();
-                MessageBox.Show("ゴール！");
-
-                var stage_table = new Dictionary<string, int>();
-                stage_table.Add("stage1", calc_score());
-                int score_result = stage_table.Count;
-            }
         }
         private void _update()
         {
@@ -268,6 +257,10 @@ namespace unilab2019.Forms
                 codeTimer.Stop();
                 //globalTimer.Stop();
                 MessageBox.Show("ゴール！");
+
+                var stage_table = new Dictionary<string, int>();
+                stage_table.Add("stage1", calc_score());
+                int score_result = stage_table.Count;
             }
         }
         private void _draw()
@@ -277,7 +270,7 @@ namespace unilab2019.Forms
             
             foreach (var obj in _field.GameObjectList())
             {
-                if (obj != null && obj.CanMove && obj.IsAlive) obj.Draw(_graphicsFore, CellWidth, CellHeight);
+                if (obj != null && obj.CanMove && obj.IsAlive) obj.Draw(_graphicsFore, initialCellWidth, initialCellHeight);
 
             }
             Refresh();
