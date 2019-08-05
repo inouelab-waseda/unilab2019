@@ -118,11 +118,11 @@ namespace unilab2019.Forms
             codeListBox.Items.Clear();
             currentStage.Text =fieldName;
             _initial_player_position = new List<int> { _field.Player.X, _field.Player.Y };
-            _initial_enemy_position = new List<List<int>> { };
+            //_initial_enemy_position = new List<List<int>> { };
             foreach (var enemy in _field.Enemies)
             {
                 var tmp = new List<int>{enemy.X, enemy.Y};
-                _initial_enemy_position.Add(tmp);
+                //_initial_enemy_position.Add(tmp);
             }
 
 
@@ -687,32 +687,43 @@ namespace unilab2019.Forms
                             if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
                             {
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
+                        
                         //もし後ろが壁なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Backward)
                         {
                             if (IsWall(_field.Player.BackX(), _field.Player.BackY()))
                             {
-                               exeCodeStack.Push(CarryOutScript(if_subcode));
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
+
                         //もし右が壁なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Right)
                         {
                             if (IsWall(_field.Player.RightX(), _field.Player.RightY()))
                             {
-                               exeCodeStack.Push(CarryOutScript(if_subcode));
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
+
                         //もし左が壁なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Left)
                         {
                             if (IsWall(_field.Player.LeftX(), _field.Player.LeftY()))
                             {
-                               exeCodeStack.Push(CarryOutScript(if_subcode));
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
 
                         //敵に関する条件分岐
                         //もし前が敵なら
@@ -720,33 +731,44 @@ namespace unilab2019.Forms
                         {
                             if (IsEnemy(_field.Player.ForwardX(), _field.Player.ForwardY()))
                             {
-                               exeCodeStack.Push(CarryOutScript(if_subcode));
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
+
                         //もし後ろが敵なら
                         if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Backward)
                         {
                             if (IsEnemy(_field.Player.BackX(), _field.Player.BackY()))
                             {
-                               exeCodeStack.Push(CarryOutScript(if_subcode));
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
+
                         //もし右が敵なら
                         if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Right)
                         {
                             if (IsEnemy(_field.Player.RightX(), _field.Player.RightY()))
                             {
-                               exeCodeStack.Push(CarryOutScript(if_subcode));
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
+
                         //もし左が敵なら
                         if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Left)
                         {
                             if (IsEnemy(_field.Player.LeftX(), _field.Player.LeftY()))
                             {
-                               exeCodeStack.Push(CarryOutScript(if_subcode));
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
 
                         //道に関する条件分岐
                         //もし前が道なら
@@ -754,36 +776,46 @@ namespace unilab2019.Forms
                         {
                             if (IsRoad(_field.Player.ForwardX(), _field.Player.ForwardY()))
                             {
-                               exeCodeStack.Push(CarryOutScript(if_subcode));
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
+
                         //もし後ろが道なら
                         if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Backward)
                         {
                             if (IsRoad(_field.Player.BackX(), _field.Player.BackY()))
                             {
-                               exeCodeStack.Push(CarryOutScript(if_subcode));
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
+                        
                         //もし右が道なら
                         if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Right)
                         {
                             if (IsRoad(_field.Player.RightX(), _field.Player.RightY()))
                             {
-                               exeCodeStack.Push(CarryOutScript(if_subcode));
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
+
                         //もし左が道なら
                         if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Left)
                         {
                             if (IsRoad(_field.Player.LeftX(), _field.Player.LeftY()))
                             {
-                               exeCodeStack.Push(CarryOutScript(if_subcode));
+                                exeCodeStack.Push(CarryOutScript(if_subcode));
+                                canMoveNextCode = true;
                             }
                         }
+                        else canMoveNextCode = false;
 
                         a = 1;
-                        canMoveNextCode = true;
                         break;
 
                     case Types.Instruction.ForCode:
@@ -829,21 +861,27 @@ namespace unilab2019.Forms
                             }
                         }
                         
-                        //中身の部分だけ一時的に取り出すcodeリストを作成
+                        //while全体を一時的に取り出すcodeリストを作成
                         List<Code> while_subcode = new List<Code>();
-                        for (int j = i + 1; j < while_sub_indent; j++)
+                        for (int j = i; j <= while_sub_indent; j++)
                         {
                             while_subcode.Add(code[j]);
                         }
-                        //ここまでfor文と処理は一緒
+
+                        //whileの中身を一時的に取り出すcodeリストを作成
+                        List<Code> while_subcode_2 = new List<Code>();
+                        for (int j = i+ 1; j < while_sub_indent; j++)
+                        {
+                            while_subcode_2.Add(code[j]);
+                        }
 
                         //checkcodeをかける（無限ループの判定）
                         CheckCode(while_subcode);
-
-                        while(true)
-                        {
-                           exeCodeStack.Push(CarryOutScript(while_subcode));
-                        }
+                        exeCodeStack.Push(CarryOutScript(while_subcode));
+                        CheckCode(while_subcode_2);
+                        exeCodeStack.Push(CarryOutScript(while_subcode_2));
+                        canMoveNextCode = true;
+                        break;
 
                     default:
                         break;
