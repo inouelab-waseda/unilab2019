@@ -414,6 +414,7 @@ namespace unilab2019.Forms
                     tmp.Direction = Types.Direction.Backward;
                     break;
                 default:
+                    exeCodeStack.Clear();
                     MessageBox.Show("方向が変だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     add_flag = false;
                     break;
@@ -432,6 +433,7 @@ namespace unilab2019.Forms
                     tmp.Obj = Types.Obj.Road;
                     break;
                 default:
+                    exeCodeStack.Clear();
                     MessageBox.Show("対象が変だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     add_flag = false;
                     break;
@@ -486,6 +488,7 @@ namespace unilab2019.Forms
             }
             catch
             {
+                exeCodeStack.Clear();
                 MessageBox.Show("変な値を入れないで！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 add_flag = false;
             }
@@ -593,8 +596,9 @@ namespace unilab2019.Forms
 
                 if (_field.Player.HP <= 0)
                 {
+                    exeCodeStack.Clear();
                     MessageBox.Show("体力がなくなっちゃった！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    _initialize(stageName);
+                    
                 }
 
             }
@@ -608,12 +612,23 @@ namespace unilab2019.Forms
             _field.Player.X = _initial_player_position[0];
             _field.Player.Y = _initial_player_position[1];
             _field.Player.Direction = _initial_player_direction;
+            _field.Player.Coins = 0;
+            _field.Player.HP = 1;
+            _field.Player.Pedometer = 0;
 
             foreach (var enemy in _field.Enemies)
             {
                 var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
                 enemy.X = enemy.MoveRoute[enemyAllRouteCount-1]["X"];
                 enemy.Y = enemy.MoveRoute[enemyAllRouteCount-1]["Y"];
+            }
+            foreach (var coin in _field.Coins)
+            {
+                coin.IsAlive = true;
+            }
+            foreach (var oneup in _field.Oneups)
+            {
+                oneup.IsAlive = true;
             }
             exeCodeStack.Push(CarryOutScript(code));
             codeTimer.Start();
@@ -622,6 +637,7 @@ namespace unilab2019.Forms
         {
             code.Clear();
             codeListBox.Items.Clear();
+            //codeTimer.Stop();
 
         }
         #region スクリプト実行
@@ -641,7 +657,9 @@ namespace unilab2019.Forms
                     case Types.Instruction.Forward:
                         if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
                         {
+                            exeCodeStack.Clear();
                             MessageBox.Show("前は壁だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //codeTimer.Stop();
                             //globalTimer.Stop();
                         }
                         else
@@ -895,10 +913,11 @@ namespace unilab2019.Forms
                         }
 
                         //checkcodeをかける（無限ループの判定）
-                        CheckCode(while_subcode);
-                        exeCodeStack.Push(CarryOutScript(while_subcode));
-                        CheckCode(while_subcode_2);
-                        exeCodeStack.Push(CarryOutScript(while_subcode_2));
+                        if(CheckCode(while_subcode)&& CheckCode(while_subcode_2))
+                        {
+                            exeCodeStack.Push(CarryOutScript(while_subcode));
+                            exeCodeStack.Push(CarryOutScript(while_subcode_2));
+                        }
                         canMoveNextCode = true;
                         break;
 
@@ -937,13 +956,17 @@ namespace unilab2019.Forms
 
         //// コードをチェック
         //// while文を使ったときに無限ループするかどうかを判定
-        private void CheckCode(List<Code> code)
+        private bool CheckCode(List<Code> code)
         {
             if (code[0].Instruction == Types.Instruction.WhileCode &&  code[1].Instruction == Types.Instruction.End)
             {
+                exeCodeStack.Clear();
                 MessageBox.Show("無限ループしてしまうよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                codeTimer.Stop();
+                return false;
                 //globalTimer.Stop();
             }
+            return true;
 
         }
 
