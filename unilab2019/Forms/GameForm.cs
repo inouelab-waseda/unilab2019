@@ -820,7 +820,6 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
-                            else canMoveNextCode = false;
                         }
 
 
@@ -832,7 +831,7 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
-                            else canMoveNextCode = false;
+
                         }
 
 
@@ -844,7 +843,7 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
-                            else canMoveNextCode = false;
+
                         }
 
 
@@ -856,7 +855,7 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
-                            else canMoveNextCode = false;
+
                         }
 
 
@@ -869,7 +868,7 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
-                            else canMoveNextCode = false;
+
                         }
 
 
@@ -881,7 +880,7 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
-                            else canMoveNextCode = false;
+
                         }
 
 
@@ -893,7 +892,7 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
-                            else canMoveNextCode = false;
+
                         }
 
 
@@ -905,7 +904,7 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
-                            else canMoveNextCode = false;
+
                         }
 
 
@@ -918,7 +917,7 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
-                            else canMoveNextCode = false;
+
                         }
 
 
@@ -930,7 +929,7 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
-                            else canMoveNextCode = false;
+
                         }
 
                         //もし右が道なら
@@ -942,7 +941,7 @@ namespace unilab2019.Forms
                                 canMoveNextCode = true;
                             }
                             
-                            else canMoveNextCode = false;
+
                         }
 
                         //もし左が道なら
@@ -953,7 +952,7 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
-                            else canMoveNextCode = false;
+
                         }
                         i+=if_subcode.Count+1;//読まなかった分・読んでpushした分を飛ばす
                         a = 1;
