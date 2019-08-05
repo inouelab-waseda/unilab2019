@@ -134,5 +134,10 @@ namespace unilab2019.Forms
             gameForm._initialize("stage10");
             gameForm.Show();
         }
+
+        private void TableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
