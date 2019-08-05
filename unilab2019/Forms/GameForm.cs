@@ -35,7 +35,7 @@ namespace unilab2019.Forms
         private int countEnemy;
         public float CellWidth => (float)backPictureBox.Width / _field.Width;
         public float CellHeight => (float)backPictureBox.Height / _field.Height;
-        private string stageName = "stage4";
+        private string stageName = "stage10";
         #endregion
 
         #region code
@@ -216,13 +216,27 @@ namespace unilab2019.Forms
         }
         private void _update()
         {
-            // Initialize Player
             foreach (var enemy in _field.Enemies)
             {
                 if (_field.Player.Intersect(enemy))
                 {
                     codeTimer.Stop();
                     _initialize(stageName);
+                    codeTimer.Stop();
+                }
+            }
+            foreach (var coin in _field.Coins)
+            {
+                if (_field.Player.Intersect(coin))
+                {
+                    _field.Player.Coins++;  
+                }
+            }
+            foreach (var oneup in _field.Oneups)
+            {
+                if (_field.Player.Intersect(oneup))
+                {
+                    _field.Player.HP++;
                 }
             }
         }
@@ -234,6 +248,7 @@ namespace unilab2019.Forms
                 if (obj != null && obj.CanMove) obj.Draw(_graphicsFore, CellWidth, CellHeight);
             }
             Refresh();
+            coinCount.Text = $"コイン数:{_field.Player.Coins}";
             oneUpCount.Text = $"残機: {_field.Player.HP}";
             numOfLines.Text = $"行数: {codeListBox.Items.Count}";
             countTime.Text = $"時間: {_field.Player.Pedometer}";
@@ -568,6 +583,7 @@ namespace unilab2019.Forms
                 }
 
             }
+            countEnemy++;
         }
 
         private void startBtn_Click(object sender, EventArgs e)
