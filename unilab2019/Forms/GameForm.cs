@@ -698,9 +698,10 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
-                        
+
+
                         //もし後ろが壁なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Backward)
                         {
@@ -709,8 +710,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし右が壁なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Right)
@@ -720,8 +722,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし左が壁なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Left)
@@ -731,8 +734,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //敵に関する条件分岐
                         //もし前が敵なら
@@ -743,8 +747,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし後ろが敵なら
                         if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Backward)
@@ -754,8 +759,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし右が敵なら
                         if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Right)
@@ -765,8 +771,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし左が敵なら
                         if (code[i].Obj == Types.Obj.Enemy && code[i].Direction == Types.Direction.Left)
@@ -776,8 +783,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //道に関する条件分岐
                         //もし前が道なら
@@ -788,8 +796,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
+
 
                         //もし後ろが道なら
                         if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Backward)
@@ -799,9 +808,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
-                        
+
                         //もし右が道なら
                         if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Right)
                         {
@@ -810,8 +819,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
 
                         //もし左が道なら
                         if (code[i].Obj == Types.Obj.Road && code[i].Direction == Types.Direction.Left)
@@ -821,9 +831,9 @@ namespace unilab2019.Forms
                                 exeCodeStack.Push(CarryOutScript(if_subcode));
                                 canMoveNextCode = true;
                             }
+                            else canMoveNextCode = false;
                         }
-                        else canMoveNextCode = false;
-
+                        if (!canMoveNextCode) i+=if_subcode.Count+1;//読まなかった分を飛ばす
                         a = 1;
                         break;
 
