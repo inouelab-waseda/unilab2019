@@ -67,6 +67,7 @@ namespace unilab2019.Forms
         /// 全てのステージをクリアしたかどうか
         /// </summary>
         public bool isAllGoaledFlag;
+        public Types.Direction _initial_player_direction;
         #region old member valiable
         //public Dictionary<string, int> depthDictionary; // ステージごとのコードのdepthを入れる(おそらく途中から再開するため)
         /// <summary>
@@ -118,6 +119,7 @@ namespace unilab2019.Forms
             codeListBox.Items.Clear();
             currentStage.Text =fieldName;
             _initial_player_position = new List<int> { _field.Player.X, _field.Player.Y };
+            _initial_player_direction = _field.Player.Direction;
             //_initial_enemy_position = new List<List<int>> { };
             foreach (var enemy in _field.Enemies)
             {
@@ -215,14 +217,13 @@ namespace unilab2019.Forms
 
         private void globalTimer_Tick(object sender, EventArgs e)
         {
-            _update();
             _draw();
 
             // ゴールに着いたらタイマーを止める
             if (_field.Player.Intersect(_field.Goal))
             {
                 codeTimer.Stop();
-                globalTimer.Stop();
+                //globalTimer.Stop();
                 MessageBox.Show("ゴール！");
             }
         }
@@ -230,11 +231,15 @@ namespace unilab2019.Forms
         {
             foreach (var enemy in _field.Enemies)
             {
-                if (_field.Player.Intersect(enemy))
+                if (_field.Player.Intersect(enemy)&&_field.Player.HP==0)
                 {
                     codeTimer.Stop();
                     _initialize(stageName);
                     codeTimer.Stop();
+                }
+                else if(_field.Player.Intersect(enemy))
+                {
+                    _field.Player.HP--;
                 }
             }
             foreach (var coin in _field.Coins)
@@ -593,6 +598,8 @@ namespace unilab2019.Forms
                 }
 
             }
+            _update();
+
         }
 
         private void startBtn_Click(object sender, EventArgs e)
@@ -600,6 +607,8 @@ namespace unilab2019.Forms
             countEnemy = 0;
             _field.Player.X = _initial_player_position[0];
             _field.Player.Y = _initial_player_position[1];
+            _field.Player.Direction = _initial_player_direction;
+
             foreach (var enemy in _field.Enemies)
             {
                 var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
@@ -633,7 +642,7 @@ namespace unilab2019.Forms
                         if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
                         {
                             MessageBox.Show("前は壁だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            globalTimer.Stop();
+                            //globalTimer.Stop();
                         }
                         else
                         {
@@ -898,6 +907,21 @@ namespace unilab2019.Forms
             selectStage.Show();
         }
 
+        private void ResetBtn_Click(object sender, EventArgs e)
+        {
+            countEnemy = 0;
+            _field.Player.X = _initial_player_position[0];
+            _field.Player.Y = _initial_player_position[1];
+            _field.Player.Direction = _initial_player_direction;
+            codeTimer.Stop();
+            foreach (var enemy in _field.Enemies)
+            {
+                var enemyAllRouteCount = enemy.MoveRoute.Count();//敵が繰り返すルートを一周するまでの移動数
+                enemy.X = enemy.MoveRoute[enemyAllRouteCount - 1]["X"];
+                enemy.Y = enemy.MoveRoute[enemyAllRouteCount - 1]["Y"];
+            }
+        }
+
 
 
 
@@ -908,7 +932,7 @@ namespace unilab2019.Forms
             if (code[0].Instruction == Types.Instruction.WhileCode &&  code[1].Instruction == Types.Instruction.End)
             {
                 MessageBox.Show("無限ループしてしまうよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                globalTimer.Stop();
+                //globalTimer.Stop();
             }
 
         }
