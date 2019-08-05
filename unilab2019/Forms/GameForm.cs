@@ -851,7 +851,7 @@ namespace unilab2019.Forms
                             }
                             else canMoveNextCode = false;
                         }
-                        if (!canMoveNextCode) i+=if_subcode.Count+1;//読まなかった分を飛ばす
+                        i+=if_subcode.Count+1;//読まなかった分・読んでpushした分を飛ばす
                         a = 1;
                         break;
 
