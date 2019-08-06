@@ -494,10 +494,10 @@ namespace unilab2019.Forms
             //Object設定
             switch (obj)
             {
-                case "壁":
+                case "木":
                     tmp.Obj = Types.Obj.Wall;
                     break;
-                case "敵":
+                case "てき":
                     tmp.Obj = Types.Obj.Enemy;
                     break;
                 case "道":
@@ -898,8 +898,8 @@ namespace unilab2019.Forms
                         }
                         //ここまでforの処理と同じ
                         
-                        //壁に関する条件分岐
-                        //もし前が壁なら
+                        //木に関する条件分岐
+                        //もし前が木なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Forward)
                         {
                             if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
@@ -910,7 +910,7 @@ namespace unilab2019.Forms
                         }
 
 
-                        //もし後ろが壁なら
+                        //もし後ろが木なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Backward)
                         {
                             if (IsWall(_field.Player.BackX(), _field.Player.BackY()))
@@ -922,7 +922,7 @@ namespace unilab2019.Forms
                         }
 
 
-                        //もし右が壁なら
+                        //もし右が木なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Right)
                         {
                             if (IsWall(_field.Player.RightX(), _field.Player.RightY()))
@@ -934,7 +934,7 @@ namespace unilab2019.Forms
                         }
 
 
-                        //もし左が壁なら
+                        //もし左が木なら
                         if (code[i].Obj == Types.Obj.Wall && code[i].Direction == Types.Direction.Left)
                         {
                             if (IsWall(_field.Player.LeftX(), _field.Player.LeftY()))
