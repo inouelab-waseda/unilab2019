@@ -52,6 +52,12 @@
   <ItemGroup>
     <Compile Include="CustomControls\CodeFile1.cs" />
     <Compile Include="Fields\Fields.cs" />
+    <Compile Include="Forms\AllStageClear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AllStageClear.Designer.cs">
+      <DependentUpon>AllStageClear.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GameHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,12 @@
     <Compile Include="Forms\Selectstage.Designer.cs">
       <DependentUpon>Selectstage.cs</DependentUpon>
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StageClear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StageClear.Designer.cs">
+      <DependentUpon>StageClear.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Types.cs" />
     <Compile Include="Images\CodeFile1.cs" />
@@ -92,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\selectstage.resx">
       <DependentUpon>Selectstage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StageClear.resx">
+      <DependentUpon>StageClear.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
