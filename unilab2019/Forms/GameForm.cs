@@ -517,10 +517,34 @@ namespace unilab2019.Forms
                     codeListBox.Items.Add("}");
                     codeListBox.SelectedIndex=codeListBox.Items.Count-1;
                 }
+                else if (selected == 0)
+                {
+                    //選択されたのが一番上の行だったとき
+                    tmp.Indent = 1;
+                    end.Indent = 1;
+                    string indent_string = new string(' ', 2 * (tmp.Indent - 1));
+                    code.Insert(selected, tmp);
+                    code.Insert(selected + 1, end);
+                    codeListBox.Items.Insert(selected, indent_string + $"もし{dir}が{obj}なら{{");
+                    codeListBox.Items.Insert(selected + 1, indent_string + "}");
+                    codeListBox.SelectedIndex = selected + 1;
+                }
+                else if (code[selected - 1].Instruction == Types.Instruction.End)
+                {
+                    //選択された一つ上の行がendだったとき
+                    tmp.Indent = code[selected - 1].Indent ;
+                    end.Indent = code[selected - 1].Indent ;
+                    string indent_string = new string(' ', 2 * (tmp.Indent - 1));
+                    code.Insert(selected, tmp);
+                    code.Insert(selected + 1, end);
+                    codeListBox.Items.Insert(selected, indent_string + $"もし{dir}が{obj}なら{{");
+                    codeListBox.Items.Insert(selected + 1, indent_string + "}");
+                    codeListBox.SelectedIndex = selected + 1;
+                }
                 else
                 {
-                    if (selected != 0) tmp.Indent = code[selected-1].Indent + 1;
-                    if (selected != 0) end.Indent = code[selected-1].Indent + 1;
+                    tmp.Indent = code[selected-1].Indent + 1;
+                    end.Indent = code[selected-1].Indent + 1;
                     string indent_string = new string(' ', 2 * (tmp.Indent-1));
                     code.Insert(selected, tmp);
                     code.Insert(selected + 1, end);
@@ -570,10 +594,11 @@ namespace unilab2019.Forms
                     codeListBox.Items.Add("}");
                     codeListBox.SelectedIndex = codeListBox.Items.Count - 1;
                 }
-                else
+                else if (selected == 0)
                 {
-                    tmp.Indent = code[selected].Indent + 1;
-                    end.Indent = code[selected].Indent + 1;
+                    //選択したのが一番上の行だったとき
+                    tmp.Indent = 1;
+                    end.Indent = 1;
                     code.Insert(selected, tmp);
                     code.Insert(selected + 1, end);
                     string indent_string = new string(' ', 2 * (tmp.Indent-1));
@@ -581,6 +606,29 @@ namespace unilab2019.Forms
                     codeListBox.Items.Insert(selected+1,indent_string+"}");
                     codeListBox.SelectedIndex = selected + 1;
 
+                }
+                else if (code[selected - 1].Instruction == Types.Instruction.End)
+                {
+                    //選択した一つ上がendだったとき
+                    tmp.Indent = code[selected - 1].Indent ;
+                    end.Indent = code[selected - 1].Indent ;
+                    code.Insert(selected, tmp);
+                    code.Insert(selected + 1, end);
+                    string indent_string = new string(' ', 2 * (tmp.Indent - 1));
+                    codeListBox.Items.Insert(selected, indent_string + $"{num}回繰り返す{{");
+                    codeListBox.Items.Insert(selected + 1, indent_string + "}");
+                    codeListBox.SelectedIndex = selected + 1;
+                }
+                else
+                {
+                    tmp.Indent = code[selected].Indent + 1;
+                    end.Indent = code[selected].Indent + 1;
+                    code.Insert(selected, tmp);
+                    code.Insert(selected + 1, end);
+                    string indent_string = new string(' ', 2 * (tmp.Indent - 1));
+                    codeListBox.Items.Insert(selected, indent_string + $"{num}回繰り返す{{");
+                    codeListBox.Items.Insert(selected + 1, indent_string + "}");
+                    codeListBox.SelectedIndex = selected + 1;
                 }
             }
         }
@@ -606,6 +654,30 @@ namespace unilab2019.Forms
                 codeListBox.Items.Add("ずっと{");
                 codeListBox.Items.Add("}");
                 codeListBox.SelectedIndex = codeListBox.Items.Count - 1;
+            }
+            else if (selected == 0)
+            {
+                //選択したのが一番上の行だったとき
+                tmp.Indent = 1;
+                end.Indent = 1;
+                code.Insert(selected, tmp);
+                code.Insert(selected + 1, end);
+                string indent_string = new string(' ', 2 * (tmp.Indent - 1));
+                codeListBox.Items.Insert(selected, indent_string + "ずっと{");
+                codeListBox.Items.Insert(selected + 1, indent_string + "}");
+                codeListBox.SelectedIndex = selected + 1;
+            }
+            else if (code[selected - 1].Instruction == Types.Instruction.End)
+            {
+                //選択した一つ上の行がendだったとき
+                tmp.Indent = code[selected-1].Indent ;
+                end.Indent = code[selected-1].Indent ;
+                code.Insert(selected, tmp);
+                code.Insert(selected + 1, end);
+                string indent_string = new string(' ', 2 * (tmp.Indent - 1));
+                codeListBox.Items.Insert(selected, indent_string + "ずっと{");
+                codeListBox.Items.Insert(selected + 1, indent_string + "}");
+                codeListBox.SelectedIndex = selected + 1;
             }
             else
             {
