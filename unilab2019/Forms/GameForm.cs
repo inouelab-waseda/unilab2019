@@ -112,6 +112,9 @@ namespace unilab2019.Forms
             globalTimer.Interval = (int)(1000 / (double)_fps);
             codeTimer.Interval = 333;
             _initialize(stageName);
+            initialCellHeight = CellHeight;
+            initialCellWidth = CellWidth;
+            this.Hide();
         }
    
         public void _initialize(string fieldName)
@@ -129,8 +132,6 @@ namespace unilab2019.Forms
                 //_initial_enemy_position.Add(tmp);
             }
             _graphicsBack.Clear(Color.FromArgb(255, 181, 229, 29));
-            initialCellHeight = CellHeight;
-            initialCellWidth = CellWidth;
             foreach (var obj in _field.GameObjectList())
             {
                 if (obj != null && !obj.CanMove) obj.Draw(_graphicsBack, initialCellWidth, initialCellHeight);
