@@ -85,10 +85,10 @@ namespace unilab2019.Forms
 
         #endregion
         #endregion
-        public GameForm()
+        public GameForm(Selectstage ss)
         {
             InitializeComponent();
-            selectStage = new Selectstage(this);
+            selectStage = ss;
             _graphicsBack = Graphics.FromImage(tableLayoutPanel1.BackgroundImage);
             _fps = 10;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);

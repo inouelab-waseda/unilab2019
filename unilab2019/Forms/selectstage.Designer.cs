@@ -86,6 +86,7 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+
             this.pictureBox1.Location = new System.Drawing.Point(3, 40);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(90, 31);
@@ -99,6 +100,7 @@
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+          
             this.pictureBox2.Location = new System.Drawing.Point(99, 40);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(90, 31);
@@ -123,6 +125,7 @@
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+
             this.pictureBox4.Location = new System.Drawing.Point(291, 40);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(90, 31);
@@ -135,6 +138,7 @@
             this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+
             this.pictureBox5.Location = new System.Drawing.Point(387, 40);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(90, 31);
@@ -382,6 +386,7 @@
             this.pictureBox12.Size = new System.Drawing.Size(92, 33);
             this.pictureBox12.TabIndex = 28;
             this.pictureBox12.TabStop = false;
+            this.pictureBox12.Click += new System.EventHandler(this.PictureBox12_Click);
             // 
             // pictureBox13
             // 
@@ -394,6 +399,7 @@
             this.pictureBox13.Size = new System.Drawing.Size(92, 33);
             this.pictureBox13.TabIndex = 29;
             this.pictureBox13.TabStop = false;
+            this.pictureBox13.Click += new System.EventHandler(this.PictureBox13_Click);
             // 
             // pictureBox14
             // 
@@ -406,6 +412,7 @@
             this.pictureBox14.Size = new System.Drawing.Size(92, 33);
             this.pictureBox14.TabIndex = 30;
             this.pictureBox14.TabStop = false;
+            this.pictureBox14.Click += new System.EventHandler(this.PictureBox14_Click);
             // 
             // pictureBox15
             // 
@@ -418,6 +425,7 @@
             this.pictureBox15.Size = new System.Drawing.Size(92, 33);
             this.pictureBox15.TabIndex = 31;
             this.pictureBox15.TabStop = false;
+            this.pictureBox15.Click += new System.EventHandler(this.PictureBox15_Click);
             // 
             // pictureBox16
             // 
@@ -430,6 +438,7 @@
             this.pictureBox16.Size = new System.Drawing.Size(92, 33);
             this.pictureBox16.TabIndex = 32;
             this.pictureBox16.TabStop = false;
+            this.pictureBox16.Click += new System.EventHandler(this.PictureBox16_Click);
             // 
             // textBox12
             // 
