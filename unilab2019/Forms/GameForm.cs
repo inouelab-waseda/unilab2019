@@ -1041,6 +1041,7 @@ namespace unilab2019.Forms
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
+            code.Clear();
             this.Hide();
             selectStage.Show();
         }
