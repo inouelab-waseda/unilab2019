@@ -76,7 +76,7 @@ namespace Unilab2019.Objects
 
         [JsonIgnore]
         public virtual bool CanMove { get; } = true;
-        //初期値はtrue。壁とゴールはfalseにそれぞれでoverride
+        //初期値はtrue。木とゴールはfalseにそれぞれでoverride
 
         public Brush Color { get; set; } = Brushes.Red;
 
