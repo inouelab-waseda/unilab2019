@@ -846,13 +846,11 @@ namespace unilab2019.Forms
         private void DeleteOneLineBtn_Click(object sender, EventArgs e)
         {
             var selected = codeListBox.SelectedIndex;
-            //選択されていないとき
             if (selected == -1)
             {
-                int lastIndex = codeListBox.Items.Count - 1;
+                int lastIndex = code.Count - 1;
                 //もし最後の行が"}"のときは削除しない
-                if ((string)codeListBox.Items[lastIndex] == "}") { }
-                else
+                if (code[lastIndex].Instruction != Types.Instruction.End)
                 {
                     code.RemoveAt(lastIndex);
                     codeListBox.Items.RemoveAt(lastIndex);
@@ -860,52 +858,39 @@ namespace unilab2019.Forms
             }
             else
             {
-                //閉じ括弧が選択されているときは何もしない
-                if (code[selected].Instruction == Types.Instruction.End) { }
-                //始まり括弧の行が選択されているときは、括弧閉じも同時に削除,中身のインデント調整
-                else if (codeListBox.Text.EndsWith("{"))
+                switch (code[selected].Instruction)
                 {
-                    int parenthesesIndex = -1;
-                    code.RemoveAt(selected);
-                    //閉じ括弧探す
-                    for (int i = selected; i < code.Count; i++)
-                    {
-                        if (code[i].Instruction == Types.Instruction.End)
+                    case Types.Instruction.End:
+                        break;
+                    case Types.Instruction.IfCode:
+                    case Types.Instruction.ForCode:
+                    case Types.Instruction.WhileCode:
+                        var target_indent = code[selected].Indent;
+                        code.RemoveAt(selected);
+                        codeListBox.Items.RemoveAt(selected);
+                        var i = selected;
+                        while (true)
                         {
-                            parenthesesIndex = i;
-                            break;
+                            if (code[i].Instruction == Types.Instruction.End && code[i].Indent == target_indent)
+                            {
+                                code.RemoveAt(i);
+                                codeListBox.Items.RemoveAt(i);
+                                break;
+                            }
+                            else
+                            {
+                                var line = (string)codeListBox.Items[i];
+                                line = line.Remove(0, 2);
+                                codeListBox.Items.RemoveAt(i);
+                                codeListBox.Items.Insert(i, line);
+                            }
+                            i++;
                         }
-                        else
-                        {
-                            code[i].Indent--;
-                        }
-                    }
-                    code.RemoveAt(parenthesesIndex);
-
-                    codeListBox.Items.RemoveAt(selected);
-                    while (true)
-                    {
-                        //閉じ括弧だったら、削除
-                        if ((string)codeListBox.Items[selected] == "}")
-                        {
-                            codeListBox.Items.RemoveAt(selected);
-                            break;
-                        }
-                        //括弧の中身だったら、インデント一つ減らす
-                        else
-                        {
-                            var line = (string)codeListBox.Items[selected];
-                            line = line.Remove(0, 2);
-                            codeListBox.Items.RemoveAt(selected);
-                            codeListBox.Items.Insert(selected, line);
-                        }
-                        selected++;
-                    }
-                }
-                else
-                {
-                    code.RemoveAt(selected);
-                    codeListBox.Items.RemoveAt(selected);
+                        break;
+                    default:
+                        code.RemoveAt(selected);
+                        codeListBox.Items.RemoveAt(selected);
+                        break;
                 }
             }
         }
