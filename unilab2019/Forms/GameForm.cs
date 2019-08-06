@@ -1066,7 +1066,7 @@ namespace unilab2019.Forms
             if (code[0].Instruction == Types.Instruction.WhileCode &&  code[1].Instruction == Types.Instruction.End)
             {
                 exeCodeStack.Clear();
-                MessageBox.Show("無限ループしてしまうよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("コードが動かないよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 codeTimer.Stop();
                 return false;
                 //globalTimer.Stop();
