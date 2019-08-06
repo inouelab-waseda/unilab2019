@@ -128,7 +128,7 @@ namespace unilab2019.Forms
                 var tmp = new List<int>{enemy.X, enemy.Y};
                 //_initial_enemy_position.Add(tmp);
             }
-            _graphicsBack.Clear(Color.FromArgb(255, 121, 207, 110));
+            _graphicsBack.Clear(Color.FromArgb(255, 181, 229, 29));
             initialCellHeight = CellHeight;
             initialCellWidth = CellWidth;
             foreach (var obj in _field.GameObjectList())
@@ -1041,6 +1041,11 @@ namespace unilab2019.Forms
         private void ResetBtn_Click(object sender, EventArgs e)
         {
             _reset();
+        }
+
+        private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
 
