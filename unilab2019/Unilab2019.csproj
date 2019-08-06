@@ -191,10 +191,13 @@
     <EmbeddedResource Include="Images\Wall.jpg" />
     <EmbeddedResource Include="Images\character_cookie.png" />
     <EmbeddedResource Include="Images\coin_medal_gold.png" />
+    <EmbeddedResource Include="Images\AllStageClear.jpg" />
     <Content Include="Images\back.png" />
     <EmbeddedResource Include="Images\background.png" />
     <Content Include="Images\GameHome.jpg" />
     <EmbeddedResource Include="Images\startButton.png" />
+    <None Include="Images\StageClear.jpg" />
+    <None Include="Images\stageSelect.png" />
     <Content Include="Images\ずっと.gif" />
     <Content Include="Images\もし.gif" />
     <Content Include="Images\ステージ選択.gif" />

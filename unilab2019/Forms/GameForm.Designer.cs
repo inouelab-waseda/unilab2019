@@ -65,6 +65,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
+            // ifBtn
+            // 
+            ifBtn.AutoSize = true;
+            ifBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            ifBtn.BackgroundImage = global::unilab2019.Properties.Resources.もし1;
+            ifBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            ifBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            ifBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            ifBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            ifBtn.Location = new System.Drawing.Point(0, 0);
+            ifBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            ifBtn.Name = "ifBtn";
+            ifBtn.Size = new System.Drawing.Size(339, 80);
+            ifBtn.TabIndex = 2;
+            ifBtn.Text = "　　　";
+            ifBtn.UseVisualStyleBackColor = true;
+            ifBtn.Click += new System.EventHandler(this.IfBtn_Click);
+            // 
             // globalTimer
             // 
             this.globalTimer.Tick += new System.EventHandler(this.globalTimer_Tick);
@@ -208,24 +226,6 @@
             this.comboBox2.Size = new System.Drawing.Size(84, 36);
             this.comboBox2.TabIndex = 4;
             this.comboBox2.Text = "敵";
-            // 
-            // ifBtn
-            // 
-            ifBtn.AutoSize = true;
-            ifBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            ifBtn.BackgroundImage = global::unilab2019.Properties.Resources.もし1;
-            ifBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            ifBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            ifBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            ifBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            ifBtn.Location = new System.Drawing.Point(0, 0);
-            ifBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            ifBtn.Name = "ifBtn";
-            ifBtn.Size = new System.Drawing.Size(339, 80);
-            ifBtn.TabIndex = 2;
-            ifBtn.Text = "　　　";
-            ifBtn.UseVisualStyleBackColor = true;
-            ifBtn.Click += new System.EventHandler(this.IfBtn_Click);
             // 
             // panel3
             // 
