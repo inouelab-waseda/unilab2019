@@ -36,8 +36,12 @@ namespace unilab2019.Forms
         public float CellWidth => (float)backPictureBox.Width / _field.Width;
         public float CellHeight => (float)backPictureBox.Height / _field.Height;
         private string stageName = "stage4";
+
         Selectstage selectStage;
         StageClear stageClear;
+        Dictionary<string, int>stage_table = new Dictionary<string, int>();
+
+
         private List<int> _initial_player_position;
 
         public float initialCellWidth;
@@ -90,7 +94,7 @@ namespace unilab2019.Forms
         {
             InitializeComponent();
             selectStage = ss;
-            stageClear = new StageClear(selectStage);
+            stageClear = new StageClear(selectStage, this, stage_table);
             _graphicsBack = Graphics.FromImage(tableLayoutPanel1.BackgroundImage);
             _fps = 10;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -263,10 +267,10 @@ namespace unilab2019.Forms
                 //globalTimer.Stop();
                 MessageBox.Show("ゴール！");
 
-                var stage_table = new Dictionary<string, int>();
-                stage_table.Add("stage1", calc_score());
+                stage_table.Add(currentStage.Text, calc_score());
                 int score_result = stage_table.Count;
 
+                stageClear.textBox1.Text = stage_table[currentStage.Text].ToString();
                 stageClear.Show();
                 this.Hide();
                 
