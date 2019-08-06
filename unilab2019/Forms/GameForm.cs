@@ -39,6 +39,7 @@ namespace unilab2019.Forms
 
         Selectstage selectStage;
         StageClear stageClear;
+        AllStageClear allstageClear;
         Dictionary<string, int>stage_table = new Dictionary<string, int>()
         {
             {"stage1",0},
@@ -112,6 +113,9 @@ namespace unilab2019.Forms
             InitializeComponent();
             selectStage = ss;
             stageClear = new StageClear(selectStage, this, stage_table);
+            allstageClear = new AllStageClear(selectStage, this, stage_table);
+
+
             _graphicsBack = Graphics.FromImage(tableLayoutPanel1.BackgroundImage);
             _fps = 10;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -295,10 +299,13 @@ namespace unilab2019.Forms
                 {
                     sum_score += stage_table["stage" + i.ToString()];
                 }
+
                 selectStage.textBox11.Text = sum_score.ToString();
-                stageClear.Show();
+               
+                //stageClear.Show();
                 this.Hide();
-                
+                stageClear.Show();
+
             }
         }
         private void _draw()
