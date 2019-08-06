@@ -269,7 +269,16 @@ namespace unilab2019.Forms
                 //globalTimer.Stop();
                 MessageBox.Show("ゴール！");
 
-                stage_table.Add(currentStage.Text, calc_score());
+                try
+                {
+                    stage_table.Add(currentStage.Text, calc_score());
+                }
+                catch (Exception)
+                {
+                    stage_table.Remove(currentStage.Text);
+                    stage_table.Add(currentStage.Text, calc_score());
+                }
+                //stage_table.Add(currentStage.Text, calc_score());
                 int score_result = stage_table.Count;
 
                 stageClear.textBox1.Text = stage_table[currentStage.Text].ToString();
