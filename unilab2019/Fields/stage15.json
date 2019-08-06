@@ -241,18 +241,18 @@
   ],
   "Coins":[
     {
-      "X": 6,
+      "X": 3,
+      "Y": 4,
+      "Direction": 0
+    },
+    {
+      "X": 9,
+      "Y": 4,
+      "Direction": 0
+    },
+    {
+      "X": 14,
       "Y": 2,
-      "Direction": 0
-    },
-    {
-      "X": 4,
-      "Y": 10,
-      "Direction": 0
-    },
-    {
-      "X": 17,
-      "Y": 6,
       "Direction": 0
     }
   ],

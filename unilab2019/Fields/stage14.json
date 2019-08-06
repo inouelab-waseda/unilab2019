@@ -354,8 +354,8 @@
         "Direction": 0
     }, 
     {
-        "X": 10,
-        "Y": 9,
+        "X": 12,
+        "Y": 3,
         "Direction": 0
     }, 
     {
@@ -364,13 +364,13 @@
         "Direction": 0
     }, 
     {
-        "X": 19,
-        "Y": 8,
+        "X": 21,
+        "Y": 3,
         "Direction": 0
     },
     {
-        "X": 17,
-        "Y": 14,
+        "X": 21,
+        "Y": 12,
         "Direction": 0
     }  
   ],
@@ -419,8 +419,8 @@
         "PairId": 3,
         "PlayerDirection": 0,
         "IsDestination": false,
-        "X": 21,
-        "Y": 12,
+        "X": 17,
+        "Y": 14,
         "Direction": 0
     },
     {
