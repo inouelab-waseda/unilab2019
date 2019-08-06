@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -114,7 +114,9 @@ namespace unilab2019.Forms
             _initialize(stageName);
             initialCellHeight = CellHeight;
             initialCellWidth = CellWidth;
+
             this.Hide();
+
         }
    
         public void _initialize(string fieldName)

@@ -16,7 +16,7 @@ namespace unilab2019
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.Selectstage());
+            Application.Run(new Forms.GameHome());
         }
     }
 }

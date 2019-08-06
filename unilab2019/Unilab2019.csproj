@@ -52,11 +52,11 @@
   <ItemGroup>
     <Compile Include="CustomControls\CodeFile1.cs" />
     <Compile Include="Fields\Fields.cs" />
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\GameHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\GameHome.Designer.cs">
+      <DependentUpon>GameHome.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GameForm.cs">
       <SubType>Form</SubType>
@@ -84,8 +84,8 @@
     <Compile Include="Objects\Players\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GameHome.resx">
+      <DependentUpon>GameHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
@@ -178,6 +178,8 @@
     <EmbeddedResource Include="Images\coin_medal_gold.png" />
     <Content Include="Images\back.png" />
     <EmbeddedResource Include="Images\background.png" />
+    <Content Include="Images\GameHome.jpg" />
+    <EmbeddedResource Include="Images\startButton.png" />
     <Content Include="Images\ずっと.gif" />
     <Content Include="Images\もし.gif" />
     <Content Include="Images\ステージ選択.gif" />
