@@ -12,9 +12,21 @@ namespace unilab2019.Forms
 {
     public partial class StageClear : Form
     {
-        public StageClear()
+        Selectstage selectstage;
+        public StageClear(Selectstage ss)
         {
             InitializeComponent();
+            selectstage = ss;
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            selectstage.Show();
+            this.Hide();
+        }
+        private void StageClear_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
