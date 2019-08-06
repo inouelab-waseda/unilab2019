@@ -83,6 +83,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(286, 58);
             this.listBox1.TabIndex = 1;
+            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
             // 
             // StageClear
             // 
