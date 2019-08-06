@@ -370,9 +370,23 @@ namespace unilab2019.Forms
                 code.Add(tmp);
                 codeListBox.Items.Add("前に進む");
             }
+            else if (selected == 0)
+            {
+                tmp.Indent = 0;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "前に進む");
+            }
+            else if (code[selected - 1].Instruction == Types.Instruction.End)
+            {
+                tmp.Indent = code[selected - 1].Indent - 1 ;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "前に進む");
+            }
             else
             {
-                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                tmp.Indent = code[selected-1].Indent;
                 string indent_string = new string(' ', 2 * tmp.Indent);
                 code.Insert(selected,tmp);
                 codeListBox.Items.Insert(selected,indent_string+"前に進む");
@@ -392,9 +406,23 @@ namespace unilab2019.Forms
                 code.Add(tmp);
                 codeListBox.Items.Add("左を向く");
             }
+            else if (selected == 0)
+            {
+                tmp.Indent = 0;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "左を向く");
+            }
+            else if (code[selected - 1].Instruction == Types.Instruction.End)
+            {
+                tmp.Indent = code[selected - 1].Indent -1;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "左を向く");
+            }
             else
             {
-                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                tmp.Indent = code[selected-1].Indent;
                 string indent_string = new string(' ', 2 * tmp.Indent);
                 code.Insert(selected, tmp);
                 codeListBox.Items.Insert(selected, indent_string+"左を向く");
@@ -412,9 +440,23 @@ namespace unilab2019.Forms
                 code.Add(tmp);
                 codeListBox.Items.Add("右を向く");
             }
+            else if (selected == 0)
+            {
+                tmp.Indent = 0;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "右を向く");
+            }
+            else if (code[selected - 1].Instruction == Types.Instruction.End)
+            {
+                tmp.Indent = code[selected - 1].Indent - 1;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "右を向く");
+            }
             else
             {
-                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                tmp.Indent = code[selected-1].Indent;
                 string indent_string = new string(' ', 2 * tmp.Indent);
                 code.Insert(selected, tmp);
                 codeListBox.Items.Insert(selected, indent_string+"右を向く");
@@ -435,9 +477,23 @@ namespace unilab2019.Forms
                 code.Add(tmp);
                 codeListBox.Items.Add("止まる");
             }
-            else
+            else if (selected == 0)
             {
-                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                tmp.Indent = 0;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "止まる");
+            }
+            else if (code[selected - 1].Instruction == Types.Instruction.End)
+            {
+                tmp.Indent = code[selected-1].Indent - 1;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "止まる");
+            }
+            else
+            { 
+                tmp.Indent = code[selected-1].Indent;
                 string indent_string = new string(' ', 2 * tmp.Indent);
                 code.Insert(selected, tmp);
                 codeListBox.Items.Insert(selected, indent_string+"止まる");
