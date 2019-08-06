@@ -201,7 +201,7 @@ namespace unilab2019.Forms
         {
 
         }
-
+        
         private void PictureBox12_Click(object sender, EventArgs e)
         {
             gameForm._initialize("stage11");
@@ -235,6 +235,10 @@ namespace unilab2019.Forms
             gameForm._initialize("stage15");
             this.Hide();
             gameForm.Show();
+
+        private void Selectstage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
