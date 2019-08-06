@@ -215,6 +215,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.ReadOnly = true;
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(5, 116);
             this.textBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -225,6 +226,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.ReadOnly = true;
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox2.Location = new System.Drawing.Point(165, 116);
             this.textBox2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -235,6 +237,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.ReadOnly = true;
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox3.Location = new System.Drawing.Point(325, 116);
             this.textBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -245,6 +248,7 @@
             // 
             // textBox4
             // 
+            this.textBox4.ReadOnly = true;
             this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox4.Location = new System.Drawing.Point(485, 116);
             this.textBox4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -255,6 +259,7 @@
             // 
             // textBox5
             // 
+            this.textBox5.ReadOnly = true;
             this.textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox5.Location = new System.Drawing.Point(645, 116);
             this.textBox5.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -265,6 +270,7 @@
             // 
             // textBox6
             // 
+            this.textBox6.ReadOnly = true;
             this.textBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox6.Location = new System.Drawing.Point(5, 228);
             this.textBox6.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -275,6 +281,7 @@
             // 
             // textBox7
             // 
+            this.textBox7.ReadOnly = true;
             this.textBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox7.Location = new System.Drawing.Point(165, 228);
             this.textBox7.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -285,6 +292,7 @@
             // 
             // textBox8
             // 
+            this.textBox8.ReadOnly = true;
             this.textBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox8.Location = new System.Drawing.Point(325, 228);
             this.textBox8.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -295,6 +303,7 @@
             // 
             // textBox9
             // 
+            this.textBox9.ReadOnly = true;
             this.textBox9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox9.Location = new System.Drawing.Point(485, 228);
             this.textBox9.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -305,6 +314,7 @@
             // 
             // textBox10
             // 
+            this.textBox10.ReadOnly = true;
             this.textBox10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox10.Location = new System.Drawing.Point(645, 228);
             this.textBox10.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -315,6 +325,7 @@
             // 
             // textBox11
             // 
+            this.textBox11.ReadOnly = true;
             this.textBox11.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.textBox11.Location = new System.Drawing.Point(645, 27);
             this.textBox11.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -454,6 +465,7 @@
             // 
             // textBox12
             // 
+            this.textBox12.ReadOnly = true;
             this.textBox12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox12.Location = new System.Drawing.Point(3, 339);
             this.textBox12.Name = "textBox12";
@@ -462,6 +474,7 @@
             // 
             // textBox13
             // 
+            this.textBox13.ReadOnly = true;
             this.textBox13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox13.Location = new System.Drawing.Point(163, 339);
             this.textBox13.Name = "textBox13";
@@ -470,6 +483,7 @@
             // 
             // textBox14
             // 
+            this.textBox14.ReadOnly = true;
             this.textBox14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox14.Location = new System.Drawing.Point(323, 339);
             this.textBox14.Name = "textBox14";
@@ -478,6 +492,7 @@
             // 
             // textBox15
             // 
+            this.textBox15.ReadOnly = true;
             this.textBox15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox15.Location = new System.Drawing.Point(483, 339);
             this.textBox15.Name = "textBox15";
@@ -486,6 +501,7 @@
             // 
             // textBox16
             // 
+            this.textBox16.ReadOnly = true;
             this.textBox16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox16.Location = new System.Drawing.Point(643, 339);
             this.textBox16.Name = "textBox16";

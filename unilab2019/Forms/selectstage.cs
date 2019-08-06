@@ -140,66 +140,81 @@ namespace unilab2019.Forms
         private void TextBox1_TextChanged(object sender, EventArgs e)
         {
             var score_stage1 = gameForm.calc_score();
+            textBox1.ReadOnly = true;
             textBox1.Text = score_stage1.ToString();
         }
 
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
             var score_stage2 = gameForm.calc_score();
+            textBox2.ReadOnly = true;
             textBox2.Text = score_stage2.ToString();
         }
 
         private void TextBox3_TextChanged(object sender, EventArgs e)
         {
             var score_stage3 = gameForm.calc_score();
+            textBox3.ReadOnly = true;
             textBox3.Text = score_stage3.ToString();
         }
 
         private void TextBox4_TextChanged(object sender, EventArgs e)
         {
             var score_stage4 = gameForm.calc_score();
+            textBox4.ReadOnly = true;
             textBox4.Text = score_stage4.ToString();
         }
 
         private void TextBox5_TextChanged(object sender, EventArgs e)
         {
             var score_stage5 = gameForm.calc_score();
+            textBox5.ReadOnly = true;
             textBox5.Text = score_stage5.ToString();
         }
 
         private void TextBox6_TextChanged(object sender, EventArgs e)
         {
             var score_stage6 = gameForm.calc_score();
+            textBox6.ReadOnly = true;
             textBox6.Text = score_stage6.ToString();
         }
 
         private void TextBox7_TextChanged(object sender, EventArgs e)
         {
             var score_stage7 = gameForm.calc_score();
+            textBox7.ReadOnly = true;
             textBox7.Text = score_stage7.ToString();
         }
 
         private void TextBox8_TextChanged(object sender, EventArgs e)
         {
             var score_stage8 = gameForm.calc_score();
+            textBox8.ReadOnly = true;
             textBox8.Text = score_stage8.ToString();
         }
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
         {
             var score_stage9 = gameForm.calc_score();
+            textBox9.ReadOnly = true;
             textBox9.Text = score_stage9.ToString();
         }
 
         private void TextBox10_TextChanged(object sender, EventArgs e)
         {
             var score_stage10 = gameForm.calc_score();
+            textBox10.ReadOnly = true;
             textBox10.Text = score_stage10.ToString();
         }
 
+        /// <summary>
+        /// 合計スコア
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBox11_TextChanged(object sender, EventArgs e)
         {
-           
+            textBox11.ReadOnly = true;
         }
         
         private void PictureBox12_Click(object sender, EventArgs e)

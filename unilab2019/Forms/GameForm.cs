@@ -39,7 +39,24 @@ namespace unilab2019.Forms
 
         Selectstage selectStage;
         StageClear stageClear;
-        Dictionary<string, int>stage_table = new Dictionary<string, int>();
+        Dictionary<string, int>stage_table = new Dictionary<string, int>()
+        {
+            {"stage1",0},
+            {"stage2",0},
+            {"stage3",0},
+            {"stage4",0},
+            {"stage5",0},
+            {"stage6",0},
+            {"stage7",0},
+            {"stage8",0},
+            {"stage9",0},
+            {"stage10",0},
+            {"stage11",0},
+            {"stage12",0},
+            {"stage13",0},
+            {"stage14",0},
+            {"stage15",0}
+        };
 
 
         private List<int> _initial_player_position;
@@ -268,11 +285,17 @@ namespace unilab2019.Forms
                 exeCodeStack.Clear();
                 //globalTimer.Stop();
                 MessageBox.Show("ゴール！");
-
-                stage_table.Add(currentStage.Text, calc_score());
+                if(stage_table[currentStage.Text] < calc_score())stage_table[currentStage.Text]= calc_score();
                 int score_result = stage_table.Count;
 
-                stageClear.textBox1.Text = stage_table[currentStage.Text].ToString();
+                stageClear.textBox1.Text = calc_score().ToString();
+                //合計点
+                var sum_score = 0;
+                for(var i = 1; i <= 15; i++)
+                {
+                    sum_score += stage_table["stage" + i.ToString()];
+                }
+                selectStage.textBox11.Text = sum_score.ToString();
                 stageClear.Show();
                 this.Hide();
                 
