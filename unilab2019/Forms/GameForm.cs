@@ -879,17 +879,20 @@ namespace unilab2019.Forms
                         }
                     }
 
-                    //選択された文からendまで中身のインデント減らして削除。でも見た目のコードでインデント減らない
-                    for (int i = selected; i <= same_end_indent; i++)
+                    //選択された文からendまで中身のインデント減らして削除
+                    for (int i = selected + 1; i < same_end_indent; i++)
                     {
                         code[i].Indent--;
+                        string tmp = codeListBox.Items[i].ToString();
+                        string tmp2 = tmp.Remove(0, 2);
+                        codeListBox.Items.RemoveAt(i);
+                        codeListBox.Items.Insert(i, tmp2);
                     }
                     code.RemoveAt(selected);
                     code.RemoveAt(same_end_indent-1);
 
                     codeListBox.Items.RemoveAt(selected);
                     codeListBox.Items.RemoveAt(same_end_indent - 1);
-                    
                 }
                 else
                 {
