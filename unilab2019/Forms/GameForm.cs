@@ -862,45 +862,34 @@ namespace unilab2019.Forms
             {
                 //閉じ括弧が選択されているときは何もしない
                 if (code[selected].Instruction == Types.Instruction.End) { }
-                //始まり括弧の行が選択されているときは、括弧閉じも同時に削除,中身のインデント調整
-                else if (codeListBox.Text.EndsWith("{"))
+                //選択されているのがfor,if,whileのときは、括弧閉じも同時に削除,中身のインデント調整
+                else if (code[selected].Instruction == Types.Instruction.ForCode || code[selected].Instruction == Types.Instruction.IfCode || code[selected].Instruction == Types.Instruction.WhileCode)
                 {
-                    int parenthesesIndex = -1;
-                    code.RemoveAt(selected);
                     //閉じ括弧探す
-                    for (int i = selected; i < code.Count; i++)
+                    //endの行数を格納する変数
+                    int same_end_indent = 0;
+
+                    //選択された文のendの行数を取得
+                    for (int k = selected; k < code.Count(); k++)
                     {
-                        if (code[i].Instruction == Types.Instruction.End)
+                        if (code[k].Instruction == Types.Instruction.End && code[k].Indent == code[selected].Indent)
                         {
-                            parenthesesIndex = i;
+                            same_end_indent = k;
                             break;
                         }
-                        else
-                        {
-                            code[i].Indent--;
-                        }
                     }
-                    code.RemoveAt(parenthesesIndex);
+
+                    //選択された文からendまで中身のインデント減らして削除。でも見た目のコードでインデント減らない
+                    for (int i = selected; i <= same_end_indent; i++)
+                    {
+                        code[i].Indent--;
+                    }
+                    code.RemoveAt(selected);
+                    code.RemoveAt(same_end_indent-1);
 
                     codeListBox.Items.RemoveAt(selected);
-                    while (true)
-                    {
-                        //閉じ括弧だったら、削除
-                        if ((string)codeListBox.Items[selected] == "}")
-                        {
-                            codeListBox.Items.RemoveAt(selected);
-                            break;
-                        }
-                        //括弧の中身だったら、インデント一つ減らす
-                        else
-                        {
-                            var line = (string)codeListBox.Items[selected];
-                            line = line.Remove(0, 2);
-                            codeListBox.Items.RemoveAt(selected);
-                            codeListBox.Items.Insert(selected, line);
-                        }
-                        selected++;
-                    }
+                    codeListBox.Items.RemoveAt(same_end_indent - 1);
+                    
                 }
                 else
                 {
