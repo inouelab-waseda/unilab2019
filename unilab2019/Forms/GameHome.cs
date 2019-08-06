@@ -10,16 +10,24 @@ using System.Windows.Forms;
 
 namespace unilab2019.Forms
 {
-    public partial class Form1 : Form
+    public partial class GameHome : Form
     {
-        public Form1()
+        Selectstage selectStage;
+        public GameHome()
         {
+            selectStage = new Selectstage();
             InitializeComponent();
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            selectStage.Show();
         }
     }
 }
