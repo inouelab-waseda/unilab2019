@@ -558,7 +558,7 @@
         private System.Windows.Forms.Button deleteOneBtn;
         private System.Windows.Forms.Button deleteAllBtn;
         private System.Windows.Forms.Button startBtn;
-        private System.Windows.Forms.TextBox currentStage;
+        public System.Windows.Forms.TextBox currentStage;
         private System.Windows.Forms.TextBox oneUpCount;
         private System.Windows.Forms.TextBox numOfLines;
         private System.Windows.Forms.ListBox codeListBox;
