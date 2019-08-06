@@ -201,6 +201,7 @@
     <EmbeddedResource Include="Images\startButton.png" />
     <None Include="Images\StageClear.jpg" />
     <None Include="Images\stageSelect.png" />
+    <None Include="Images\stageSelect.png.png" />
     <Content Include="Images\ずっと.gif" />
     <Content Include="Images\もし.gif" />
     <Content Include="Images\ステージ選択.gif" />
