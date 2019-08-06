@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button ifBtn;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
             this.globalTimer = new System.Windows.Forms.Timer(this.components);
             this.codeTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -77,7 +78,7 @@
             ifBtn.Location = new System.Drawing.Point(0, 0);
             ifBtn.Margin = new System.Windows.Forms.Padding(2);
             ifBtn.Name = "ifBtn";
-            ifBtn.Size = new System.Drawing.Size(273, 67);
+            ifBtn.Size = new System.Drawing.Size(341, 80);
             ifBtn.TabIndex = 2;
             ifBtn.Text = "　　　";
             ifBtn.UseVisualStyleBackColor = true;
@@ -142,7 +143,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.094017F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.863248F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.658119F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1538, 878);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1922, 1054);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Click += new System.EventHandler(this.TableLayoutPanel1_Click);
             // 
@@ -152,23 +153,23 @@
             this.codeListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.codeListBox.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.codeListBox.FormattingEnabled = true;
-            this.codeListBox.ItemHeight = 23;
-            this.codeListBox.Location = new System.Drawing.Point(905, 263);
-            this.codeListBox.Margin = new System.Windows.Forms.Padding(8, 12, 20, 2);
+            this.codeListBox.ItemHeight = 28;
+            this.codeListBox.Location = new System.Drawing.Point(1131, 314);
+            this.codeListBox.Margin = new System.Windows.Forms.Padding(10, 14, 25, 2);
             this.codeListBox.Name = "codeListBox";
             this.tableLayoutPanel1.SetRowSpan(this.codeListBox, 6);
-            this.codeListBox.Size = new System.Drawing.Size(364, 393);
+            this.codeListBox.Size = new System.Drawing.Size(453, 472);
             this.codeListBox.TabIndex = 16;
             // 
             // currentStage
             // 
             this.currentStage.Dock = System.Windows.Forms.DockStyle.Top;
             this.currentStage.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.currentStage.Location = new System.Drawing.Point(96, 101);
-            this.currentStage.Margin = new System.Windows.Forms.Padding(2, 22, 42, 2);
+            this.currentStage.Location = new System.Drawing.Point(120, 121);
+            this.currentStage.Margin = new System.Windows.Forms.Padding(2, 26, 52, 2);
             this.currentStage.Name = "currentStage";
             this.currentStage.ReadOnly = true;
-            this.currentStage.Size = new System.Drawing.Size(390, 31);
+            this.currentStage.Size = new System.Drawing.Size(488, 35);
             this.currentStage.TabIndex = 12;
             this.currentStage.TabStop = false;
             this.currentStage.Text = "ステージ";
@@ -187,10 +188,10 @@
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(ifBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(899, 79);
+            this.panel2.Location = new System.Drawing.Point(1123, 95);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(273, 67);
+            this.panel2.Size = new System.Drawing.Size(341, 80);
             this.panel2.TabIndex = 24;
             // 
             // comboBox1
@@ -203,10 +204,10 @@
             "後ろ",
             "右",
             "左"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 32);
+            this.comboBox1.Location = new System.Drawing.Point(8, 38);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(68, 31);
+            this.comboBox1.Size = new System.Drawing.Size(84, 36);
             this.comboBox1.TabIndex = 3;
             this.comboBox1.Text = "前";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
@@ -220,10 +221,10 @@
             "木",
             "てき",
             "道"});
-            this.comboBox2.Location = new System.Drawing.Point(121, 32);
+            this.comboBox2.Location = new System.Drawing.Point(151, 38);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(68, 31);
+            this.comboBox2.Size = new System.Drawing.Size(84, 36);
             this.comboBox2.TabIndex = 4;
             this.comboBox2.Text = "てき";
             // 
@@ -233,20 +234,20 @@
             this.panel3.Controls.Add(this.numericUpDown1);
             this.panel3.Controls.Add(this.forBtn);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(899, 150);
+            this.panel3.Location = new System.Drawing.Point(1123, 179);
             this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(273, 47);
+            this.panel3.Size = new System.Drawing.Size(341, 57);
             this.panel3.TabIndex = 25;
             // 
             // numericUpDown1
             // 
             this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.numericUpDown1.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.numericUpDown1.Location = new System.Drawing.Point(169, 8);
+            this.numericUpDown1.Location = new System.Drawing.Point(211, 10);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(50, 31);
+            this.numericUpDown1.Size = new System.Drawing.Size(62, 35);
             this.numericUpDown1.TabIndex = 2;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
@@ -256,14 +257,14 @@
             // 
             // forBtn
             // 
-            this.forBtn.BackgroundImage = global::unilab2019.Properties.Resources.繰り返し1;
+            this.forBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("forBtn.BackgroundImage")));
             this.forBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.forBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.forBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.forBtn.Location = new System.Drawing.Point(0, 0);
             this.forBtn.Margin = new System.Windows.Forms.Padding(2);
             this.forBtn.Name = "forBtn";
-            this.forBtn.Size = new System.Drawing.Size(273, 47);
+            this.forBtn.Size = new System.Drawing.Size(341, 57);
             this.forBtn.TabIndex = 1;
             this.forBtn.Text = "　　\r\n";
             this.forBtn.UseVisualStyleBackColor = true;
@@ -276,10 +277,10 @@
             this.tableLayoutPanel1.SetColumnSpan(this.whileBtn, 2);
             this.whileBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.whileBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.whileBtn.Location = new System.Drawing.Point(899, 205);
-            this.whileBtn.Margin = new System.Windows.Forms.Padding(2, 8, 2, 0);
+            this.whileBtn.Location = new System.Drawing.Point(1123, 246);
+            this.whileBtn.Margin = new System.Windows.Forms.Padding(2, 10, 2, 0);
             this.whileBtn.Name = "whileBtn";
-            this.whileBtn.Size = new System.Drawing.Size(273, 46);
+            this.whileBtn.Size = new System.Drawing.Size(341, 54);
             this.whileBtn.TabIndex = 0;
             this.whileBtn.UseVisualStyleBackColor = true;
             this.whileBtn.Click += new System.EventHandler(this.WhileBtn_Click);
@@ -290,10 +291,10 @@
             this.turnRightBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.turnRightBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.turnRightBtn.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.turnRightBtn.Location = new System.Drawing.Point(1291, 150);
+            this.turnRightBtn.Location = new System.Drawing.Point(1611, 179);
             this.turnRightBtn.Margin = new System.Windows.Forms.Padding(2);
             this.turnRightBtn.Name = "turnRightBtn";
-            this.turnRightBtn.Size = new System.Drawing.Size(107, 45);
+            this.turnRightBtn.Size = new System.Drawing.Size(135, 55);
             this.turnRightBtn.TabIndex = 6;
             this.turnRightBtn.Text = "右を向く";
             this.turnRightBtn.UseVisualStyleBackColor = false;
@@ -305,10 +306,10 @@
             this.turnLeftBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.turnLeftBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.turnLeftBtn.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.turnLeftBtn.Location = new System.Drawing.Point(1183, 150);
+            this.turnLeftBtn.Location = new System.Drawing.Point(1476, 179);
             this.turnLeftBtn.Margin = new System.Windows.Forms.Padding(2);
             this.turnLeftBtn.Name = "turnLeftBtn";
-            this.turnLeftBtn.Size = new System.Drawing.Size(104, 45);
+            this.turnLeftBtn.Size = new System.Drawing.Size(131, 55);
             this.turnLeftBtn.TabIndex = 5;
             this.turnLeftBtn.Text = "左を向く";
             this.turnLeftBtn.UseVisualStyleBackColor = false;
@@ -321,10 +322,10 @@
             this.goForwardBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.goForwardBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.goForwardBtn.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.goForwardBtn.Location = new System.Drawing.Point(1215, 81);
-            this.goForwardBtn.Margin = new System.Windows.Forms.Padding(34, 2, 34, 2);
+            this.goForwardBtn.Location = new System.Drawing.Point(1516, 97);
+            this.goForwardBtn.Margin = new System.Windows.Forms.Padding(42, 2, 42, 2);
             this.goForwardBtn.Name = "goForwardBtn";
-            this.goForwardBtn.Size = new System.Drawing.Size(151, 65);
+            this.goForwardBtn.Size = new System.Drawing.Size(190, 78);
             this.goForwardBtn.TabIndex = 4;
             this.goForwardBtn.Text = "前に進む";
             this.goForwardBtn.UseVisualStyleBackColor = false;
@@ -337,10 +338,10 @@
             this.stopBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stopBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.stopBtn.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.stopBtn.Location = new System.Drawing.Point(1215, 199);
-            this.stopBtn.Margin = new System.Windows.Forms.Padding(34, 2, 34, 2);
+            this.stopBtn.Location = new System.Drawing.Point(1516, 238);
+            this.stopBtn.Margin = new System.Windows.Forms.Padding(42, 2, 42, 2);
             this.stopBtn.Name = "stopBtn";
-            this.stopBtn.Size = new System.Drawing.Size(151, 50);
+            this.stopBtn.Size = new System.Drawing.Size(190, 60);
             this.stopBtn.TabIndex = 22;
             this.stopBtn.Text = "止まる";
             this.stopBtn.UseVisualStyleBackColor = false;
@@ -353,10 +354,10 @@
             this.deleteOneBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.deleteOneBtn.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.deleteOneBtn.ForeColor = System.Drawing.Color.Yellow;
-            this.deleteOneBtn.Location = new System.Drawing.Point(1291, 385);
+            this.deleteOneBtn.Location = new System.Drawing.Point(1611, 460);
             this.deleteOneBtn.Margin = new System.Windows.Forms.Padding(2);
             this.deleteOneBtn.Name = "deleteOneBtn";
-            this.deleteOneBtn.Size = new System.Drawing.Size(107, 62);
+            this.deleteOneBtn.Size = new System.Drawing.Size(135, 75);
             this.deleteOneBtn.TabIndex = 7;
             this.deleteOneBtn.Text = "1つ消す";
             this.deleteOneBtn.UseVisualStyleBackColor = false;
@@ -369,10 +370,10 @@
             this.deleteAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.deleteAllBtn.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.deleteAllBtn.ForeColor = System.Drawing.Color.White;
-            this.deleteAllBtn.Location = new System.Drawing.Point(1291, 451);
+            this.deleteAllBtn.Location = new System.Drawing.Point(1611, 539);
             this.deleteAllBtn.Margin = new System.Windows.Forms.Padding(2);
             this.deleteAllBtn.Name = "deleteAllBtn";
-            this.deleteAllBtn.Size = new System.Drawing.Size(107, 68);
+            this.deleteAllBtn.Size = new System.Drawing.Size(135, 82);
             this.deleteAllBtn.TabIndex = 8;
             this.deleteAllBtn.Text = "全部消す";
             this.deleteAllBtn.UseVisualStyleBackColor = false;
@@ -385,11 +386,11 @@
             this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.startBtn.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.startBtn.ForeColor = System.Drawing.Color.White;
-            this.startBtn.Location = new System.Drawing.Point(1291, 533);
-            this.startBtn.Margin = new System.Windows.Forms.Padding(2, 12, 2, 12);
+            this.startBtn.Location = new System.Drawing.Point(1611, 637);
+            this.startBtn.Margin = new System.Windows.Forms.Padding(2, 14, 2, 14);
             this.startBtn.Name = "startBtn";
             this.tableLayoutPanel1.SetRowSpan(this.startBtn, 2);
-            this.startBtn.Size = new System.Drawing.Size(107, 113);
+            this.startBtn.Size = new System.Drawing.Size(135, 137);
             this.startBtn.TabIndex = 10;
             this.startBtn.Text = "実行！";
             this.startBtn.UseVisualStyleBackColor = false;
@@ -400,11 +401,11 @@
             this.resetBtn.BackColor = System.Drawing.Color.LightSalmon;
             this.resetBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resetBtn.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.resetBtn.Location = new System.Drawing.Point(1291, 660);
+            this.resetBtn.Location = new System.Drawing.Point(1611, 790);
             this.resetBtn.Margin = new System.Windows.Forms.Padding(2);
             this.resetBtn.Name = "resetBtn";
             this.tableLayoutPanel1.SetRowSpan(this.resetBtn, 2);
-            this.resetBtn.Size = new System.Drawing.Size(107, 127);
+            this.resetBtn.Size = new System.Drawing.Size(135, 152);
             this.resetBtn.TabIndex = 26;
             this.resetBtn.Text = "プレーヤー\r\nをリセット";
             this.resetBtn.UseVisualStyleBackColor = false;
@@ -417,11 +418,11 @@
             this.tableLayoutPanel1.SetColumnSpan(this.backPictureBox, 2);
             this.backPictureBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.backPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.backPictureBox.Location = new System.Drawing.Point(96, 199);
+            this.backPictureBox.Location = new System.Drawing.Point(120, 238);
             this.backPictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.backPictureBox.Name = "backPictureBox";
             this.tableLayoutPanel1.SetRowSpan(this.backPictureBox, 8);
-            this.backPictureBox.Size = new System.Drawing.Size(799, 519);
+            this.backPictureBox.Size = new System.Drawing.Size(999, 622);
             this.backPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.backPictureBox.TabIndex = 27;
             this.backPictureBox.TabStop = false;
@@ -432,11 +433,11 @@
             this.tableLayoutPanel1.SetColumnSpan(this.numOfLines, 4);
             this.numOfLines.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numOfLines.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.numOfLines.Location = new System.Drawing.Point(905, 676);
-            this.numOfLines.Margin = new System.Windows.Forms.Padding(8, 18, 20, 12);
+            this.numOfLines.Location = new System.Drawing.Point(1131, 810);
+            this.numOfLines.Margin = new System.Windows.Forms.Padding(10, 22, 25, 14);
             this.numOfLines.Name = "numOfLines";
             this.numOfLines.ReadOnly = true;
-            this.numOfLines.Size = new System.Drawing.Size(364, 31);
+            this.numOfLines.Size = new System.Drawing.Size(453, 35);
             this.numOfLines.TabIndex = 15;
             this.numOfLines.TabStop = false;
             this.numOfLines.Text = "行数：";
@@ -453,11 +454,11 @@
             this.tableLayoutPanel1.SetColumnSpan(this.countTime, 4);
             this.countTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.countTime.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.countTime.Location = new System.Drawing.Point(905, 722);
-            this.countTime.Margin = new System.Windows.Forms.Padding(8, 2, 20, 2);
+            this.countTime.Location = new System.Drawing.Point(1131, 864);
+            this.countTime.Margin = new System.Windows.Forms.Padding(10, 2, 25, 2);
             this.countTime.Name = "countTime";
             this.countTime.ReadOnly = true;
-            this.countTime.Size = new System.Drawing.Size(364, 31);
+            this.countTime.Size = new System.Drawing.Size(453, 35);
             this.countTime.TabIndex = 28;
             this.countTime.TabStop = false;
             this.countTime.Text = "時間：";
@@ -473,11 +474,11 @@
             // 
             this.oneUpCount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.oneUpCount.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.oneUpCount.Location = new System.Drawing.Point(570, 722);
-            this.oneUpCount.Margin = new System.Windows.Forms.Padding(42, 2, 20, 2);
+            this.oneUpCount.Location = new System.Drawing.Point(712, 864);
+            this.oneUpCount.Margin = new System.Windows.Forms.Padding(52, 2, 25, 2);
             this.oneUpCount.Name = "oneUpCount";
             this.oneUpCount.ReadOnly = true;
-            this.oneUpCount.Size = new System.Drawing.Size(307, 31);
+            this.oneUpCount.Size = new System.Drawing.Size(384, 35);
             this.oneUpCount.TabIndex = 14;
             this.oneUpCount.TabStop = false;
             this.oneUpCount.Text = "残機：";
@@ -493,11 +494,11 @@
             // 
             this.coinCount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.coinCount.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.coinCount.Location = new System.Drawing.Point(96, 722);
-            this.coinCount.Margin = new System.Windows.Forms.Padding(2, 2, 42, 2);
+            this.coinCount.Location = new System.Drawing.Point(120, 864);
+            this.coinCount.Margin = new System.Windows.Forms.Padding(2, 2, 52, 2);
             this.coinCount.Name = "coinCount";
             this.coinCount.ReadOnly = true;
-            this.coinCount.Size = new System.Drawing.Size(390, 31);
+            this.coinCount.Size = new System.Drawing.Size(488, 35);
             this.coinCount.TabIndex = 13;
             this.coinCount.TabStop = false;
             this.coinCount.Text = "コイン数：";
@@ -515,10 +516,10 @@
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Image = global::unilab2019.Properties.Resources.ステージ選択;
-            this.pictureBox2.Location = new System.Drawing.Point(96, 150);
+            this.pictureBox2.Location = new System.Drawing.Point(120, 179);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(430, 45);
+            this.pictureBox2.Size = new System.Drawing.Size(538, 55);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 29;
             this.pictureBox2.TabStop = false;
@@ -526,9 +527,9 @@
             // 
             // GameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1538, 878);
+            this.ClientSize = new System.Drawing.Size(1922, 1054);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GameForm";
