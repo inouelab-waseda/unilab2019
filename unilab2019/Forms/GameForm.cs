@@ -260,6 +260,8 @@ namespace unilab2019.Forms
             if (_field.Player.Intersect(_field.Goal))
             {
                 codeTimer.Stop();
+                code.Clear();
+                exeCodeStack.Clear();
                 //globalTimer.Stop();
                 MessageBox.Show("ゴール！");
 
