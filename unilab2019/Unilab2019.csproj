@@ -96,6 +96,9 @@
     <Compile Include="Objects\Players\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AllStageClear.resx">
+      <DependentUpon>AllStageClear.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GameHome.resx">
       <DependentUpon>GameHome.cs</DependentUpon>
     </EmbeddedResource>
