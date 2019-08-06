@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StageClear));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -65,7 +66,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(487, 359);
+            this.textBox1.Location = new System.Drawing.Point(442, 359);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(286, 25);
             this.textBox1.TabIndex = 1;
@@ -75,7 +76,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackgroundImage = global::unilab2019.Properties.Resources.stageSelect_png;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(109, 359);
             this.pictureBox1.Name = "pictureBox1";

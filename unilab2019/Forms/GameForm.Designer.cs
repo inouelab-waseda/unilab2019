@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button ifBtn;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
             this.globalTimer = new System.Windows.Forms.Timer(this.components);
             this.codeTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -256,7 +257,7 @@
             // 
             // forBtn
             // 
-            this.forBtn.BackgroundImage = global::unilab2019.Properties.Resources.繰り返し1;
+            this.forBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("forBtn.BackgroundImage")));
             this.forBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.forBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.forBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
