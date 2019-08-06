@@ -235,7 +235,7 @@ namespace unilab2019.Forms
             gameForm._initialize("stage15");
             this.Hide();
             gameForm.Show();
-
+        }
         private void Selectstage_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();

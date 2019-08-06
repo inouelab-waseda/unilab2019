@@ -99,6 +99,11 @@
     <EmbeddedResource Include="Fields\stage7.json" />
     <EmbeddedResource Include="Fields\stage8.json" />
     <EmbeddedResource Include="Fields\stage9.json" />
+    <EmbeddedResource Include="Fields\stage11.json" />
+    <EmbeddedResource Include="Fields\stage12.json" />
+    <EmbeddedResource Include="Fields\stage13.json" />
+    <EmbeddedResource Include="Fields\stage14.json" />
+    <EmbeddedResource Include="Fields\stage15.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
