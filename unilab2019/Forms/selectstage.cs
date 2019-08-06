@@ -14,10 +14,10 @@ namespace unilab2019.Forms
     {
         GameForm gameForm;
 
-        public Selectstage(GameForm gf)
+        public Selectstage()
         {
             InitializeComponent();
-            gameForm = gf;
+            gameForm = new GameForm(this);
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -67,71 +67,71 @@ namespace unilab2019.Forms
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            this.Hide();
             gameForm._initialize("stage6");
+            this.Hide();
             gameForm.Show();
         }
 
         private void pictureBox5_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
             gameForm._initialize("stage5");
+            this.Hide();
             gameForm.Show();
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
             gameForm._initialize("stage1");
+            this.Hide();
             gameForm.Show();
         }
 
         private void PictureBox2_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
             gameForm._initialize("stage2");
+            this.Hide();
             gameForm.Show();
         }
 
         private void PictureBox3_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
             gameForm._initialize("stage3");
+            this.Hide();
             gameForm.Show();
         }
 
         private void PictureBox4_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
             gameForm._initialize("stage4");
+            this.Hide();
             gameForm.Show();
         }
 
         private void PictureBox7_Click(object sender, EventArgs e)
         {
-            this.Hide();
             gameForm._initialize("stage7");
+            this.Hide();
             gameForm.Show();
         }
 
         private void PictureBox8_Click(object sender, EventArgs e)
         {
-            this.Hide();
             gameForm._initialize("stage8");
+            this.Hide();
             gameForm.Show();
         }
 
         private void PictureBox9_Click(object sender, EventArgs e)
         {
-            this.Hide();
             gameForm._initialize("stage9");
+            this.Hide();
             gameForm.Show();
         }
 
         private void PictureBox10_Click(object sender, EventArgs e)
         {
-            this.Hide();
             gameForm._initialize("stage10");
+            this.Hide();
             gameForm.Show();
         }
 
@@ -200,6 +200,41 @@ namespace unilab2019.Forms
         private void TextBox11_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void PictureBox12_Click(object sender, EventArgs e)
+        {
+            gameForm._initialize("stage11");
+            this.Hide();
+            gameForm.Show();
+        }
+
+        private void PictureBox13_Click(object sender, EventArgs e)
+        {
+            gameForm._initialize("stage12");
+            this.Hide();
+            gameForm.Show();
+        }
+
+        private void PictureBox14_Click(object sender, EventArgs e)
+        {
+            gameForm._initialize("stage13");
+            this.Hide();
+            gameForm.Show();
+        }
+
+        private void PictureBox15_Click(object sender, EventArgs e)
+        {
+            gameForm._initialize("stage14");
+            this.Hide();
+            gameForm.Show();
+        }
+
+        private void PictureBox16_Click(object sender, EventArgs e)
+        {
+            gameForm._initialize("stage15");
+            this.Hide();
+            gameForm.Show();
         }
     }
 }
