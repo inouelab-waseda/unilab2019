@@ -384,14 +384,14 @@ namespace unilab2019.Forms
             {
                 //選択されていないとき
                 code.Add(tmp);
-                codeListBox.Items.Add("左に曲がる");
+                codeListBox.Items.Add("左を向く");
             }
             else
             {
                 if (selected != 0) tmp.Indent = code[selected-1].Indent;
                 string indent_string = new string(' ', 2 * tmp.Indent);
                 code.Insert(selected, tmp);
-                codeListBox.Items.Insert(selected, indent_string+"左に曲がる");
+                codeListBox.Items.Insert(selected, indent_string+"左を向く");
             }
         }
 
@@ -404,14 +404,14 @@ namespace unilab2019.Forms
             {
                 //選択されていないとき
                 code.Add(tmp);
-                codeListBox.Items.Add("右に曲がる");
+                codeListBox.Items.Add("右を向く");
             }
             else
             {
                 if (selected != 0) tmp.Indent = code[selected-1].Indent;
                 string indent_string = new string(' ', 2 * tmp.Indent);
                 code.Insert(selected, tmp);
-                codeListBox.Items.Insert(selected, indent_string+"右に曲がる");
+                codeListBox.Items.Insert(selected, indent_string+"右を向く");
 
             }
         }
@@ -675,6 +675,7 @@ namespace unilab2019.Forms
         private void startBtn_Click(object sender, EventArgs e)
         {
             _reset();
+            exeCodeStack.Clear();
             exeCodeStack.Push(CarryOutScript(code));
             codeTimer.Start();
         }
@@ -967,21 +968,24 @@ namespace unilab2019.Forms
                         break;
 
                     case Types.Instruction.ForCode:
+
+                        //for文の最初の行を格納する変数
+                        int for_sub_indent_start = i;
                         //endの行数を格納する変数
-                        int for_sub_indent = 0;
+                        int for_sub_indent_end = 0;
                         
                         //for文のendを取得
                         for (int k = i; k < code.Count();k++)
                         {
                             if (code[k].Instruction == Types.Instruction.End && code[i].Indent == code[k].Indent)
                             {
-                                for_sub_indent = k;
+                                for_sub_indent_end = k;
                                 break;
                             }
                         }
                         //中身の部分だけ一時的に取り出すcodeリストを作成
                         List<Code> for_subcode = new List<Code>();
-                        for (int j = i+1; j < for_sub_indent; j++)
+                        for (int j = i+1; j < for_sub_indent_end; j++)
                         {
                             for_subcode.Add(code[j]);
                         }
@@ -991,7 +995,7 @@ namespace unilab2019.Forms
                         {
                            exeCodeStack.Push(CarryOutScript(for_subcode));
                         }
-                        a = for_sub_indent;
+                        a = for_sub_indent_end - for_sub_indent_start;
                         canMoveNextCode = true;
                         break;
 
