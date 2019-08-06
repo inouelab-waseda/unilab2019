@@ -201,5 +201,10 @@ namespace unilab2019.Forms
         {
 
         }
+
+        private void Selectstage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
