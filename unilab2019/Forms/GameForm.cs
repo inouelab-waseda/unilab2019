@@ -848,7 +848,7 @@ namespace unilab2019.Forms
                         if (IsWall(_field.Player.ForwardX(), _field.Player.ForwardY()))
                         {
                             exeCodeStack.Clear();
-                            MessageBox.Show("前は壁だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("前は木だよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             //codeTimer.Stop();
                             //globalTimer.Stop();
                         }
