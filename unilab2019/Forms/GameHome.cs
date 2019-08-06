@@ -29,5 +29,9 @@ namespace unilab2019.Forms
             this.Hide();
             selectStage.Show();
         }
+        private void GameHome_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
