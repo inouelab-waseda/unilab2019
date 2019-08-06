@@ -12,9 +12,13 @@ namespace unilab2019.Forms
 {
     public partial class StageClear : Form
     {
-        public StageClear()
+
+        Selectstage selectstage;
+        public StageClear(Selectstage ss)
         {
             InitializeComponent();
+            selectstage = ss;
         }
+
     }
 }
