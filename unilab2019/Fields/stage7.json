@@ -1,95 +1,227 @@
 ﻿{
   "Player": {
     "X": 6,
-    "Y": 7,
+    "Y": 11,
     "Direction": 3
   },
   "Goal": {
-    "X": 17,
-    "Y": 9,
+    "X": 6,
+    "Y": 6,
     "Direction": 0
   },
-  "Enemies": [],
+  "Enemies": [
+    {
+        "X": 11,
+        "Y": 7,
+        "Direction": 2,
+        "MoveRoute":[
+          {
+            "X": 11,
+            "Y": 8
+          },
+          {
+            "X": 11,
+            "Y": 9
+          },
+          {
+            "X": 11,
+            "Y": 10
+          },
+          {
+            "X": 11,
+            "Y": 11
+          },
+          {
+            "X": 12,
+            "Y": 11
+          },
+          {
+            "X": 13,
+            "Y": 11
+          },
+          {
+            "X": 14,
+            "Y": 11
+          },
+          {
+            "X": 15,
+            "Y": 11
+          },
+          {
+            "X": 16,
+            "Y": 11
+          },
+          {
+            "X": 17,
+            "Y": 11
+          },
+          {
+            "X": 17,
+            "Y": 10
+          },
+          {
+            "X": 17,
+            "Y": 9
+          },
+          {
+            "X": 17,
+            "Y": 8
+          },
+          {
+            "X": 17,
+            "Y": 7
+          },
+          {
+            "X": 17,
+            "Y": 6
+          },
+          {
+            "X": 16,
+            "Y": 6
+          },
+          {
+            "X": 15,
+            "Y": 6
+          },
+          {
+            "X": 14,
+            "Y": 6
+          },
+          {
+            "X": 13,
+            "Y": 6
+          },
+          {
+            "X": 12,
+            "Y": 6
+          },
+          {
+            "X": 11,
+            "Y": 6
+          },
+          {
+            "X": 11,
+            "Y": 7
+          }
+        ]
+      },
+      {
+        "X": 17,
+        "Y": 10,
+        "Direction": 1,
+        "MoveRoute":[
+            {
+                "X": 17,
+                "Y": 9
+              },
+              {
+                "X": 17,
+                "Y": 8
+              },
+              {
+                "X": 17,
+                "Y": 7
+              },
+              {
+                "X": 17,
+                "Y": 6
+              },
+              {
+                "X": 16,
+                "Y": 6
+              },
+              {
+                "X": 15,
+                "Y": 6
+              },
+              {
+                "X": 14,
+                "Y": 6
+              },
+              {
+                "X": 13,
+                "Y": 6
+              },
+              {
+                "X": 12,
+                "Y": 6
+              },
+              {
+                "X": 11,
+                "Y": 6
+              },
+              {
+                "X": 11,
+                "Y": 7
+              },
+              {
+                "X": 11,
+                "Y": 8
+              },
+              {
+                "X": 11,
+                "Y": 9
+              },
+              {
+                "X": 11,
+                "Y": 10
+              },
+              {
+                "X": 11,
+                "Y": 11
+              },
+              {
+                "X": 12,
+                "Y": 11
+              },
+              {
+                "X": 13,
+                "Y": 11
+              },
+              {
+                "X": 14,
+                "Y": 11
+              },
+              {
+                "X": 15,
+                "Y": 11
+              },
+              {
+                "X": 16,
+                "Y": 11
+              },
+              {
+                "X": 17,
+                "Y": 11
+              },
+              {
+                "X": 17,
+                "Y": 10
+              }
+        ]
+      }
+  ],
   "Coins":[
-	{
-     "X": 13,
-     "Y": 5,
-     "Direction": 0
-	},
-	{
-     "X": 10,
-     "Y": 11,
-     "Direction": 0
-	}
+      {
+        "X": 11,
+        "Y": 9,
+        "Direction": 0
+      },
+      {
+        "X": 8,
+        "Y": 6,
+        "Direction": 0
+      }
   ],
-  "Oneups":[],
+  "Oneups":[
+    {
+        "X": 17,
+        "Y": 8,
+        "Direction": 0
+      }
+  ],
   "Swamps": [],
-  "Teleporters": [
-	{
-      "PairId": 1,
-      "PlayerDirection": 0,
-      "IsDestination": false,
-      "X": 17,
-      "Y": 7,
-      "Direction": 0
-  },
-  {
-        "PairId": 1,
-        "PlayerDirection": 3,
-        "IsDestination": true,
-        "X": 6,
-        "Y": 9,
-        "Direction": 3
-  },
-	{
-        "PairId": 2,
-        "PlayerDirection": 0,
-        "IsDestination": false,
-        "X": 17,
-        "Y": 5,
-        "Direction": 0
-  },
-  {
-        "PairId": 2,
-        "PlayerDirection": 4,
-        "IsDestination": true,
-        "X": 17,
-        "Y": 13,
-        "Direction": 4
-  },
-	{
-        "PairId": 3,
-        "PlayerDirection": 0,
-        "IsDestination": false,
-        "X": 6,
-        "Y": 13,
-        "Direction": 0
-  },
-  {
-        "PairId": 3,
-        "PlayerDirection": 3,
-        "IsDestination": true,
-        "X": 10,
-        "Y": 9,
-        "Direction": 3
-  },
-	{
-        "PairId": 4,
-        "PlayerDirection": 0,
-        "IsDestination": false,
-        "X": 6,
-        "Y": 11,
-        "Direction": 0
-  },
-  {
-        "PairId": 4,
-        "PlayerDirection": 3,
-        "IsDestination": true,
-        "X": 14,
-        "Y": 9,
-        "Direction": 3
-  }
-  ],
+  "Teleporters": [],
   "Walls": [
     {
       "ImageType": 1,
@@ -778,13 +910,19 @@
     {
       "ImageType": 1,
       "X": 6,
-      "Y": 6,
+      "Y": 7,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 6,
       "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 6,
+      "Y": 9,
       "Direction": 0
     },
     {
@@ -797,6 +935,12 @@
       "ImageType": 1,
       "X": 6,
       "Y": 12,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 6,
+      "Y": 13,
       "Direction": 0
     },
     {
@@ -862,13 +1006,19 @@
     {
       "ImageType": 1,
       "X": 7,
-      "Y": 6,
+      "Y": 7,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 7,
       "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 7,
+      "Y": 9,
       "Direction": 0
     },
     {
@@ -881,6 +1031,12 @@
       "ImageType": 1,
       "X": 7,
       "Y": 12,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 7,
+      "Y": 13,
       "Direction": 0
     },
     {
@@ -946,25 +1102,13 @@
     {
       "ImageType": 1,
       "X": 8,
-      "Y": 6,
-      "Direction": 0
-    },
-    {
-      "ImageType": 1,
-      "X": 8,
-      "Y": 8,
-      "Direction": 0
-    },
-    {
-      "ImageType": 1,
-      "X": 8,
-      "Y": 10,
-      "Direction": 0
-    },
-    {
-      "ImageType": 1,
-      "X": 8,
       "Y": 12,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 8,
+      "Y": 13,
       "Direction": 0
     },
     {
@@ -1024,7 +1168,25 @@
     {
       "ImageType": 1,
       "X": 9,
+      "Y": 5,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 9,
+      "Y": 7,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 9,
       "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 9,
+      "Y": 9,
       "Direction": 0
     },
     {
@@ -1042,6 +1204,12 @@
     {
       "ImageType": 1,
       "X": 9,
+      "Y": 13,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 9,
       "Y": 14,
       "Direction": 0
     },
@@ -1096,13 +1264,25 @@
     {
       "ImageType": 1,
       "X": 10,
-      "Y": 6,
+      "Y": 5,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 10,
+      "Y": 7,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 10,
       "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 10,
+      "Y": 9,
       "Direction": 0
     },
     {
@@ -1115,6 +1295,12 @@
       "ImageType": 1,
       "X": 10,
       "Y": 12,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 10,
+      "Y": 13,
       "Direction": 0
     },
     {
@@ -1174,25 +1360,19 @@
     {
       "ImageType": 1,
       "X": 11,
-      "Y": 6,
-      "Direction": 0
-    },
-    {
-      "ImageType": 1,
-      "X": 11,
-      "Y": 8,
-      "Direction": 0
-    },
-    {
-      "ImageType": 1,
-      "X": 11,
-      "Y": 10,
+      "Y": 5,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 11,
       "Y": 12,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 11,
+      "Y": 13,
       "Direction": 0
     },
     {
@@ -1252,13 +1432,25 @@
     {
       "ImageType": 1,
       "X": 12,
-      "Y": 6,
+      "Y": 5,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 12,
+      "Y": 7,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 12,
       "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 12,
+      "Y": 9,
       "Direction": 0
     },
     {
@@ -1271,6 +1463,12 @@
       "ImageType": 1,
       "X": 12,
       "Y": 12,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 12,
+      "Y": 13,
       "Direction": 0
     },
     {
@@ -1330,13 +1528,25 @@
     {
       "ImageType": 1,
       "X": 13,
-      "Y": 6,
+      "Y": 5,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 13,
+      "Y": 7,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 13,
       "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 13,
+      "Y": 9,
       "Direction": 0
     },
     {
@@ -1349,6 +1559,12 @@
       "ImageType": 1,
       "X": 13,
       "Y": 12,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 13,
+      "Y": 13,
       "Direction": 0
     },
     {
@@ -1408,7 +1624,13 @@
     {
       "ImageType": 1,
       "X": 14,
-      "Y": 6,
+      "Y": 5,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
+      "Y": 7,
       "Direction": 0
     },
     {
@@ -1420,7 +1642,25 @@
     {
       "ImageType": 1,
       "X": 14,
+      "Y": 9,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
       "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
+      "Y": 12,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
+      "Y": 13,
       "Direction": 0
     },
     {
@@ -1480,7 +1720,13 @@
     {
       "ImageType": 1,
       "X": 15,
-      "Y": 6,
+      "Y": 5,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 15,
+      "Y": 7,
       "Direction": 0
     },
     {
@@ -1492,19 +1738,25 @@
     {
       "ImageType": 1,
       "X": 15,
+      "Y": 9,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 15,
       "Y": 10,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 15,
-      "Y": 11,
+      "Y": 12,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 15,
-      "Y": 12,
+      "Y": 13,
       "Direction": 0
     },
     {
@@ -1564,7 +1816,13 @@
     {
       "ImageType": 1,
       "X": 16,
-      "Y": 6,
+      "Y": 5,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 16,
+      "Y": 7,
       "Direction": 0
     },
     {
@@ -1576,19 +1834,25 @@
     {
       "ImageType": 1,
       "X": 16,
+      "Y": 9,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 16,
       "Y": 10,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 16,
-      "Y": 11,
+      "Y": 12,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 16,
-      "Y": 12,
+      "Y": 13,
       "Direction": 0
     },
     {
@@ -1648,31 +1912,19 @@
     {
       "ImageType": 1,
       "X": 17,
-      "Y": 6,
-      "Direction": 0
-    },
-    {
-      "ImageType": 1,
-      "X": 17,
-      "Y": 8,
-      "Direction": 0
-    },
-    {
-      "ImageType": 1,
-      "X": 17,
-      "Y": 10,
-      "Direction": 0
-    },
-    {
-      "ImageType": 1,
-      "X": 17,
-      "Y": 11,
+      "Y": 5,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 17,
       "Y": 12,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 17,
+      "Y": 13,
       "Direction": 0
     },
     {
@@ -2060,10 +2312,10 @@
       "Direction": 0
     },
     {
-	  "ImageType": 1,
-      "X": 21,
-      "Y": 6,
-      "ImageType": 1
+        "ImageType": 1,
+        "X": 21,
+        "Y": 6,
+        "Direction": 0
     },
     {
       "ImageType": 1,

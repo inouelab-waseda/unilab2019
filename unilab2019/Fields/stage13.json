@@ -2,7 +2,7 @@
   "Player": {
     "X": 8,
     "Y": 11,
-    "Direction": 1
+    "Direction": 3
   },
   "Goal": {
     "X": 8,
@@ -11,244 +11,54 @@
   },
   "Enemies": [
     {
-      "X": 8,
+      "X": 12,
       "Y": 10,
-      "Direction": 3,
+      "Direction": 2,
       "MoveRoute":[
         {
-          "X": 9,
-          "Y": 10
-        },
-        {
-          "X": 10,
-          "Y": 10
-        },
-        {
-          "X": 11,
-          "Y": 10
-        },
-        {
           "X": 12,
-          "Y": 10
-        },
-        {
-          "X": 13,
-          "Y": 10
-        },
-        {
-          "X": 14,
-          "Y": 10
-        },
-        {
-          "X": 14,
-          "Y": 9
-        },
-        {
-          "X": 14,
-          "Y": 8
-        },
-        {
-          "X": 14,
-          "Y": 7
-        },
-        {
-          "X": 14,
-          "Y": 6
-        },
-        {
-          "X": 13,
-          "Y": 6
-        },
-        {
-          "X": 12,
-          "Y": 6
-        },
-        {
-          "X": 11,
-          "Y": 6
-        },
-        {
-          "X": 10,
-          "Y": 6
-        },
-        {
-          "X": 9,
-          "Y": 6
-        },
-        {
-          "X": 8,
-          "Y": 6
-        },
-        {
-          "X": 9,
-          "Y": 6
-        },
-        {
-          "X": 10,
-          "Y": 6
-        },
-        {
-          "X": 11,
-          "Y": 6
-        },
-        {
-          "X": 12,
-          "Y": 6
-        },
-        {
-          "X": 13,
-          "Y": 6
-        },
-        {
-          "X": 14,
-          "Y": 6
-        },
-        {
-          "X": 14,
-          "Y": 7
-        },
-        {
-          "X": 14,
-          "Y": 8
-        },
-        {
-          "X": 14,
-          "Y": 9
-        },
-        {
-          "X": 14,
-          "Y": 10
-        },
-        {
-          "X": 13,
-          "Y": 10
-        },
-        {
-          "X": 12,
-          "Y": 10
-        },
-        {
-          "X": 11,
-          "Y": 10
-        },
-        {
-          "X": 10,
-          "Y": 10
-        },
-        {
-          "X": 9,
-          "Y": 10
-        },
-        {
-          "X": 8,
           "Y": 10
         }
       ]
     },
     {
-      "X": 16,
-      "Y": 12,
-      "Direction": 1,
+      "X": 12,
+      "Y": 6,
+      "Direction": 2,
       "MoveRoute":[
         {
-          "X": 16,
-          "Y": 11
-        },
-        {
-          "X": 16,
-          "Y": 10
-        },
-        {
-          "X": 16,
-          "Y": 9
-        },
-        {
-          "X": 16,
-          "Y": 8
-        },
-        {
-          "X": 16,
-          "Y": 7
-        },
-        {
-          "X": 16,
+          "X": 12,
           "Y": 6
-        },
-        {
-          "X": 16,
-          "Y": 5
-        },
-        {
-          "X": 16,
-          "Y": 4
-        },
-        {
-          "X": 16,
-          "Y": 5
-        },
-        {
-          "X": 16,
-          "Y": 6
-        },
-        {
-          "X": 16,
-          "Y": 7
-        },
-        {
-          "X": 16,
-          "Y": 8
-        },
-        {
-          "X": 16,
-          "Y": 9
-        },
-        {
-          "X": 16,
-          "Y": 10
-        },
-        {
-          "X": 16,
-          "Y": 11
-        },
-        {
-          "X": 16,
-          "Y": 12
         }
       ]
     }
   ],
   "Coins":[
     {
-      "X": 11,
-      "Y": 5,
-      "Direction": 0
-    },
-    {
-      "X": 14,
-      "Y": 8,
-      "Direction": 0
-    }
+        "X": 12,
+        "Y": 7,
+        "Direction": 0
+      },
+      {
+        "X": 12,
+        "Y": 9,
+        "Direction": 0
+      }
   ],
-  "Oneups":[],
+  "Oneups":[
+    {
+        "X": 12,
+        "Y": 11,
+        "Direction": 0
+      },
+      {
+        "X": 12,
+        "Y": 8,
+        "Direction": 0
+      }
+  ],
   "Swamps": [],
-  "Teleporters": [
-    {
-      "PairId": 1,
-      "PlayerDirection": 0,
-      "IsDestination": false,
-      "X": 16,
-      "Y": 11,
-      "Direction": 0
-    },
-    {
-      "PairId": 1,
-      "PlayerDirection": 1,
-      "IsDestination": true,
-      "X": 16,
-      "Y": 5,
-      "Direction": 1
-    }
-  ],
+  "Teleporters": [],
   "Walls": [
     {
       "ImageType": 1,
@@ -1141,19 +951,25 @@
     {
       "ImageType": 1,
       "X": 8,
-      "Y": 7,
+      "Y": 4,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 8,
-      "Y": 8,
+      "Y": 6,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 8,
-      "Y": 9,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 8,
+      "Y": 12,
       "Direction": 0
     },
     {
@@ -1213,7 +1029,13 @@
     {
       "ImageType": 1,
       "X": 9,
-      "Y": 7,
+      "Y": 4,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 9,
+      "Y": 6,
       "Direction": 0
     },
     {
@@ -1225,7 +1047,13 @@
     {
       "ImageType": 1,
       "X": 9,
-      "Y": 9,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 9,
+      "Y": 12,
       "Direction": 0
     },
     {
@@ -1285,7 +1113,13 @@
     {
       "ImageType": 1,
       "X": 10,
-      "Y": 7,
+      "Y": 4,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 10,
+      "Y": 6,
       "Direction": 0
     },
     {
@@ -1297,7 +1131,13 @@
     {
       "ImageType": 1,
       "X": 10,
-      "Y": 9,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 10,
+      "Y": 12,
       "Direction": 0
     },
     {
@@ -1357,7 +1197,13 @@
     {
       "ImageType": 1,
       "X": 11,
-      "Y": 7,
+      "Y": 4,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 11,
+      "Y": 6,
       "Direction": 0
     },
     {
@@ -1369,7 +1215,13 @@
     {
       "ImageType": 1,
       "X": 11,
-      "Y": 9,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 11,
+      "Y": 12,
       "Direction": 0
     },
     {
@@ -1429,19 +1281,13 @@
     {
       "ImageType": 1,
       "X": 12,
-      "Y": 7,
+      "Y": 4,
       "Direction": 0
     },
     {
       "ImageType": 1,
       "X": 12,
-      "Y": 8,
-      "Direction": 0
-    },
-    {
-      "ImageType": 1,
-      "X": 12,
-      "Y": 9,
+      "Y": 12,
       "Direction": 0
     },
     {
@@ -1501,7 +1347,13 @@
     {
       "ImageType": 1,
       "X": 13,
-      "Y": 7,
+      "Y": 4,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 13,
+      "Y": 6,
       "Direction": 0
     },
     {
@@ -1513,7 +1365,13 @@
     {
       "ImageType": 1,
       "X": 13,
-      "Y": 9,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 13,
+      "Y": 12,
       "Direction": 0
     },
     {
@@ -1568,6 +1426,36 @@
       "ImageType": 1,
       "X": 14,
       "Y": 3,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
+      "Y": 4,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
+      "Y": 6,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
+      "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 14,
+      "Y": 12,
       "Direction": 0
     },
     {
@@ -1622,6 +1510,36 @@
       "ImageType": 1,
       "X": 15,
       "Y": 3,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 15,
+      "Y": 4,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 15,
+      "Y": 6,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 15,
+      "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 15,
+      "Y": 10,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 15,
+      "Y": 12,
       "Direction": 0
     },
     {
@@ -1676,6 +1594,24 @@
       "ImageType": 1,
       "X": 16,
       "Y": 3,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 16,
+      "Y": 4,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 16,
+      "Y": 8,
+      "Direction": 0
+    },
+    {
+      "ImageType": 1,
+      "X": 16,
+      "Y": 12,
       "Direction": 0
     },
     {
