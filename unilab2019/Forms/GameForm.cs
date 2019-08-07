@@ -1223,24 +1223,28 @@ namespace unilab2019.Forms
                 return false;
                 //globalTimer.Stop();
             }
-            ////while文中に「前に進む」があるかどうかを判定
-            //int flag = 0;
-            //for (int i = 0; i < code.Count(); i++)
-            //{
-            //    flag = 1;
-            //    if (code[i].Instruction == Types.Instruction.Forward)
-            //    {
-            //        flag = 0;
-            //        break;
-            //    }
-            //}
-            //if (flag == 1)
-            //{
-            //    exeCodeStack.Clear();
-            //    MessageBox.Show("無限ループになるよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    codeTimer.Stop();
-            //    return false;
-            //}
+            //while文中に「前に進む」があるかどうかを判定
+            int flag = 0;
+            for (int i = 0; i < code.Count(); i++)
+            {
+                flag = 1;
+                if (code[i].Instruction != Types.Instruction.IfCode && code[i].Instruction != Types.Instruction.End && code[i].Instruction != Types.Instruction.ForCode)
+                {
+                    flag = 0;
+                    break;
+                }
+                else if(code[i].Instruction == Types.Instruction.IfCode)
+                {
+                    while (code[i].Instruction != Types.Instruction.End) i++;
+                }
+            }
+            if (flag == 1)
+            {
+                exeCodeStack.Clear();
+                MessageBox.Show("無限ループになるよ！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                codeTimer.Stop();
+                return false;
+            }
             return true;
 
         }
