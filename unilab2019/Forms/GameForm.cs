@@ -254,7 +254,7 @@ namespace unilab2019.Forms
         {
             foreach (var enemy in _field.Enemies)
             {
-                if (_field.Player.Intersect(enemy)&&_field.Player.HP==0)
+                if (_field.Player.Intersect(enemy)&&_field.Player.HP==1)
                 {
                     codeTimer.Stop();
                     MessageBox.Show("体力がなくなっちゃった！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
