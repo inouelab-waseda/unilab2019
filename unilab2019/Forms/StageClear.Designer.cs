@@ -55,22 +55,32 @@
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 5, 2);
             this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 451);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(640, 376);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // textBox1
             // 
-            this.textBox1.ReadOnly = true;
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBox1.Location = new System.Drawing.Point(442, 359);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(286, 25);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TabStop = false;
+            this.textBox1.Click += new System.EventHandler(this.TextboxCaretControl);
+            this.textBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
+            this.textBox1.MouseEnter += new System.EventHandler(this.TextboxCursorControl);
+            this.textBox1.MouseLeave += new System.EventHandler(this.TextboxCursorControl);
+            this.textBox1.MouseHover += new System.EventHandler(this.TextboxCursorControl);
+            this.textBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TextboxCursorControl);
+            this.textBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TextboxCaretControl);
             // 
             // pictureBox1
             // 
@@ -88,10 +98,11 @@
             // 
             // StageClear
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(640, 375);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "StageClear";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
