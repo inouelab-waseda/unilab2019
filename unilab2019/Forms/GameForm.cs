@@ -39,7 +39,25 @@ namespace unilab2019.Forms
 
         Selectstage selectStage;
         StageClear stageClear;
-        Dictionary<string, int>stage_table = new Dictionary<string, int>();
+        AllStageClear allstageClear;
+        Dictionary<string, int>stage_table = new Dictionary<string, int>()
+        {
+            {"stage1",0},
+            {"stage2",0},
+            {"stage3",0},
+            {"stage4",0},
+            {"stage5",0},
+            {"stage6",0},
+            {"stage7",0},
+            {"stage8",0},
+            {"stage9",0},
+            {"stage10",0},
+            {"stage11",0},
+            {"stage12",0},
+            {"stage13",0},
+            {"stage14",0},
+            {"stage15",0}
+        };
 
 
         private List<int> _initial_player_position;
@@ -95,6 +113,9 @@ namespace unilab2019.Forms
             InitializeComponent();
             selectStage = ss;
             stageClear = new StageClear(selectStage, this, stage_table);
+            allstageClear = new AllStageClear(selectStage, this, stage_table);
+
+
             _graphicsBack = Graphics.FromImage(tableLayoutPanel1.BackgroundImage);
             _fps = 10;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -268,14 +289,23 @@ namespace unilab2019.Forms
                 exeCodeStack.Clear();
                 //globalTimer.Stop();
                 MessageBox.Show("ゴール！");
-
-                stage_table.Add(currentStage.Text, calc_score());
+                if(stage_table[currentStage.Text] < calc_score())stage_table[currentStage.Text]= calc_score();
                 int score_result = stage_table.Count;
 
-                stageClear.textBox1.Text = stage_table[currentStage.Text].ToString();
-                stageClear.Show();
+                stageClear.textBox1.Text = calc_score().ToString();
+                //合計点
+                var sum_score = 0;
+                for(var i = 1; i <= 15; i++)
+                {
+                    sum_score += stage_table["stage" + i.ToString()];
+                }
+
+                selectStage.textBox11.Text = sum_score.ToString();
+               
+                //stageClear.Show();
                 this.Hide();
-                
+                stageClear.Show();
+
             }
         }
         private void _draw()
@@ -370,9 +400,23 @@ namespace unilab2019.Forms
                 code.Add(tmp);
                 codeListBox.Items.Add("前に進む");
             }
+            else if (selected == 0)
+            {
+                tmp.Indent = 0;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "前に進む");
+            }
+            else if (code[selected - 1].Instruction == Types.Instruction.End)
+            {
+                tmp.Indent = code[selected - 1].Indent - 1 ;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "前に進む");
+            }
             else
             {
-                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                tmp.Indent = code[selected-1].Indent;
                 string indent_string = new string(' ', 2 * tmp.Indent);
                 code.Insert(selected,tmp);
                 codeListBox.Items.Insert(selected,indent_string+"前に進む");
@@ -392,9 +436,23 @@ namespace unilab2019.Forms
                 code.Add(tmp);
                 codeListBox.Items.Add("左を向く");
             }
+            else if (selected == 0)
+            {
+                tmp.Indent = 0;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "左を向く");
+            }
+            else if (code[selected - 1].Instruction == Types.Instruction.End)
+            {
+                tmp.Indent = code[selected - 1].Indent -1;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "左を向く");
+            }
             else
             {
-                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                tmp.Indent = code[selected-1].Indent;
                 string indent_string = new string(' ', 2 * tmp.Indent);
                 code.Insert(selected, tmp);
                 codeListBox.Items.Insert(selected, indent_string+"左を向く");
@@ -412,9 +470,23 @@ namespace unilab2019.Forms
                 code.Add(tmp);
                 codeListBox.Items.Add("右を向く");
             }
+            else if (selected == 0)
+            {
+                tmp.Indent = 0;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "右を向く");
+            }
+            else if (code[selected - 1].Instruction == Types.Instruction.End)
+            {
+                tmp.Indent = code[selected - 1].Indent - 1;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "右を向く");
+            }
             else
             {
-                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                tmp.Indent = code[selected-1].Indent;
                 string indent_string = new string(' ', 2 * tmp.Indent);
                 code.Insert(selected, tmp);
                 codeListBox.Items.Insert(selected, indent_string+"右を向く");
@@ -435,9 +507,23 @@ namespace unilab2019.Forms
                 code.Add(tmp);
                 codeListBox.Items.Add("止まる");
             }
-            else
+            else if (selected == 0)
             {
-                if (selected != 0) tmp.Indent = code[selected-1].Indent;
+                tmp.Indent = 0;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "止まる");
+            }
+            else if (code[selected - 1].Instruction == Types.Instruction.End)
+            {
+                tmp.Indent = code[selected-1].Indent - 1;
+                string indent_string = new string(' ', 2 * tmp.Indent);
+                code.Insert(selected, tmp);
+                codeListBox.Items.Insert(selected, indent_string + "止まる");
+            }
+            else
+            { 
+                tmp.Indent = code[selected-1].Indent;
                 string indent_string = new string(' ', 2 * tmp.Indent);
                 code.Insert(selected, tmp);
                 codeListBox.Items.Insert(selected, indent_string+"止まる");
@@ -533,14 +619,14 @@ namespace unilab2019.Forms
                     codeListBox.Items.Insert(selected + 1, indent_string + "}");
                     codeListBox.SelectedIndex = selected + 1;
                 }
-                else if (code[selected - 1].Instruction == Types.Instruction.End)
+                else if (code[selected].Instruction == Types.Instruction.IfCode || code[selected].Instruction == Types.Instruction.ForCode || code[selected].Instruction == Types.Instruction.WhileCode)
                 {
-                    //選択された一つ上の行がendだったとき
-                    tmp.Indent = code[selected - 1].Indent ;
-                    end.Indent = code[selected - 1].Indent ;
-                    string indent_string = new string(' ', 2 * (tmp.Indent - 1));
+                    //選択したものがfor,if,whileだったとき
+                    tmp.Indent = code[selected].Indent;
+                    end.Indent = code[selected].Indent;
                     code.Insert(selected, tmp);
                     code.Insert(selected + 1, end);
+                    string indent_string = new string(' ', 2 * (tmp.Indent - 1));
                     codeListBox.Items.Insert(selected, indent_string + $"もし{dir}が{obj}なら{{");
                     codeListBox.Items.Insert(selected + 1, indent_string + "}");
                     codeListBox.SelectedIndex = selected + 1;
@@ -611,11 +697,11 @@ namespace unilab2019.Forms
                     codeListBox.SelectedIndex = selected + 1;
 
                 }
-                else if (code[selected - 1].Instruction == Types.Instruction.End)
+                else if (code[selected].Instruction == Types.Instruction.IfCode|| code[selected].Instruction == Types.Instruction.ForCode|| code[selected].Instruction == Types.Instruction.WhileCode)
                 {
-                    //選択した一つ上がendだったとき
-                    tmp.Indent = code[selected - 1].Indent ;
-                    end.Indent = code[selected - 1].Indent ;
+                    //選択したものがfor,if,whileだったとき
+                    tmp.Indent = code[selected].Indent ;
+                    end.Indent = code[selected].Indent ;
                     code.Insert(selected, tmp);
                     code.Insert(selected + 1, end);
                     string indent_string = new string(' ', 2 * (tmp.Indent - 1));
@@ -671,11 +757,11 @@ namespace unilab2019.Forms
                 codeListBox.Items.Insert(selected + 1, indent_string + "}");
                 codeListBox.SelectedIndex = selected + 1;
             }
-            else if (code[selected - 1].Instruction == Types.Instruction.End)
+            else if (code[selected].Instruction == Types.Instruction.IfCode || code[selected].Instruction == Types.Instruction.ForCode || code[selected].Instruction == Types.Instruction.WhileCode)
             {
-                //選択した一つ上の行がendだったとき
-                tmp.Indent = code[selected-1].Indent ;
-                end.Indent = code[selected-1].Indent ;
+                //選択したものがfor,if,whileだったとき
+                tmp.Indent = code[selected].Indent;
+                end.Indent = code[selected].Indent;
                 code.Insert(selected, tmp);
                 code.Insert(selected + 1, end);
                 string indent_string = new string(' ', 2 * (tmp.Indent - 1));
@@ -767,13 +853,11 @@ namespace unilab2019.Forms
         private void DeleteOneLineBtn_Click(object sender, EventArgs e)
         {
             var selected = codeListBox.SelectedIndex;
-            //選択されていないとき
             if (selected == -1)
             {
-                int lastIndex = codeListBox.Items.Count - 1;
+                int lastIndex = code.Count - 1;
                 //もし最後の行が"}"のときは削除しない
-                if ((string)codeListBox.Items[lastIndex] == "}") { }
-                else
+                if (code[lastIndex].Instruction != Types.Instruction.End)
                 {
                     code.RemoveAt(lastIndex);
                     codeListBox.Items.RemoveAt(lastIndex);
@@ -781,52 +865,39 @@ namespace unilab2019.Forms
             }
             else
             {
-                //閉じ括弧が選択されているときは何もしない
-                if (code[selected].Instruction == Types.Instruction.End) { }
-                //始まり括弧の行が選択されているときは、括弧閉じも同時に削除,中身のインデント調整
-                else if (codeListBox.Text.EndsWith("{"))
+                switch (code[selected].Instruction)
                 {
-                    int parenthesesIndex = -1;
-                    code.RemoveAt(selected);
-                    //閉じ括弧探す
-                    for (int i = selected; i < code.Count; i++)
-                    {
-                        if (code[i].Instruction == Types.Instruction.End)
+                    case Types.Instruction.End:
+                        break;
+                    case Types.Instruction.IfCode:
+                    case Types.Instruction.ForCode:
+                    case Types.Instruction.WhileCode:
+                        var target_indent = code[selected].Indent;
+                        code.RemoveAt(selected);
+                        codeListBox.Items.RemoveAt(selected);
+                        var i = selected;
+                        while (true)
                         {
-                            parenthesesIndex = i;
-                            break;
+                            if (code[i].Instruction == Types.Instruction.End && code[i].Indent == target_indent)
+                            {
+                                code.RemoveAt(i);
+                                codeListBox.Items.RemoveAt(i);
+                                break;
+                            }
+                            else
+                            {
+                                var line = (string)codeListBox.Items[i];
+                                line = line.Remove(0, 2);
+                                codeListBox.Items.RemoveAt(i);
+                                codeListBox.Items.Insert(i, line);
+                            }
+                            i++;
                         }
-                        else
-                        {
-                            code[i].Indent--;
-                        }
-                    }
-                    code.RemoveAt(parenthesesIndex);
-
-                    codeListBox.Items.RemoveAt(selected);
-                    while (true)
-                    {
-                        //閉じ括弧だったら、削除
-                        if ((string)codeListBox.Items[selected] == "}")
-                        {
-                            codeListBox.Items.RemoveAt(selected);
-                            break;
-                        }
-                        //括弧の中身だったら、インデント一つ減らす
-                        else
-                        {
-                            var line = (string)codeListBox.Items[selected];
-                            line = line.Remove(0, 2);
-                            codeListBox.Items.RemoveAt(selected);
-                            codeListBox.Items.Insert(selected, line);
-                        }
-                        selected++;
-                    }
-                }
-                else
-                {
-                    code.RemoveAt(selected);
-                    codeListBox.Items.RemoveAt(selected);
+                        break;
+                    default:
+                        code.RemoveAt(selected);
+                        codeListBox.Items.RemoveAt(selected);
+                        break;
                 }
             }
         }

@@ -14,6 +14,7 @@ namespace unilab2019.Forms
     {
         Selectstage selectstage;
         GameForm gameForm;
+        AllStageClear allstageClear;
         Dictionary<string, int> stage_table = new Dictionary<string, int>();
 
 
@@ -23,6 +24,7 @@ namespace unilab2019.Forms
             selectstage = ss;
             gameForm = gf;
             stage_table = st;
+            allstageClear = new AllStageClear(selectstage, gameForm, stage_table);
         }
 
         private void PictureBox1_Click(object sender, EventArgs e)
@@ -100,10 +102,19 @@ namespace unilab2019.Forms
             if (gameForm.currentStage.Text == "stage15")
             {
                 selectstage.textBox16.Text = stage_table["stage15"].ToString();
-
             }
-            selectstage.Show();
-            this.Hide();
+            if (stage_table.Values.Any(x => x == 0))
+            {
+                this.Hide();
+                selectstage.Show();
+                
+            }
+            else {
+                this.Hide();
+                allstageClear.Show();
+                
+            }
+            
         }
         private void StageClear_FormClosing(object sender, FormClosingEventArgs e)
         {
