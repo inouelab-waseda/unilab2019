@@ -852,52 +852,55 @@ namespace unilab2019.Forms
         }
         private void DeleteOneLineBtn_Click(object sender, EventArgs e)
         {
-            var selected = codeListBox.SelectedIndex;
-            if (selected == -1)
+            if (codeListBox.Items.Count > 0)
             {
-                int lastIndex = code.Count - 1;
-                //もし最後の行が"}"のときは削除しない
-                if (code[lastIndex].Instruction != Types.Instruction.End)
+                var selected = codeListBox.SelectedIndex;
+                if (selected == -1)
                 {
-                    code.RemoveAt(lastIndex);
-                    codeListBox.Items.RemoveAt(lastIndex);
+                    int lastIndex = code.Count - 1;
+                    //もし最後の行が"}"のときは削除しない
+                    if (code[lastIndex].Instruction != Types.Instruction.End)
+                    {
+                        code.RemoveAt(lastIndex);
+                        codeListBox.Items.RemoveAt(lastIndex);
+                    }
                 }
-            }
-            else
-            {
-                switch (code[selected].Instruction)
+                else
                 {
-                    case Types.Instruction.End:
-                        break;
-                    case Types.Instruction.IfCode:
-                    case Types.Instruction.ForCode:
-                    case Types.Instruction.WhileCode:
-                        var target_indent = code[selected].Indent;
-                        code.RemoveAt(selected);
-                        codeListBox.Items.RemoveAt(selected);
-                        var i = selected;
-                        while (true)
-                        {
-                            if (code[i].Instruction == Types.Instruction.End && code[i].Indent == target_indent)
+                    switch (code[selected].Instruction)
+                    {
+                        case Types.Instruction.End:
+                            break;
+                        case Types.Instruction.IfCode:
+                        case Types.Instruction.ForCode:
+                        case Types.Instruction.WhileCode:
+                            var target_indent = code[selected].Indent;
+                            code.RemoveAt(selected);
+                            codeListBox.Items.RemoveAt(selected);
+                            var i = selected;
+                            while (true)
                             {
-                                code.RemoveAt(i);
-                                codeListBox.Items.RemoveAt(i);
-                                break;
+                                if (code[i].Instruction == Types.Instruction.End && code[i].Indent == target_indent)
+                                {
+                                    code.RemoveAt(i);
+                                    codeListBox.Items.RemoveAt(i);
+                                    break;
+                                }
+                                else
+                                {
+                                    var line = (string)codeListBox.Items[i];
+                                    line = line.Remove(0, 2);
+                                    codeListBox.Items.RemoveAt(i);
+                                    codeListBox.Items.Insert(i, line);
+                                }
+                                i++;
                             }
-                            else
-                            {
-                                var line = (string)codeListBox.Items[i];
-                                line = line.Remove(0, 2);
-                                codeListBox.Items.RemoveAt(i);
-                                codeListBox.Items.Insert(i, line);
-                            }
-                            i++;
-                        }
-                        break;
-                    default:
-                        code.RemoveAt(selected);
-                        codeListBox.Items.RemoveAt(selected);
-                        break;
+                            break;
+                        default:
+                            code.RemoveAt(selected);
+                            codeListBox.Items.RemoveAt(selected);
+                            break;
+                    }
                 }
             }
         }
