@@ -67,6 +67,7 @@ namespace unilab2019.Forms
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage6";
             gameForm._initialize("stage6");
             this.Hide();
             gameForm.Show();
@@ -74,6 +75,7 @@ namespace unilab2019.Forms
 
         private void pictureBox5_Click_1(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage5";
             gameForm._initialize("stage5");
             this.Hide();
             gameForm.Show();
@@ -81,6 +83,7 @@ namespace unilab2019.Forms
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage1";
             gameForm._initialize("stage1");
             this.Hide();
             gameForm.Show();
@@ -88,6 +91,7 @@ namespace unilab2019.Forms
 
         private void PictureBox2_Click_1(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage2";
             gameForm._initialize("stage2");
             this.Hide();
             gameForm.Show();
@@ -95,6 +99,7 @@ namespace unilab2019.Forms
 
         private void PictureBox3_Click_1(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage3";
             gameForm._initialize("stage3");
             this.Hide();
             gameForm.Show();
@@ -102,6 +107,7 @@ namespace unilab2019.Forms
 
         private void PictureBox4_Click_1(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage4";
             gameForm._initialize("stage4");
             this.Hide();
             gameForm.Show();
@@ -109,6 +115,7 @@ namespace unilab2019.Forms
 
         private void PictureBox7_Click(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage7";
             gameForm._initialize("stage7");
             this.Hide();
             gameForm.Show();
@@ -116,6 +123,7 @@ namespace unilab2019.Forms
 
         private void PictureBox8_Click(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage8";
             gameForm._initialize("stage8");
             this.Hide();
             gameForm.Show();
@@ -123,6 +131,7 @@ namespace unilab2019.Forms
 
         private void PictureBox9_Click(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage9";
             gameForm._initialize("stage9");
             this.Hide();
             gameForm.Show();
@@ -130,6 +139,7 @@ namespace unilab2019.Forms
 
         private void PictureBox10_Click(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage10";
             gameForm._initialize("stage10");
             this.Hide();
             gameForm.Show();
@@ -219,6 +229,7 @@ namespace unilab2019.Forms
         
         private void PictureBox12_Click(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage11";
             gameForm._initialize("stage11");
             this.Hide();
             gameForm.Show();
@@ -226,6 +237,7 @@ namespace unilab2019.Forms
 
         private void PictureBox13_Click(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage12";
             gameForm._initialize("stage12");
             this.Hide();
             gameForm.Show();
@@ -233,6 +245,7 @@ namespace unilab2019.Forms
 
         private void PictureBox14_Click(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage13";
             gameForm._initialize("stage13");
             this.Hide();
             gameForm.Show();
@@ -240,6 +253,7 @@ namespace unilab2019.Forms
 
         private void PictureBox15_Click(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage14";
             gameForm._initialize("stage14");
             this.Hide();
             gameForm.Show();
@@ -247,6 +261,7 @@ namespace unilab2019.Forms
 
         private void PictureBox16_Click(object sender, EventArgs e)
         {
+            gameForm.stageName = "stage15";
             gameForm._initialize("stage15");
             this.Hide();
             gameForm.Show();

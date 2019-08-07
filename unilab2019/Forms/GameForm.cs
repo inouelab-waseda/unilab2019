@@ -35,7 +35,7 @@ namespace unilab2019.Forms
         private int countEnemy;
         public float CellWidth => (float)backPictureBox.Width / _field.Width;
         public float CellHeight => (float)backPictureBox.Height / _field.Height;
-        private string stageName = "stage4";
+        public string stageName="stage4";
 
         Selectstage selectStage;
         StageClear stageClear;
@@ -257,7 +257,8 @@ namespace unilab2019.Forms
                 if (_field.Player.Intersect(enemy)&&_field.Player.HP==0)
                 {
                     codeTimer.Stop();
-                    _initialize(stageName);
+                    MessageBox.Show("体力がなくなっちゃった！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _reset();
                     codeTimer.Stop();
                 }
                 else if(_field.Player.Intersect(enemy))
@@ -822,13 +823,6 @@ namespace unilab2019.Forms
                     _field.Player.Y = TeleportDestination.Y;
                     _field.Player.Direction = TeleportDestination.Direction;
                     _field.Player.Pedometer++;
-                }
-
-                if (_field.Player.HP <= 0)
-                {
-                    exeCodeStack.Clear();
-                    MessageBox.Show("体力がなくなっちゃった！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
                 }
 
             }
